@@ -20,15 +20,9 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Actividades
         public async Task AgregaCorrectamenteActividad()
         {
             var client = await GetMaestroClientAsync();
-            var pet = new AgregarActividadCommand
+            var pet = new AgregarReporteCommand
             {
-                IdUnidad = 2,
-                IdTipoActividad = 1,
-                Titulo = "Descripcion",
-                Contenido = "ajkak",
-                Valor = 40,
-                FechaLimite = new System.DateTime(2080, 01, 10),
-                FechaActivacion = new System.DateTime(2079, 01, 10)
+        
             };
 
             var content = Utilities.GetRequestContent(pet);
@@ -36,11 +30,11 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Actividades
 
             response.EnsureSuccessStatusCode();
 
-            var result = await Utilities.GetResponseContent<AgregarActividadResponse>(response);
+            var result = await Utilities.GetResponseContent<AgregarReporteResponse>(response);
 
-            Assert.IsType<AgregarActividadResponse>(result);
-            Assert.Equal(pet.IdUnidad, result.IdUnidad);
-            Assert.Equal(pet.IdTipoActividad, result.IdTipoActividad);
+            Assert.IsType<AgregarReporteResponse>(result);
+            //Assert.Equal(pet.IdUnidad, result.IdUnidad);
+            //Assert.Equal(pet.IdTipoActividad, result.IdTipoActividad);
             Assert.True(result.Id > 0);
         }
 
@@ -48,14 +42,8 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Actividades
         public async Task AgregaCorrectamenteActividadSinFechaActivacion()
         {
             var client = await GetMaestroClientAsync();
-            var pet = new AgregarActividadCommand
+            var pet = new AgregarReporteCommand
             {
-                IdUnidad = 2,
-                IdTipoActividad = 1,
-                Titulo = "Descripcion",
-                Contenido = "ajkak",
-                Valor = 40,
-                FechaLimite = new System.DateTime(2080, 01, 10)
             };
 
             var content = Utilities.GetRequestContent(pet);
@@ -63,78 +51,13 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Actividades
 
             response.EnsureSuccessStatusCode();
 
-            var result = await Utilities.GetResponseContent<AgregarActividadResponse>(response);
+            var result = await Utilities.GetResponseContent<AgregarReporteResponse>(response);
 
-            Assert.IsType<AgregarActividadResponse>(result);
-            Assert.Equal(pet.IdUnidad, result.IdUnidad);
-            Assert.Equal(pet.IdTipoActividad, result.IdTipoActividad);
+            Assert.IsType<AgregarReporteResponse>(result);
+            //Assert.Equal(pet.IdUnidad, result.IdUnidad);
+            //Assert.Equal(pet.IdTipoActividad, result.IdTipoActividad);
             Assert.True(result.Id > 0);
         }
 
-        [Fact]
-        public async Task AgregactividadSinFechaLimiteBadRequest()
-        {
-            var client = await GetMaestroClientAsync();
-            var pet = new AgregarActividadCommand
-            {
-                IdUnidad = 2,
-                IdTipoActividad = 1,
-                Titulo = "Descripcion",
-                Contenido = "ajkak",
-                Valor = 40,
-                FechaActivacion = new System.DateTime(2080, 01, 10)
-            };
-
-            var content = Utilities.GetRequestContent(pet);
-            var response = await client.PostAsync("/api/Actividades/Agregar", content);
-
-            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-        }
-
-        [Fact]
-        public async Task AgregactividadFechaLimiteMenorActivacionBadRequest()
-        {
-            var client = await GetMaestroClientAsync();
-            var pet = new AgregarActividadCommand
-            {
-                IdUnidad = 2,
-                IdTipoActividad = 1,
-                Titulo = "Descripcion",
-                Contenido = "ajkak",
-                Valor = 40,
-                FechaActivacion = new System.DateTime(2080, 01, 10),
-                FechaLimite = new System.DateTime(2079, 01, 10)
-            };
-
-            var content = Utilities.GetRequestContent(pet);
-            var response = await client.PostAsync("/api/Actividades/Agregar", content);
-
-            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-        }
-
-        [Fact]
-        public async Task AgregactividadFechaLimiteMenorFechaActualBadRequest()
-        {
-            DateTime fechaActual = new DateTime(2020, 01, 09, 06, 00, 00, DateTimeKind.Utc);
-            var client = await GetMaestroClientAsync(services =>
-            {
-                services.AddSingleton<IDateTime, DateTimeMock>(imp => new DateTimeMock(fechaActual));
-            });
-            var pet = new AgregarActividadCommand
-            {
-                IdUnidad = 2,
-                IdTipoActividad = 1,
-                Titulo = "Descripcion",
-                Contenido = "ajkak",
-                Valor = 40,
-                FechaActivacion = fechaActual.AddMinutes(-5),
-                FechaLimite = fechaActual.AddMinutes(-10)
-            };
-
-            var content = Utilities.GetRequestContent(pet);
-            var response = await client.PostAsync("/api/Actividades/Agregar", content);
-
-            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-        }
     }
 }

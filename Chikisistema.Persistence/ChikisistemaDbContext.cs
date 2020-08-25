@@ -25,21 +25,15 @@ namespace Chikisistema.Persistence
 
         }
         public bool IsSoftDeleteFilterEnabled => true;
-        public virtual DbSet<ActividadCurso> ActividadCurso { get; set; }
-        public virtual DbSet<AlumnoCurso> AlumnoCurso { get; set; }
         public virtual DbSet<ArchivoUsuario> ArchivoUsuario { get; set; }
-        public virtual DbSet<Curso> Curso { get; set; }
-        public virtual DbSet<Materia> Materia { get; set; }
-        public virtual DbSet<MaterialApoyoActividad> MaterialApoyoActividad { get; set; }
-        public virtual DbSet<Mensaje> Mensaje { get; set; }
-        public virtual DbSet<TipoActividad> TipoActividad { get; set; }
-        public virtual DbSet<Unidad> Unidad { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
-        public virtual DbSet<UsuarioActividad> UsuarioActividad { get; set; }
         public DbSet<UsuarioToken> UsuarioToken { get; set; }
         public DbSet<TokenDescargaArchivo> TokenDescargaArchivo { get; set; }
-        public DbSet<ComentarioActividad> ComentarioActividad { get; set; }
-        public DbSet<PostForo> PostForo { get; set; }
+        public DbSet<Plaga> Plaga { get; set; }
+        public DbSet<Enfermedad> Enfermedad { get; set; }
+        public DbSet<Producto> Producto { get; set; }
+        public DbSet<Reporte> Report{ get; set; }
+        public DbSet<Reporte> Reporte { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
         {

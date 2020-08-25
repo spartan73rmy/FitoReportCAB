@@ -28,9 +28,9 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Actividades
 
             response.EnsureSuccessStatusCode();
 
-            var result = await Utilities.GetResponseContent<GetActividadResponse>(response);
+            var result = await Utilities.GetResponseContent<GetReporteResponse>(response);
 
-            Assert.IsType<GetActividadResponse>(result);
+            Assert.IsType<GetReporteResponse>(result);
             Assert.NotEmpty(result.Contenido);
             Assert.NotEmpty(result.MaterialApoyo);
             Assert.Equal(2, result.Id);
@@ -48,9 +48,9 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Actividades
 
             response.EnsureSuccessStatusCode();
 
-            var result = await Utilities.GetResponseContent<GetActividadResponse>(response);
+            var result = await Utilities.GetResponseContent<GetReporteResponse>(response);
 
-            Assert.IsType<GetActividadResponse>(result);
+            Assert.IsType<GetReporteResponse>(result);
             Assert.Null(result.Contenido);
             Assert.Null(result.MaterialApoyo);
             Assert.Equal(2, result.Id);
@@ -64,9 +64,9 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Actividades
 
             response.EnsureSuccessStatusCode();
 
-            var result = await Utilities.GetResponseContent<GetActividadResponse>(response);
+            var result = await Utilities.GetResponseContent<GetReporteResponse>(response);
 
-            Assert.IsType<GetActividadResponse>(result);
+            Assert.IsType<GetReporteResponse>(result);
             Assert.Equal(1, result.Id);
         }
 
@@ -100,9 +100,9 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Actividades
 
             response.EnsureSuccessStatusCode();
 
-            var result = await Utilities.GetResponseContent<GetActividadResponse>(response);
+            var result = await Utilities.GetResponseContent<GetReporteResponse>(response);
 
-            Assert.IsType<GetActividadResponse>(result);
+            Assert.IsType<GetReporteResponse>(result);
             Assert.NotEmpty(result.Contenido);
             Assert.NotEmpty(result.MaterialApoyo);
             Assert.Equal(2, result.Id);
@@ -120,9 +120,9 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Actividades
 
             response.EnsureSuccessStatusCode();
 
-            var result = await Utilities.GetResponseContent<GetActividadResponse>(response);
+            var result = await Utilities.GetResponseContent<GetReporteResponse>(response);
 
-            Assert.IsType<GetActividadResponse>(result);
+            Assert.IsType<GetReporteResponse>(result);
             Assert.NotEmpty(result.Contenido);
             Assert.NotEmpty(result.MaterialApoyo);
             Assert.Equal(2, result.Id);

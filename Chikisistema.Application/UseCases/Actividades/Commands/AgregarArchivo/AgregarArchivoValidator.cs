@@ -24,23 +24,23 @@ namespace Chikisistema.Application.UseCases.Actividades.Commands.AgregarArchivo
         public override async Task<ValidationResult> ValidateAsync(ValidationContext<AgregarArchivoCommand> context, CancellationToken cancellation = default)
         {
             ValidationResult result = new ValidationResult();
-            var request = context.InstanceToValidate;
-            var actividad = await db
-                           .ActividadCurso
-                           .Where(el => el.Id == request.IdActividad)
-                           .Select(el => new
-                           {
-                               Id = el.Id,
-                               BloquearEnvios = el.BloquearEnvios
-                           })
-                           .SingleOrDefaultAsync();
+            //var request = context.InstanceToValidate;
+            //var actividad = await db
+            //               .ActividadCurso
+            //               .Where(el => el.Id == request.IdActividad)
+            //               .Select(el => new
+            //               {
+            //                   Id = el.Id,
+            //                   BloquearEnvios = el.BloquearEnvios
+            //               })
+            //               .SingleOrDefaultAsync();
 
-            if (actividad == null)
-                throw new NotFoundException(nameof(ActividadCurso), request.IdActividad);
+            //if (actividad == null)
+            //    throw new NotFoundException(nameof(ActividadCurso), request.IdActividad);
 
-            if (actividad.BloquearEnvios)
-                result.Errors.Add(new ValidationFailure(nameof(request.Archivo), "No puedes agregar archivos, se han bloqueado los envios de la actividad"));
-           
+            //if (actividad.BloquearEnvios)
+            //    result.Errors.Add(new ValidationFailure(nameof(request.Archivo), "No puedes agregar archivos, se han bloqueado los envios de la actividad"));
+
             return result;
         }
     }

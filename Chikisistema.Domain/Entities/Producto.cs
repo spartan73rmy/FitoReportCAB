@@ -12,7 +12,7 @@
         public string IngredienteActivo { get; set; }
         public int Concentracion { get; set; }
         public string IntervaloSeguridad { get; set; }
-        public virtual Report Report { get; set; }
+        public virtual Reporte Report { get; set; }
 
     }
 }

@@ -6,7 +6,6 @@ namespace Chikisistema.Domain.Entities
     {
         public ArchivoUsuario()
         {
-            MaterialApoyo = new HashSet<MaterialApoyoActividad>();
         }
 
         public int IdUsuario { get; set; }
@@ -15,7 +14,5 @@ namespace Chikisistema.Domain.Entities
         public string Nombre { get; set; }
 
         public virtual Usuario IdUsuarioNavigation { get; set; }
-        public virtual ICollection<MaterialApoyoActividad> MaterialApoyo { get; set; }
-        public virtual ICollection<UsuarioActividad> UsuarioActividades { get; set; }
     }
 }

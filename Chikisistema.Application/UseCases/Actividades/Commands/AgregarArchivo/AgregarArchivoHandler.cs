@@ -30,15 +30,15 @@ namespace Chikisistema.Application.UseCases.Actividades.Commands.AgregarArchivo
                 .ArchivoUsuario
                 .SingleOrDefaultAsync(el => el.Hash == request.Archivo);
 
-            var materialApoyoActividad = new MaterialApoyoActividad
-            {
-                IdArchivoUsuario = archivo.Id,
-                IdActividad = request.IdActividad
-            };
+            //var materialApoyoActividad = new MaterialApoyoActividad
+            //{
+            //    IdArchivoUsuario = archivo.Id,
+            //    IdActividad = request.IdActividad
+            //};
 
-            db.MaterialApoyoActividad.Add(materialApoyoActividad);
+            //db.MaterialApoyoActividad.Add(materialApoyoActividad);
 
-            await db.SaveChangesAsync(cancellationToken);
+            //await db.SaveChangesAsync(cancellationToken);
 
             return new AgregarArchivoResponse
             {

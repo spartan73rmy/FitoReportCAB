@@ -19,16 +19,16 @@ namespace Chikisistema.Application.UseCases.Actividades.Commands.AgregarArchivo
 
         public async Task Validate(AgregarArchivoCommand request, ValidationResult validationResult)
         {
-            int autorActividad = await db
-               .ActividadCurso
-               .Where(el => el.Id == request.IdActividad)
-               .Select(el => el.Unidad.Curso.IdMaestro)
-               .SingleOrDefaultAsync();
+            //int autorActividad = await db
+            //   .ActividadCurso
+            //   .Where(el => el.Id == request.IdActividad)
+            //   .Select(el => el.Unidad.Curso.IdMaestro)
+            //   .SingleOrDefaultAsync();
 
-            if (autorActividad != currentUser.UserId)
-            {
-                validationResult.Errors.Add("No creaste la actividad");
-            }
+            //if (autorActividad != currentUser.UserId)
+            //{
+            //    validationResult.Errors.Add("No creaste la actividad");
+            //}
         }
     }
 }

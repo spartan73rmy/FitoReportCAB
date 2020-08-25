@@ -4,7 +4,7 @@
     {
         public int IdReport { get; set; }
         public string Nombre { get; set; }
-        public virtual Report Report { get; set; }
+        public virtual Reporte Report { get; set; }
 
     }
 }

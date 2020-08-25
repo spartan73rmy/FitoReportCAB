@@ -8,15 +8,8 @@ namespace Chikisistema.Domain.Entities
     {
         public Usuario()
         {
-            AlumnoCurso = new HashSet<AlumnoCurso>();
-            ArchivoUsuario = new HashSet<ArchivoUsuario>();
-            Curso = new HashSet<Curso>();
-            MensajeIdUsuarioEnviaNavigation = new HashSet<Mensaje>();
-            MensajeIdUsuarioRecibeNavigation = new HashSet<Mensaje>();
-            UsuarioActividad = new HashSet<UsuarioActividad>();
+            ArchivoUsuario = new HashSet<ArchivoUsuario>();         
             UsuarioTokens = new HashSet<UsuarioToken>();
-            Comentarios = new HashSet<ComentarioActividad>();
-            PostsForo = new HashSet<PostForo>();
         }
 
         public string NombreUsuario { get; set; }
@@ -35,15 +28,8 @@ namespace Chikisistema.Domain.Entities
         public string ApellidoMaterno { get; set; }
         public string ImagenPerfil { get; set; }
 
-        public virtual ICollection<AlumnoCurso> AlumnoCurso { get; set; }
-        public virtual ICollection<ArchivoUsuario> ArchivoUsuario { get; set; }
-        public virtual ICollection<Curso> Curso { get; set; }
-        public virtual ICollection<Mensaje> MensajeIdUsuarioEnviaNavigation { get; set; }
-        public virtual ICollection<Mensaje> MensajeIdUsuarioRecibeNavigation { get; set; }
-        public virtual ICollection<UsuarioActividad> UsuarioActividad { get; set; }
+        public virtual ICollection<ArchivoUsuario> ArchivoUsuario { get; set; }     
         public virtual ICollection<UsuarioToken> UsuarioTokens { get; set; }
 
-        public virtual ICollection<ComentarioActividad> Comentarios { get; set; }
-        public virtual ICollection<PostForo> PostsForo { get; set; }
     }
 }

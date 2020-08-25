@@ -21,7 +21,6 @@ namespace Chikisistema.Persistence
                 return; // Db has been seeded
             }
             SeedUsuario(context);
-            SeedMateria(context);
             SeedArchivoUsuario(context);
 
         }
@@ -187,73 +186,6 @@ namespace Chikisistema.Persistence
                 db.Usuario.Add(usuario);
                 db.SaveChanges();
             }
-        }
-
-        private void SeedMateria(ChikisistemaDbContext db)
-        {
-            var materias = new Materia[] {
-                new Materia
-                {
-                    Nombre = "Fundamentos en Agrobiotecnologia"
-                },
-                new Materia
-                {
-                    Nombre = "Estadística y Diseños Experimentales"
-                },
-                new Materia
-                {
-                    Nombre = "Formulación y Evaluación de Proyectos"
-                },
-                new Materia
-                {
-                    Nombre = "Fisiología y Bioquímica Vegetal"
-                },
-                new Materia
-                {
-                    Nombre = "Biotecnología Vegetal"
-                },
-                new Materia
-                {
-                    Nombre = "Agricultura Protegida"
-                },
-                new Materia
-                {
-                    Nombre = "Fitopatología Molecular"
-                },
-                new Materia
-                {
-                    Nombre = "Fertirriego"
-                },
-                new Materia
-                {
-                    Nombre = "Mecanismos Moleculares en la Interacción Planta - Microorganismo"
-                },
-                new Materia
-                {
-                    Nombre = "Química y Extracción de Productos Vegetales"
-                },
-                new Materia
-                {
-                    Nombre = "Manejo Integrado de Plagas"
-                },
-                new Materia
-                {
-                    Nombre = "Fitopatología Molecular"
-                },
-                new Materia
-                {
-                    Nombre = "Biotecnología Microbiana"
-                },
-                new Materia
-                {
-                    Nombre = "Sistemas de Producción Sostenibles"
-                },
-            };
-            foreach (var materia in materias)
-            {
-                db.Materia.Add(materia);
-                db.SaveChanges();
-            }
-        }
+        }      
     }
 }

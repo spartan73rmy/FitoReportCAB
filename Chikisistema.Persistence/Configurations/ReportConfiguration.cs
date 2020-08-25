@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Chikisistema.Persistence.Configurations
 {
-    class ReportConfiguration : IEntityTypeConfiguration<Report>
+    class ReportConfiguration : IEntityTypeConfiguration<Reporte>
     {
-        public void Configure(EntityTypeBuilder<Report> builder)
+        public void Configure(EntityTypeBuilder<Reporte> builder)
         {
             builder.HasKey(el => el.Id);
 
