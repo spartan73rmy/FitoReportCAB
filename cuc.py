@@ -28,13 +28,13 @@ typeReq = ("Commands" if isCommand else "Queries")
 
 responseType = responseFileName if not returnsEnumerable else f"IEnumerable<{responseFileName}>"
 
-filePrefix = f"Chikisistema.Application\\UseCases\\{folder}\\{typeReq}\\{name}\\"
+filePrefix = f"CleanArchitecture.Application\\UseCases\\{folder}\\{typeReq}\\{name}\\"
 
 os.makedirs(filePrefix)
 
 authFile = open(filePrefix + authFileName + ".cs", "x")
-authFile.write(f"""using Chikisistema.Application.Interfaces;
-using Chikisistema.Application.Security;
+authFile.write(f"""using CleanArchitecture.Application.Interfaces;
+using CleanArchitecture.Application.Security;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -42,14 +42,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chikisistema.Application.UseCases.{folder}.{typeReq}.{name}
+namespace CleanArchitecture.Application.UseCases.{folder}.{typeReq}.{name}
 {{
     public class {authFileName} : IAdminRequest<{requestFileName}, {responseType}>
     {{
-        private readonly IChikisistemaDbContext db;
+        private readonly ICleanArchitectureDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public {authFileName}(IChikisistemaDbContext db, IUserAccessor currentUser)
+        public {authFileName}(ICleanArchitectureDbContext db, IUserAccessor currentUser)
         {{
             this.db = db;
             this.currentUser = currentUser;
@@ -68,8 +68,8 @@ print("Writing " + authFile.name)
 authFile.close()
 
 handlerFile = open(filePrefix + handlerFileName + ".cs", "x")
-handlerFile.write(f"""using Chikisistema.Application.Exceptions;
-using Chikisistema.Application.Interfaces;
+handlerFile.write(f"""using CleanArchitecture.Application.Exceptions;
+using CleanArchitecture.Application.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -79,13 +79,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Chikisistema.Application.UseCases.{folder}.{typeReq}.{name}
+namespace CleanArchitecture.Application.UseCases.{folder}.{typeReq}.{name}
 {{
     public class {handlerFileName} : IRequestHandler<{requestFileName}, {responseType}>
     {{
-        private readonly IChikisistemaDbContext db;
+        private readonly ICleanArchitectureDbContext db;
 
-        public {handlerFileName}(IChikisistemaDbContext db)
+        public {handlerFileName}(ICleanArchitectureDbContext db)
         {{
             this.db = db;
         }}
@@ -107,7 +107,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Chikisistema.Application.UseCases.{folder}.{typeReq}.{name}
+namespace CleanArchitecture.Application.UseCases.{folder}.{typeReq}.{name}
 {{
     public class {requestFileName} : IRequest<{responseType}>
     {{
@@ -123,7 +123,7 @@ responseFile.write(f"""using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Chikisistema.Application.UseCases.{folder}.{typeReq}.{name}
+namespace CleanArchitecture.Application.UseCases.{folder}.{typeReq}.{name}
 {{
     public class {responseFileName}
     {{
@@ -140,7 +140,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Chikisistema.Application.UseCases.{folder}.{typeReq}.{name}
+namespace CleanArchitecture.Application.UseCases.{folder}.{typeReq}.{name}
 {{
     public class {validatorFileName} : AbstractValidator<{requestFileName}>
     {{
