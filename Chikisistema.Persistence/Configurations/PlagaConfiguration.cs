@@ -25,7 +25,7 @@ namespace Chikisistema.Persistence.Configurations
               .WithMany(el => el.Plagas)
               .HasForeignKey(el => el.IdReport)
               .OnDelete(DeleteBehavior.Cascade)
-              .HasConstraintName("FK_Plaga_Report");
+              .HasConstraintName("FK_Plaga_Reporte");
         }
     }
 }

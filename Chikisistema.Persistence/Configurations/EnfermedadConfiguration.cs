@@ -20,7 +20,7 @@ namespace Chikisistema.Persistence.Configurations
               .WithMany(el => el.Enfermedades)
               .HasForeignKey(el => el.IdReport)
               .OnDelete(DeleteBehavior.Cascade)
-              .HasConstraintName("FK_Enfermedad_Report");
+              .HasConstraintName("FK_Enfermedad_Reporte");
         }
     }
 }

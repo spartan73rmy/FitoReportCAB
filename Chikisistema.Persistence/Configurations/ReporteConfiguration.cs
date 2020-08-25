@@ -4,13 +4,16 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Chikisistema.Persistence.Configurations
 {
-    class ReportConfiguration : IEntityTypeConfiguration<Reporte>
+    class ReporteConfiguration : IEntityTypeConfiguration<Reporte>
     {
         public void Configure(EntityTypeBuilder<Reporte> builder)
         {
             builder.HasKey(el => el.Id);
 
-            builder.Property(el => el.Coords)
+            builder.Property(el => el.CoordX)
+                .IsRequired();
+
+            builder.Property(el => el.CoordY)
                 .IsRequired();
 
             builder.Property(el => el.Cultivo)

@@ -32,8 +32,7 @@ namespace Chikisistema.Persistence
         public DbSet<Plaga> Plaga { get; set; }
         public DbSet<Enfermedad> Enfermedad { get; set; }
         public DbSet<Producto> Producto { get; set; }
-        public DbSet<Reporte> Report{ get; set; }
-        public DbSet<Reporte> Reporte { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<Reporte> Reporte{ get; set; }
 
         public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
         {

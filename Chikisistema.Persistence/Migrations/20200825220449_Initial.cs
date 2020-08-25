@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Chikisistema.Persistence.Migrations
 {
@@ -7,17 +7,175 @@ namespace Chikisistema.Persistence.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AlumnoCurso");
+
+            migrationBuilder.DropTable(
+                name: "ComentarioActividad");
+
+            migrationBuilder.DropTable(
+                name: "MaterialApoyoActividad");
+
+            migrationBuilder.DropTable(
+                name: "Mensaje");
+
+            migrationBuilder.DropTable(
+                name: "PostForo");
+
+            migrationBuilder.DropTable(
+                name: "UsuarioActividad");
+
+            migrationBuilder.DropTable(
+                name: "ActividadCurso");
+
+            migrationBuilder.DropTable(
+                name: "TipoActividad");
+
+            migrationBuilder.DropTable(
+                name: "Unidad");
+
+            migrationBuilder.DropTable(
+                name: "Curso");
+
+            migrationBuilder.DropTable(
+                name: "Materia");
+
             migrationBuilder.CreateTable(
-                name: "Materia",
+                name: "Reporte",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Created = table.Column<DateTime>(nullable: false),
                     Modified = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedDate = table.Column<DateTime>(nullable: true),
-                    Nombre = table.Column<string>(maxLength: 100, nullable: false)
+                    Lugar = table.Column<string>(nullable: false),
+                    FechaAlta = table.Column<DateTime>(nullable: false),
+                    Productor = table.Column<string>(nullable: false),
+                    CoordX = table.Column<double>(nullable: false),
+                    CoordY = table.Column<double>(nullable: false),
+                    Ubicacion = table.Column<string>(nullable: false),
+                    Predio = table.Column<string>(nullable: false),
+                    Cultivo = table.Column<string>(nullable: false),
+                    EtapaFenologica = table.Column<string>(nullable: true),
+                    Observaciones = table.Column<string>(nullable: false),
+                    Litros = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reporte", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Enfermedad",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Created = table.Column<DateTime>(nullable: false),
+                    Modified = table.Column<DateTime>(nullable: true),
+                    IdReport = table.Column<int>(nullable: false),
+                    Nombre = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enfermedad", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Enfermedad_Reporte",
+                        column: x => x.IdReport,
+                        principalTable: "Reporte",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Plaga",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Created = table.Column<DateTime>(nullable: false),
+                    Modified = table.Column<DateTime>(nullable: true),
+                    IdReport = table.Column<int>(nullable: false),
+                    Nombre = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Plaga", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Plaga_Reporte",
+                        column: x => x.IdReport,
+                        principalTable: "Reporte",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Producto",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Created = table.Column<DateTime>(nullable: false),
+                    Modified = table.Column<DateTime>(nullable: true),
+                    IdReport = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    NombreProducto = table.Column<string>(nullable: false),
+                    IngredienteActivo = table.Column<string>(nullable: false),
+                    Concentracion = table.Column<int>(nullable: false),
+                    IntervaloSeguridad = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Producto", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Productos_Reporte",
+                        column: x => x.IdReport,
+                        principalTable: "Reporte",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enfermedad_IdReport",
+                table: "Enfermedad",
+                column: "IdReport");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Plaga_IdReport",
+                table: "Plaga",
+                column: "IdReport");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Producto_IdReport",
+                table: "Producto",
+                column: "IdReport");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Enfermedad");
+
+            migrationBuilder.DropTable(
+                name: "Plaga");
+
+            migrationBuilder.DropTable(
+                name: "Producto");
+
+            migrationBuilder.DropTable(
+                name: "Reporte");
+
+            migrationBuilder.CreateTable(
+                name: "Materia",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,135 +183,17 @@ namespace Chikisistema.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TipoActividad",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    Nombre = table.Column<string>(maxLength: 200, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Actividad", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TokenDescargaArchivo",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    Token = table.Column<string>(nullable: false),
-                    HashArchivo = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TokenDescargaArchivo", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Usuario",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    NombreUsuario = table.Column<string>(maxLength: 20, nullable: false),
-                    Email = table.Column<string>(maxLength: 50, nullable: false),
-                    HashedPassword = table.Column<string>(unicode: false, nullable: false),
-                    TipoUsuario = table.Column<int>(nullable: false),
-                    Confirmado = table.Column<bool>(nullable: false),
-                    FechaRegistro = table.Column<DateTime>(nullable: false),
-                    TokenConfirmacion = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
-                    AccessFailedCount = table.Column<int>(nullable: false),
-                    LockoutEnd = table.Column<DateTime>(nullable: false),
-                    NormalizedUserName = table.Column<string>(maxLength: 20, nullable: false),
-                    NormalizedEmail = table.Column<string>(maxLength: 50, nullable: false),
-                    Nombre = table.Column<string>(maxLength: 20, nullable: false),
-                    ApellidoPaterno = table.Column<string>(maxLength: 20, nullable: false),
-                    ApellidoMaterno = table.Column<string>(maxLength: 20, nullable: false),
-                    ImagenPerfil = table.Column<string>(unicode: false, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Usuario", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ArchivoUsuario",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    IdUsuario = table.Column<int>(nullable: false),
-                    Hash = table.Column<string>(nullable: false),
-                    ContentType = table.Column<string>(nullable: false),
-                    Nombre = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ArchivoUsuario", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ArchivoUsuario_Usuario",
-                        column: x => x.IdUsuario,
-                        principalTable: "Usuario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Curso",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedDate = table.Column<DateTime>(nullable: true),
-                    IdMateria = table.Column<int>(nullable: false),
-                    IdMaestro = table.Column<int>(nullable: false),
-                    CodigoAcceso = table.Column<string>(nullable: false),
-                    FechaInicio = table.Column<DateTime>(nullable: false),
-                    FechaFin = table.Column<DateTime>(nullable: false),
-                    Descripcion = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Curso", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Curso_Usuario",
-                        column: x => x.IdMaestro,
-                        principalTable: "Usuario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Curso_Materia",
-                        column: x => x.IdMateria,
-                        principalTable: "Materia",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Mensaje",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    IdUsuarioEnvia = table.Column<int>(nullable: false),
-                    IdUsuarioRecibe = table.Column<int>(nullable: false),
-                    TextoMensaje = table.Column<string>(nullable: false),
-                    FechaMensaje = table.Column<DateTime>(nullable: false)
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaMensaje = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdUsuarioEnvia = table.Column<int>(type: "int", nullable: false),
+                    IdUsuarioRecibe = table.Column<int>(type: "int", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TextoMensaje = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -176,12 +216,12 @@ namespace Chikisistema.Persistence.Migrations
                 name: "PostForo",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    IdAutor = table.Column<int>(nullable: false),
-                    Contenido = table.Column<string>(nullable: false)
+                    Contenido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdAutor = table.Column<int>(type: "int", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -195,23 +235,50 @@ namespace Chikisistema.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UsuarioToken",
+                name: "TipoActividad",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    IdUsuario = table.Column<int>(nullable: false),
-                    RefreshToken = table.Column<string>(maxLength: 256, nullable: false)
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Nombre = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsuarioToken", x => x.Id);
+                    table.PrimaryKey("PK_Actividad", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Curso",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CodigoAcceso = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaFin = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdMaestro = table.Column<int>(type: "int", nullable: false),
+                    IdMateria = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Curso", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UsuarioToken_Usuario",
-                        column: x => x.IdUsuario,
+                        name: "FK_Curso_Usuario",
+                        column: x => x.IdMaestro,
                         principalTable: "Usuario",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Curso_Materia",
+                        column: x => x.IdMateria,
+                        principalTable: "Materia",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -220,12 +287,12 @@ namespace Chikisistema.Persistence.Migrations
                 name: "AlumnoCurso",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    IdCurso = table.Column<int>(nullable: false),
-                    IdAlumno = table.Column<int>(nullable: false)
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdAlumno = table.Column<int>(type: "int", nullable: false),
+                    IdCurso = table.Column<int>(type: "int", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -248,14 +315,14 @@ namespace Chikisistema.Persistence.Migrations
                 name: "Unidad",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedDate = table.Column<DateTime>(nullable: true),
-                    IdCurso = table.Column<int>(nullable: false),
-                    Descripcion = table.Column<string>(nullable: false)
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IdCurso = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -272,20 +339,20 @@ namespace Chikisistema.Persistence.Migrations
                 name: "ActividadCurso",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedDate = table.Column<DateTime>(nullable: true),
-                    IdUnidad = table.Column<int>(nullable: false),
-                    IdTipoActividad = table.Column<int>(nullable: false),
-                    Titulo = table.Column<string>(nullable: false),
-                    Contenido = table.Column<string>(nullable: false),
-                    Valor = table.Column<int>(nullable: false),
-                    FechaLimite = table.Column<DateTime>(nullable: false),
-                    FechaActivacion = table.Column<DateTime>(nullable: true),
-                    BloquearEnvios = table.Column<bool>(nullable: false)
+                    BloquearEnvios = table.Column<bool>(type: "bit", nullable: false),
+                    Contenido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaActivacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaLimite = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdTipoActividad = table.Column<int>(type: "int", nullable: false),
+                    IdUnidad = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Valor = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -308,14 +375,14 @@ namespace Chikisistema.Persistence.Migrations
                 name: "ComentarioActividad",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    Contenido = table.Column<string>(nullable: false),
-                    IdActividad = table.Column<int>(nullable: false),
-                    IdComentarioPadre = table.Column<int>(nullable: true),
-                    IdUsuario = table.Column<int>(nullable: false)
+                    Contenido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdActividad = table.Column<int>(type: "int", nullable: false),
+                    IdComentarioPadre = table.Column<int>(type: "int", nullable: true),
+                    IdUsuario = table.Column<int>(type: "int", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -344,12 +411,12 @@ namespace Chikisistema.Persistence.Migrations
                 name: "MaterialApoyoActividad",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    IdArchivoUsuario = table.Column<int>(nullable: false),
-                    IdActividad = table.Column<int>(nullable: false)
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdActividad = table.Column<int>(type: "int", nullable: false),
+                    IdArchivoUsuario = table.Column<int>(type: "int", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -372,16 +439,16 @@ namespace Chikisistema.Persistence.Migrations
                 name: "UsuarioActividad",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true),
-                    IdUsuario = table.Column<int>(nullable: false),
-                    IdActividad = table.Column<int>(nullable: false),
-                    Contenido = table.Column<string>(nullable: true),
-                    IdArchivo = table.Column<int>(nullable: true),
-                    Calificacion = table.Column<int>(nullable: true),
-                    FechaEntrega = table.Column<DateTime>(nullable: false)
+                    Calificacion = table.Column<int>(type: "int", nullable: true),
+                    Contenido = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaEntrega = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdActividad = table.Column<int>(type: "int", nullable: false),
+                    IdArchivo = table.Column<int>(type: "int", nullable: true),
+                    IdUsuario = table.Column<int>(type: "int", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -436,11 +503,6 @@ namespace Chikisistema.Persistence.Migrations
                 table: "AlumnoCurso",
                 columns: new[] { "IdAlumno", "IdCurso" },
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ArchivoUsuario_IdUsuario",
-                table: "ArchivoUsuario",
-                column: "IdUsuario");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ComentarioActividad_IdActividad",
@@ -505,26 +567,9 @@ namespace Chikisistema.Persistence.Migrations
                 column: "IdAutor");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TokenDescargaArchivo_HashArchivo",
-                table: "TokenDescargaArchivo",
-                column: "HashArchivo");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Unidad_IdCurso",
                 table: "Unidad",
                 column: "IdCurso");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Usuario_Email",
-                table: "Usuario",
-                column: "Email",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Usuario_NombreUsuario",
-                table: "Usuario",
-                column: "NombreUsuario",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UsuarioActividad_IdActividad",
@@ -546,65 +591,6 @@ namespace Chikisistema.Persistence.Migrations
                 table: "UsuarioActividad",
                 columns: new[] { "IdActividad", "IdUsuario" },
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsuarioToken_IdUsuario",
-                table: "UsuarioToken",
-                column: "IdUsuario");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsuarioToken_RefreshToken",
-                table: "UsuarioToken",
-                column: "RefreshToken",
-                unique: true);
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "AlumnoCurso");
-
-            migrationBuilder.DropTable(
-                name: "ComentarioActividad");
-
-            migrationBuilder.DropTable(
-                name: "MaterialApoyoActividad");
-
-            migrationBuilder.DropTable(
-                name: "Mensaje");
-
-            migrationBuilder.DropTable(
-                name: "PostForo");
-
-            migrationBuilder.DropTable(
-                name: "TokenDescargaArchivo");
-
-            migrationBuilder.DropTable(
-                name: "UsuarioActividad");
-
-            migrationBuilder.DropTable(
-                name: "UsuarioToken");
-
-            migrationBuilder.DropTable(
-                name: "ActividadCurso");
-
-            migrationBuilder.DropTable(
-                name: "ArchivoUsuario");
-
-            migrationBuilder.DropTable(
-                name: "TipoActividad");
-
-            migrationBuilder.DropTable(
-                name: "Unidad");
-
-            migrationBuilder.DropTable(
-                name: "Curso");
-
-            migrationBuilder.DropTable(
-                name: "Usuario");
-
-            migrationBuilder.DropTable(
-                name: "Materia");
         }
     }
 }

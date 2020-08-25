@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Chikisistema.Domain.Entities
 {
-    public class Reporte : DeleteableEntity
+    public class Reporte : BaseEntity
     {
         public Reporte()
         {
@@ -16,7 +15,8 @@ namespace Chikisistema.Domain.Entities
         public string Lugar { get; set; }
         public DateTime FechaAlta { get; set; }
         public string Productor { get; set; }
-        public Tuple<double,double> Coords { get; set; }
+        public double CoordX { get; set; }
+        public double CoordY { get; set; }
         public string Ubicacion { get; set; }
         public string Predio { get; set; }
         public string Cultivo { get; set; }

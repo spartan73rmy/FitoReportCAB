@@ -31,7 +31,7 @@ namespace Chikisistema.Persistence.Configurations
               .WithMany(el => el.Productos)
               .HasForeignKey(el => el.IdReport)
               .OnDelete(DeleteBehavior.Cascade)
-              .HasConstraintName("FK_Productos_Report");
+              .HasConstraintName("FK_Productos_Reporte");
         }
     }
 }
