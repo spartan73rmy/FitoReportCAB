@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Chikisistema.WebUi": {
+    "FitoReportCAB.WebUI": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

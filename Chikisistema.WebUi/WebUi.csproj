@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>latest</LangVersion>
     <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
-    <AssemblyName>Chikisistema.WebUi</AssemblyName>
-    <RootNamespace>Chikisistema.WebUi</RootNamespace>
+    <AssemblyName>FitoReportCAB.WebUi</AssemblyName>
+    <RootNamespace>FitoReportCab.WebUi</RootNamespace>
   </PropertyGroup>
   
   <ItemGroup>
