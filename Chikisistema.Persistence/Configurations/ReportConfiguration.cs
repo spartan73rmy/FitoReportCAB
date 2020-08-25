@@ -37,18 +37,6 @@ namespace Chikisistema.Persistence.Configurations
             builder.Property(el => el.Ubicacion)
                 .IsRequired()
                 .IsUnicode(true);
-
-            builder.HasOne(el => el.IdMaestroNavigation)
-               .WithMany(el => el.Curso)
-               .HasForeignKey(el => el.IdMaestro)
-               .OnDelete(DeleteBehavior.ClientSetNull)
-               .HasConstraintName("FK_Curso_Usuario");
-
-            builder.HasOne(el => el.IdMateriaNavigation)
-                .WithMany(el => el.Curso)
-                .HasForeignKey(el => el.IdMateria)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Curso_Materia");
         }
 
     }
