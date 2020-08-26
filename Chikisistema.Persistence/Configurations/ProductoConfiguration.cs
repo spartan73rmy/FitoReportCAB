@@ -27,7 +27,7 @@ namespace Chikisistema.Persistence.Configurations
             .IsRequired()
             .IsUnicode(true);
 
-            builder.HasOne(el => el.Report)
+            builder.HasOne(el => el.Reporte)
               .WithMany(el => el.Productos)
               .HasForeignKey(el => el.IdReport)
               .OnDelete(DeleteBehavior.Cascade)

@@ -216,6 +216,58 @@ namespace Chikisistema.Persistence.Migrations
                     b.ToTable("Reporte");
                 });
 
+            modelBuilder.Entity("Chikisistema.Domain.Entities.ReporteEnfermedad", b =>
+                {
+                    b.Property<int>("IdReporte")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdEnfermedad")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("IdReporte", "IdEnfermedad");
+
+                    b.HasIndex("IdEnfermedad");
+
+                    b.HasIndex("IdReporte");
+
+                    b.ToTable("ReporteEnfermedad");
+                });
+
+            modelBuilder.Entity("Chikisistema.Domain.Entities.ReportePlaga", b =>
+                {
+                    b.Property<int>("IdReporte")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdPlaga")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("IdReporte", "IdPlaga");
+
+                    b.HasIndex("IdPlaga");
+
+                    b.HasIndex("IdReporte");
+
+                    b.ToTable("ReportePlaga");
+                });
+
             modelBuilder.Entity("Chikisistema.Domain.Entities.TokenDescargaArchivo", b =>
                 {
                     b.Property<int>("Id")
@@ -380,32 +432,42 @@ namespace Chikisistema.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Chikisistema.Domain.Entities.Enfermedad", b =>
-                {
-                    b.HasOne("Chikisistema.Domain.Entities.Reporte", "Report")
-                        .WithMany("Enfermedades")
-                        .HasForeignKey("IdReport")
-                        .HasConstraintName("FK_Enfermedad_Reporte")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Chikisistema.Domain.Entities.Plaga", b =>
-                {
-                    b.HasOne("Chikisistema.Domain.Entities.Reporte", "Report")
-                        .WithMany("Plagas")
-                        .HasForeignKey("IdReport")
-                        .HasConstraintName("FK_Plaga_Reporte")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Chikisistema.Domain.Entities.Producto", b =>
                 {
-                    b.HasOne("Chikisistema.Domain.Entities.Reporte", "Report")
+                    b.HasOne("Chikisistema.Domain.Entities.Reporte", "Reporte")
                         .WithMany("Productos")
                         .HasForeignKey("IdReport")
                         .HasConstraintName("FK_Productos_Reporte")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Chikisistema.Domain.Entities.ReporteEnfermedad", b =>
+                {
+                    b.HasOne("Chikisistema.Domain.Entities.Enfermedad", "Enfermedad")
+                        .WithMany("ReporteEnfermedad")
+                        .HasForeignKey("IdEnfermedad")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Chikisistema.Domain.Entities.Reporte", "Reporte")
+                        .WithMany("ReporteEnfermedad")
+                        .HasForeignKey("IdReporte")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Chikisistema.Domain.Entities.ReportePlaga", b =>
+                {
+                    b.HasOne("Chikisistema.Domain.Entities.Plaga", "Plaga")
+                        .WithMany("ReportPlaga")
+                        .HasForeignKey("IdPlaga")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Chikisistema.Domain.Entities.Reporte", "Reporte")
+                        .WithMany("ReportePlaga")
+                        .HasForeignKey("IdReporte")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -40,6 +40,7 @@ namespace Chikisistema.Persistence.Configurations
             builder.Property(el => el.Ubicacion)
                 .IsRequired()
                 .IsUnicode(true);
+
         }
 
     }

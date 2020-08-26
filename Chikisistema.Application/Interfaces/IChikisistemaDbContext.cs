@@ -16,6 +16,8 @@ namespace Chikisistema.Application.Interfaces
         DbSet<Plaga> Plaga { get; set; }
         DbSet<Enfermedad> Enfermedad { get; set; }
         DbSet<Producto> Producto { get; set; }
+        DbSet<ReporteEnfermedad> ReporteEnfermedad { get; set; }
+        DbSet<ReportePlaga> ReportePlaga { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken);

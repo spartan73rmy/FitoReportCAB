@@ -15,12 +15,6 @@ namespace Chikisistema.Persistence.Configurations
             builder.Property(el => el.Nombre)
             .IsRequired()
             .IsUnicode(true);
-
-            builder.HasOne(el => el.Report)
-              .WithMany(el => el.Enfermedades)
-              .HasForeignKey(el => el.IdReport)
-              .OnDelete(DeleteBehavior.Cascade)
-              .HasConstraintName("FK_Enfermedad_Reporte");
         }
     }
 }

@@ -29,10 +29,12 @@ namespace Chikisistema.Persistence
         public virtual DbSet<Usuario> Usuario { get; set; }
         public DbSet<UsuarioToken> UsuarioToken { get; set; }
         public DbSet<TokenDescargaArchivo> TokenDescargaArchivo { get; set; }
+        public DbSet<Reporte> Reporte { get; set; }
         public DbSet<Plaga> Plaga { get; set; }
         public DbSet<Enfermedad> Enfermedad { get; set; }
         public DbSet<Producto> Producto { get; set; }
-        public DbSet<Reporte> Reporte{ get; set; }
+        public DbSet<ReporteEnfermedad> ReporteEnfermedad { get; set; }
+        public DbSet<ReportePlaga> ReportePlaga { get; set; }
 
         public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
         {

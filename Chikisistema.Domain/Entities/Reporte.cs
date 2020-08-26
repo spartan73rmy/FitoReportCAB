@@ -7,9 +7,9 @@ namespace Chikisistema.Domain.Entities
     {
         public Reporte()
         {
-            Plagas = new HashSet<Plaga>();            
             Productos = new HashSet<Producto>();
-            Enfermedades = new HashSet<Enfermedad>();
+            ReporteEnfermedad = new HashSet<ReporteEnfermedad>();
+            ReportePlaga = new HashSet<ReportePlaga>();
         }
 
         public string Lugar { get; set; }
@@ -23,8 +23,8 @@ namespace Chikisistema.Domain.Entities
         public string EtapaFenologica { get; set; }
         public string Observaciones { get; set; }
         public int Litros { get; set; }
-        public virtual ICollection<Enfermedad> Enfermedades { get; set; }
-        public virtual ICollection<Plaga> Plagas { get; set; }
+        public virtual ICollection<ReporteEnfermedad> ReporteEnfermedad { get; set; }
+        public virtual ICollection<ReportePlaga> ReportePlaga { get; set; }
         public virtual ICollection<Producto> Productos { get; set; }
     }
 }
