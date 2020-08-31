@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Chikisistema.Application.UseCases.Actividades.Commands.AgregarArchivo
+namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarArchivo
 {
     public class AgregarArchivoValidator : AbstractValidator<AgregarArchivoCommand>
     {

@@ -1,4 +1,4 @@
-﻿using Chikisistema.Application.UseCases.Actividades.Queries.GetActividad;
+﻿using Chikisistema.Application.UseCases.Reportes.Queries.GetReporte;
 using Chikisistema.Common;
 using Chikisistema.WebUi.FunctionalTests.Common;
 using Chikisistema.WebUi.FunctionalTests.Mocks;

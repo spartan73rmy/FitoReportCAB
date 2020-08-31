@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chikisistema.Application.UseCases.Actividades.Commands.EditarActividad
+namespace Chikisistema.Application.UseCases.Reportes.Commands.EditarReporte
 {
     public class EditarReporteAuth : IMaestroRequest<EditarReporteCommand, EditarReporteResponse>
     {

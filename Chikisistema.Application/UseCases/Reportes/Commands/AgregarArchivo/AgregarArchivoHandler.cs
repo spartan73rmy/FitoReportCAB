@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Chikisistema.Application.UseCases.Actividades.Commands.AgregarArchivo
+namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarArchivo
 {
     public class AgregarArchivoHandler : IRequestHandler<AgregarArchivoCommand, AgregarArchivoResponse>
     {

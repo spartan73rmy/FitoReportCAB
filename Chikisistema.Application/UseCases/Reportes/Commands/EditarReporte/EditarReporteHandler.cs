@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Chikisistema.Application.UseCases.Actividades.Commands.EditarActividad
+namespace Chikisistema.Application.UseCases.Reportes.Commands.EditarReporte
 {
     public class EditarReporteHandler : IRequestHandler<EditarReporteCommand, EditarReporteResponse>
     {

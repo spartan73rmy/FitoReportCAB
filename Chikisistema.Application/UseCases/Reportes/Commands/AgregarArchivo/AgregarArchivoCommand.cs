@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Chikisistema.Application.UseCases.Actividades.Commands.AgregarArchivo
+namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarArchivo
 {
     public class AgregarArchivoCommand : IRequest<AgregarArchivoResponse>
     {

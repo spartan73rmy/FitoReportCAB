@@ -1,6 +1,6 @@
 using System;
 
-namespace Chikisistema.Application.UseCases.Actividades.Commands.EditarActividad
+namespace Chikisistema.Application.UseCases.Reportes.Commands.EditarReporte
 {
     public class EditarReporteResponse
     {

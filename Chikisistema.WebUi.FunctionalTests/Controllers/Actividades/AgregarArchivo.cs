@@ -1,4 +1,4 @@
-﻿using Chikisistema.Application.UseCases.Actividades.Commands.AgregarArchivo;
+﻿using Chikisistema.Application.UseCases.Reportes.Commands.AgregarArchivo;
 using Chikisistema.WebUi.FunctionalTests.Common;
 using System.Net;
 using System.Threading.Tasks;

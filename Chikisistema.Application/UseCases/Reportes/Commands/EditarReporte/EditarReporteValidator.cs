@@ -1,7 +1,7 @@
 using Chikisistema.Common;
 using FluentValidation;
 
-namespace Chikisistema.Application.UseCases.Actividades.Commands.EditarActividad
+namespace Chikisistema.Application.UseCases.Reportes.Commands.EditarReporte
 {
     public class EditarReporteValidator : AbstractValidator<EditarReporteCommand>
     {

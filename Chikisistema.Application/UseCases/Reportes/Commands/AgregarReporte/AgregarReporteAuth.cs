@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chikisistema.Application.UseCases.Actividades.Commands.AgregarActividad
+namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarReporte
 {
     public class AgregarReporteAuth : IAuthenticatedRequest<AgregarReporteCommand, AgregarReporteResponse>
     {

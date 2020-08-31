@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chikisistema.Application.UseCases.Actividades.Commands.AgregarArchivo
+namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarArchivo
 {
     public class AgregarArchivoAuth : IMaestroRequest<AgregarArchivoCommand, AgregarArchivoResponse>
     {

@@ -1,4 +1,4 @@
-﻿using Chikisistema.Application.UseCases.Actividades.Commands.AgregarActividad;
+﻿using Chikisistema.Application.UseCases.Reportes.Commands.AgregarReporte;
 using Chikisistema.Common;
 using Chikisistema.WebUi.FunctionalTests.Common;
 using Chikisistema.WebUi.FunctionalTests.Mocks;

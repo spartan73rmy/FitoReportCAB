@@ -1,12 +1,12 @@
 using Chikisistema.Common;
 using FluentValidation;
 
-namespace Chikisistema.Application.UseCases.Actividades.Commands.AgregarActividad
+namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarReporte
 {
     public class AgregarReporteValidator : AbstractValidator<AgregarReporteCommand>
     {
         public AgregarReporteValidator(IDateTime dateTime)
-        {
+        {            
             //RuleFor(el => el.IdUnidad).NotEmpty().GreaterThan(0);
             //RuleFor(el => el.IdTipoActividad).NotEmpty().GreaterThan(0);
             //RuleFor(el => el.Titulo).NotEmpty();

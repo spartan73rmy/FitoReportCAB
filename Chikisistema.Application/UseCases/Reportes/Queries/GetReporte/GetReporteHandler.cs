@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Chikisistema.Application.UseCases.Actividades.Queries.GetActividad
+namespace Chikisistema.Application.UseCases.Reportes.Queries.GetReporte
 {
     public class GetReporteHandler : IRequestHandler<GetReporteQuery, GetReporteResponse>
     {
