@@ -43,15 +43,7 @@ namespace Chikisistema.Application.Infraestructure
                     case IAdminRequest<TRequest, TResponse> _:
                         if (userAccessor.TipoUsuario != TiposUsuario.Admin)
                             failures.Add("No tienes permisos");
-                        break;
-                    case IMaestroRequest<TRequest, TResponse> _:
-                        if (userAccessor.TipoUsuario != TiposUsuario.Maestro)
-                            failures.Add("No tienes permisos");
-                        break;
-                    case IAlumnoRequest<TRequest, TResponse> _:
-                        if (userAccessor.TipoUsuario != TiposUsuario.Alumno)
-                            failures.Add("No tienes permisos");
-                        break;
+                        break;                    
                 }
 
                 if (failures.Count == 0)

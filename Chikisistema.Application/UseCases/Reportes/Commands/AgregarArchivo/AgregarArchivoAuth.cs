@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarArchivo
 {
-    public class AgregarArchivoAuth : IMaestroRequest<AgregarArchivoCommand, AgregarArchivoResponse>
+    public class AgregarArchivoAuth : IAuthenticatedRequest<AgregarArchivoCommand, AgregarArchivoResponse>
     {
         private readonly IChikisistemaDbContext db;
         private readonly IUserAccessor currentUser;

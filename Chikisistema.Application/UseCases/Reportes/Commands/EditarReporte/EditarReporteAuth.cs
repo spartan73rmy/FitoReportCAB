@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chikisistema.Application.UseCases.Reportes.Commands.EditarReporte
 {
-    public class EditarReporteAuth : IMaestroRequest<EditarReporteCommand, EditarReporteResponse>
+    public class EditarReporteAuth : IAuthenticatedRequest<EditarReporteCommand, EditarReporteResponse>
     {
         private readonly IChikisistemaDbContext db;
         private readonly IUserAccessor currentUser;
