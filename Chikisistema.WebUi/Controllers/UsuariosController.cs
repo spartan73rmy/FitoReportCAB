@@ -1,10 +1,8 @@
 ﻿using Chikisistema.Application.UseCases.Usuarios.Commands.AgregarImagenPerfil;
-using Chikisistema.Application.UseCases.Usuarios.Commands.ConfirmarMaestro;
 using Chikisistema.Application.UseCases.Usuarios.Commands.ModificarDatosUsuario;
 using Chikisistema.Application.UseCases.Usuarios.Commands.ModificarEmail;
 using Chikisistema.Application.UseCases.Usuarios.Commands.ModificarPassword;
 using Chikisistema.Application.UseCases.Usuarios.Queries.GetImagenPerfil;
-using Chikisistema.Application.UseCases.Usuarios.Queries.GetMaestrosNoConfirmados;
 using Chikisistema.Application.UseCases.Usuarios.Queries.GetUsuarioDetail;
 using Chikisistema.Application.UseCases.Usuarios.Queries.GetUsuariosList;
 using Chikisistema.Domain.Enums;
@@ -22,13 +20,6 @@ namespace Chikisistema.WebUi.Controllers
         public async Task<ActionResult<GetUsuariosListResponse>> GetAll()
         {
             return Ok(await Mediator.Send(new GetUsuariosListQuery()));
-        }
-
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<GetMaestrosNoConfirmadosResponse>> GetMaestrosNoConfirmados()
-        {
-            return Ok(await Mediator.Send(new GetMaestrosNoConfirmadosQuery()));
         }
 
         [HttpGet("{id}")]
@@ -53,12 +44,6 @@ namespace Chikisistema.WebUi.Controllers
 
         [HttpPost]
         public async Task<ActionResult<ModificarPasswordResponse>> ModificarPassword([FromBody] ModificarPasswordCommand command)
-        {
-            return Ok(await Mediator.Send(command));
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<ConfirmarMaestroResponse>> ConfirmarMaestro([FromBody]ConfirmarMaestroCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

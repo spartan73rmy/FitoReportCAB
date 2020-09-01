@@ -48,11 +48,11 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.CreateUsuario
 
             string mensaje = "Usuario Creado, espere a que el Administrador Confirme su Cuenta";
 
-            if (user.TipoUsuario == Domain.Enums.TiposUsuario.Alumno)
-            {
-                mensaje = "Usuario Creado, revise su correo para poder Acceder por primera vez";
-                await mediator.Publish(new CreateUsuarioNotificate { IdUsuario = user.Id }, cancellationToken);
-            }
+            //if (user.TipoUsuario == Domain.Enums.TiposUsuario.Alumno)
+            //{
+            //    mensaje = "Usuario Creado, revise su correo para poder Acceder por primera vez";
+            //    await mediator.Publish(new CreateUsuarioNotificate { IdUsuario = user.Id }, cancellationToken);
+            //}
 
             return new CreateUsuarioResponse
             {

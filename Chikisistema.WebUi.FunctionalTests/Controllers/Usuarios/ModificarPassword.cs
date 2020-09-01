@@ -12,8 +12,6 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Usuarios
         }
 
         [Theory]
-        [InlineData("Alumno")]
-        [InlineData("Maestro")]
         [InlineData("Admin")]
         public async Task ReturnsSuccessStatusCode(string username)
         {

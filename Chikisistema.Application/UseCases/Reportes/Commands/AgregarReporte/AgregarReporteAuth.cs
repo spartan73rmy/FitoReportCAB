@@ -19,15 +19,7 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarReporte
 
         public async Task Validate(AgregarReporteCommand request, ValidationResult validationResult)
         {
-            //var unidad = await db
-            //        .Unidad
-            //        .Select(el => new { el.Curso.IdMaestro, el.Id })
-            //        .SingleOrDefaultAsync(el => el.Id == request.IdUnidad);
-
-            //if (unidad.IdMaestro != currentUser.UserId)
-            //{
-            //    validationResult.Errors.Add("Maestro No Autorizado");
-            //}
+            await Task.CompletedTask;
         }
     }
 }

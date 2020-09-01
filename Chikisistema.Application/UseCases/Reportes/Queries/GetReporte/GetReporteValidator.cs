@@ -6,7 +6,7 @@ namespace Chikisistema.Application.UseCases.Reportes.Queries.GetReporte
     {
         public GetReporteValidator()
         {
-            //RuleFor(el => el.IdActividad).GreaterThan(0).NotEmpty();
+            RuleFor(el => el.IdReporte).GreaterThan(0).NotEmpty();
         }
     }
 }

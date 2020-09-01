@@ -53,7 +53,7 @@ namespace Chikisistema.WebUi
             services.AddInfrastructure(Configuration);
             services.AddPersistence(Configuration);
             services.AddApplication(Configuration);
-
+            
             services.AddScoped<IUserAccessor, UserAccessor>();
 
             services
@@ -83,7 +83,7 @@ namespace Chikisistema.WebUi
 
             services.AddOpenApiDocument(document =>
             {
-                document.Title = "Chikisistema API";
+                document.Title = "FitoReport API";
                 document.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
                 {
                     Type = OpenApiSecuritySchemeType.ApiKey,

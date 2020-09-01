@@ -2,10 +2,10 @@ using Chikisistema.Application.Interfaces;
 using Chikisistema.Common;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using static Chikisistema.Application.UseCases.Reportes.Queries.GetReporte.GetReporteResponse;
 
 namespace Chikisistema.Application.UseCases.Reportes.Queries.GetReporte
 {
@@ -22,43 +22,39 @@ namespace Chikisistema.Application.UseCases.Reportes.Queries.GetReporte
             this.currentUser = currentUser;
         }
 
-        public async Task<GetReporteResponse> Handle(GetReporteQuery request, CancellationToken cancellationToken)
+        public async Task<GetReporteResponse> Handle(GetReporteQuery query, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var entity = await db
+                .Reporte
+                .Where(m => m.Id == query.IdReporte)
+                .Select(request => new GetReporteResponse
+                {
+                    Id = request.Id,
+                    Lugar = request.Lugar,
+                    FechaAlta = request.FechaAlta,
+                    Productor = request.Productor,
+                    CoordX = request.CoordX,
+                    CoordY = request.CoordY,
+                    Ubicacion = request.Ubicacion,
+                    Predio = request.Predio,
+                    Cultivo = request.Cultivo,
+                    EtapaFenologica = request.EtapaFenologica,
+                    Observaciones = request.Observaciones,
+                    Litros = request.Litros,
+                    Enfermedades = request.ReporteEnfermedad.Where(el => el.IdReporte == query.IdReporte).Select(el => new EnfermedadDTO()
+                    {
+                        Id = el.Enfermedad.Id,
+                        Nombre = el.Enfermedad.Nombre,
+                    }).ToList(),
+                    Plagas = request.ReportePlaga.Where(el => el.IdReporte == query.IdReporte).Select(el => new PlagaDTO
+                    {
+                        Id = el.Plaga.Id,
+                        Nombre = el.Plaga.Nombre,
+                    }).ToList(),
+                    Productos = request.Productos.ToList(),
 
-            //var result = await db
-            //        .ActividadCurso
-            //        .Select(el => new GetReporteResponse
-            //        {
-            //            Id = el.Id,
-            //            IdUnidad = el.IdUnidad,
-            //            Titulo = el.Titulo,
-            //            Contenido = el.Contenido,
-            //            TipoActividad = el.TipoActividad.Nombre,
-            //            Valor = el.Valor,
-            //            FechaActivacion = el.FechaActivacion,
-            //            FechaLimite = el.FechaLimite,
-            //            IdTipoActividad = el.IdTipoActividad,
-            //            BloquearEnvios = el.BloquearEnvios,
-            //            MaterialApoyo = el.MaterialApoyo.Select(el2 => new GetReporteResponse.MaterialApoyoDto
-            //            {
-            //                ContentType = el2.ArchivoUsuario.ContentType,
-            //                Descripcion = el2.ArchivoUsuario.Nombre,
-            //                Hash = el2.ArchivoUsuario.Hash
-            //            })
-            //        }).SingleOrDefaultAsync(el => el.Id == request.IdActividad);
-
-            //// Si la actividad aun sigue bloqueada se oculta la informacion
-            //if (currentUser.TipoUsuario == Domain.Enums.TiposUsuario.Alumno)
-            //{
-            //    if (result.FechaActivacion != null && dateTime.Now < result.FechaActivacion)
-            //    {
-            //        result.Contenido = null;
-            //        result.MaterialApoyo = null;
-            //    }
-            //}
-
-            //return result;
+                }).FirstOrDefaultAsync();
+            return entity;
         }
     }
 }

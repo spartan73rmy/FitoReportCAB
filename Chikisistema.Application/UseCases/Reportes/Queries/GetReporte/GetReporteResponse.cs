@@ -1,3 +1,4 @@
+using Chikisistema.Domain.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -6,22 +7,41 @@ namespace Chikisistema.Application.UseCases.Reportes.Queries.GetReporte
     public class GetReporteResponse
     {
         public int Id { get; set; }
-        public int IdUnidad { get; set; }
-        public string Titulo { get; set; }
-        public string TipoActividad { get; set; }
-        public int IdTipoActividad { get; set; }
-        public string Contenido { get; set; }
-        public int Valor { get; set; }
-        public IEnumerable<MaterialApoyoDto> MaterialApoyo { get; set; }
-        public DateTime? FechaActivacion { get; set; }
-        public DateTime FechaLimite { get; set; }
-        public bool BloquearEnvios { get; set; }
+        public string Lugar { get; set; }
+        public DateTime FechaAlta { get; set; }
+        public string Productor { get; set; }
+        public double CoordX { get; set; }
+        public double CoordY { get; set; }
+        public string Ubicacion { get; set; }
+        public string Predio { get; set; }
+        public string Cultivo { get; set; }
+        public string EtapaFenologica { get; set; }
+        public string Observaciones { get; set; }
+        public int Litros { get; set; }
+        public virtual IList<EnfermedadDTO> Enfermedades { get; set; }
+        public virtual IList<PlagaDTO> Plagas { get; set; }
+        public virtual IList<Producto> Productos { get; set; }
 
-        public class MaterialApoyoDto
+        public class EnfermedadDTO
         {
-            public string Hash { get; set; }
-            public string Descripcion { get; set; }
-            public string ContentType { get; set; }
+            public int Id { get; set; }
+            public string Nombre { get; set; }
+        }
+
+        public class PlagaDTO
+        {
+            public int Id { get; set; }
+            public string Nombre { get; set; }
+        }
+
+        public class ProductoDTO
+        {
+            public int IdReport { get; set; }
+            public int Cantidad { get; set; }
+            public string NombreProducto { get; set; }
+            public string IngredienteActivo { get; set; }
+            public int Concentracion { get; set; }
+            public string IntervaloSeguridad { get; set; }
         }
     }
 }

@@ -29,11 +29,7 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.ConfirmarEmail
             {
                 throw new BadRequestException("El usuario se confirmo previamente");
             }
-
-            if (user.TipoUsuario != Domain.Enums.TiposUsuario.Alumno)
-            {
-                throw new BadRequestException("Solo un administrador puede confirmar tu cuenta");
-            }
+       
 
             user.Confirmado = true;
             user.TokenConfirmacion = null;

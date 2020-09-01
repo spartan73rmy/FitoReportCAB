@@ -30,8 +30,8 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.ReenviarEmail
                })
                .SingleOrDefaultAsync(el => el.Email == request.Email, cancellationToken);
 
-            if (usuario.TipoUsuario == Domain.Enums.TiposUsuario.Alumno && usuario.Confirmado == false)
-                await mediator.Publish(new ReenviarEmailNotificate { Email = request.Email }, cancellationToken);
+            //if (usuario.TipoUsuario == Domain.Enums.TiposUsuario.Alumno && usuario.Confirmado == false)
+            //    await mediator.Publish(new ReenviarEmailNotificate { Email = request.Email }, cancellationToken);
 
             return new ReenviarEmailResponse
             {

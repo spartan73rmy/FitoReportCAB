@@ -35,7 +35,7 @@ namespace Chikisistema.Application.Infraestructure
                 if (timer.ElapsedMilliseconds > 500)
                 {
                     var name = typeof(TRequest).Name;
-                    logger.LogWarning("Chikisistema Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@Request}", name, timer.ElapsedMilliseconds, currentUser.UserId, request);
+                    logger.LogWarning("FitoReport Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@Request}", name, timer.ElapsedMilliseconds, currentUser.UserId, request);
                 }
                 else
                 {

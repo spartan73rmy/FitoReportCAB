@@ -95,7 +95,7 @@ namespace Chikisistema.WebUi.FunctionalTests.Controllers.Customers
             var command = new CreateUsuarioCommand
             {
                 Email = "asdasd@zasdadasd.qweasd",
-                TipoUsuario = Chikisistema.Domain.Enums.TiposUsuario.Alumno,
+                TipoUsuario = Chikisistema.Domain.Enums.TiposUsuario.Admin,
                 NombreUsuario = username,
                 Password = "123",
                 Nombre = "Nombre",

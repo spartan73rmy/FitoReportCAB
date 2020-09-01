@@ -21,7 +21,7 @@ namespace Chikisistema.Application.Infraestructure
         {
             var name = typeof(TRequest).Name;
 
-            logger.LogInformation("Chikisistema Request: {Name} UserId: {UserId} Request: {@Request}", name, currentUserService.UserId, request);
+            logger.LogInformation("FitoReport Request: {Name} UserId: {UserId} Request: {@Request}", name, currentUserService.UserId, request);
 
             return Task.CompletedTask;
         }
