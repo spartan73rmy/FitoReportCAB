@@ -7,20 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chikisistema.Application.UseCases.Reportes.Queries.GetPlagas
+namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarPlaga
 {
-    public class GetPlagasAuth : IAuthenticatedRequest<GetPlagasQuery, IEnumerable<GetPlagasResponse>>
+    public class AgregarPlagaAuth : IAuthenticatedRequest<AgregarPlagaCommand, AgregarPlagaResponse>
     {
         private readonly IChikisistemaDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public GetPlagasAuth(IChikisistemaDbContext db, IUserAccessor currentUser)
+        public AgregarPlagaAuth(IChikisistemaDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;
         }
         
-        public Task Validate(GetPlagasQuery request, ValidationResult validationResult)
+        public Task Validate(AgregarPlagaCommand request, ValidationResult validationResult)
         {
             return Task.CompletedTask;
         }
