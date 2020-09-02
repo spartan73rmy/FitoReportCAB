@@ -21,7 +21,7 @@ namespace Chikisistema.Persistence
                 services.AddDbContext<ChikisistemaDbContext>(options =>
                     options.UseNpgsql(configuration.GetConnectionString("FitoReportDatabaseLinux")));
             }
-            services.AddScoped<IChikisistemaDbContext>(provider => provider.GetService<ChikisistemaDbContext>());
+            services.AddScoped<IFitoReportDbContext>(provider => provider.GetService<ChikisistemaDbContext>());
             return services;
         }
     }

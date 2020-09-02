@@ -9,10 +9,10 @@ namespace Chikisistema.Application.UseCases.Archivos.Queries.TokenDescarga
 {
     public class TokenDescargaHandler : IRequestHandler<TokenDescargaQuery, TokenDescargaResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IRandomGenerator random;
 
-        public TokenDescargaHandler(IChikisistemaDbContext db, IRandomGenerator random)
+        public TokenDescargaHandler(IFitoReportDbContext db, IRandomGenerator random)
         {
             this.db = db;
             this.random = random;

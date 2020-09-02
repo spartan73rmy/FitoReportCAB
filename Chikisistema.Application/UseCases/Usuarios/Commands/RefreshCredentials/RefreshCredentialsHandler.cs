@@ -10,10 +10,10 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.RefreshCredentials
 {
     public class RefreshCredentialsHandler : IRequestHandler<RefreshCredentialsCommand, RefreshCredentialsResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IRandomGenerator randomGenerator;
 
-        public RefreshCredentialsHandler(IChikisistemaDbContext db, IRandomGenerator randomGenerator)
+        public RefreshCredentialsHandler(IFitoReportDbContext db, IRandomGenerator randomGenerator)
         {
             this.db = db;
             this.randomGenerator = randomGenerator;

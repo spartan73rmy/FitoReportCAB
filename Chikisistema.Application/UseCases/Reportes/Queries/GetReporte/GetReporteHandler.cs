@@ -11,11 +11,11 @@ namespace Chikisistema.Application.UseCases.Reportes.Queries.GetReporte
 {
     public class GetReporteHandler : IRequestHandler<GetReporteQuery, GetReporteResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IDateTime dateTime;
         private readonly IUserAccessor currentUser;
 
-        public GetReporteHandler(IChikisistemaDbContext db, IDateTime dateTime, IUserAccessor currentUser)
+        public GetReporteHandler(IFitoReportDbContext db, IDateTime dateTime, IUserAccessor currentUser)
         {
             this.db = db;
             this.dateTime = dateTime;

@@ -8,10 +8,10 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.AgregarImagenPerfi
 {
     public class AgregarImagenPerfilHandler : IRequestHandler<AgregarImagenPerfilCommand, AgregarImagenPerfilResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public AgregarImagenPerfilHandler(IChikisistemaDbContext db, IUserAccessor currentUser)
+        public AgregarImagenPerfilHandler(IFitoReportDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;

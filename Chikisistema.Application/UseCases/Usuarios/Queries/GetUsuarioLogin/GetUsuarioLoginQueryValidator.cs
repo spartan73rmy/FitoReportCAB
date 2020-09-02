@@ -12,10 +12,10 @@ namespace Chikisistema.Application.UseCases.Usuarios.Queries.GetUsuarioLogin
 {
     public class GetUsuarioLoginQueryValidator : AbstractValidator<GetUsuarioLoginQuery>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IDateTime dateTime;
 
-        public GetUsuarioLoginQueryValidator(IChikisistemaDbContext db, IDateTime dateTime)
+        public GetUsuarioLoginQueryValidator(IFitoReportDbContext db, IDateTime dateTime)
         {
             RuleFor(el => el.NombreUsuario).NotEmpty();
             RuleFor(el => el.Password).NotEmpty();

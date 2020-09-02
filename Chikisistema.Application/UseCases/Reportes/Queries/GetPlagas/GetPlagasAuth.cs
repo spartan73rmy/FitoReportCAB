@@ -11,10 +11,10 @@ namespace Chikisistema.Application.UseCases.Reportes.Queries.GetPlagas
 {
     public class GetPlagasAuth : IAuthenticatedRequest<GetPlagasQuery, IEnumerable<GetPlagasResponse>>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public GetPlagasAuth(IChikisistemaDbContext db, IUserAccessor currentUser)
+        public GetPlagasAuth(IFitoReportDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;

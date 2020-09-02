@@ -10,10 +10,10 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarReporte
 {
     public class AgregarReporteHandler : IRequestHandler<AgregarReporteCommand, AgregarReporteResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IDateTime time;
 
-        public AgregarReporteHandler(IChikisistemaDbContext db, IDateTime time)
+        public AgregarReporteHandler(IFitoReportDbContext db, IDateTime time)
         {
             this.db = db;
             this.time = time;

@@ -10,10 +10,10 @@ namespace Chikisistema.Application.UseCases.Reportes.Queries.GetReporte
 {
     public class GetReporteAuth : IAuthenticatedRequest<GetReporteQuery, GetReporteResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public GetReporteAuth(IChikisistemaDbContext db, IUserAccessor currentUser)
+        public GetReporteAuth(IFitoReportDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;

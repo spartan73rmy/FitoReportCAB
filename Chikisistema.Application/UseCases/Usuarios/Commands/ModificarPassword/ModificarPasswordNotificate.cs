@@ -15,9 +15,9 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.ModificarPassword
         public class ReenviarEmailHandler : INotificationHandler<ModificarPasswordNotificate>
         {
             private readonly IEmailService emailService;
-            private readonly IChikisistemaDbContext db;
+            private readonly IFitoReportDbContext db;
 
-            public ReenviarEmailHandler(IEmailService emailService, IChikisistemaDbContext db)
+            public ReenviarEmailHandler(IEmailService emailService, IFitoReportDbContext db)
             {
                 this.emailService = emailService;
                 this.db = db;

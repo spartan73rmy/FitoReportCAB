@@ -8,11 +8,11 @@ namespace Chikisistema.Application.UseCases.Archivos.Commands.AgregarArchivo
 {
     public class AgregarArchivoHandler : IRequestHandler<AgregarArchivoCommand, AgregarArchivoResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IFileService fileService;
         private readonly IUserAccessor currentUser;
 
-        public AgregarArchivoHandler(IChikisistemaDbContext db, IFileService fileService, IUserAccessor currentUser)
+        public AgregarArchivoHandler(IFitoReportDbContext db, IFileService fileService, IUserAccessor currentUser)
         {
             this.db = db;
             this.fileService = fileService;

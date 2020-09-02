@@ -11,16 +11,16 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.EditarReporte
 {
     public class EditarReporteHandler : IRequestHandler<EditarReporteCommand, EditarReporteResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IHtmlSanitizer sanitizer;
 
-        public EditarReporteHandler(IChikisistemaDbContext db, IHtmlSanitizer sanitizer)
+        public EditarReporteHandler(IFitoReportDbContext db, IHtmlSanitizer sanitizer)
         {
             this.db = db;
             this.sanitizer = sanitizer;
         }
 
-        public async Task<EditarReporteResponse> Handle(EditarReporteCommand request, CancellationToken cancellationToken)
+        public Task<EditarReporteResponse> Handle(EditarReporteCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
             //var actividad = await db

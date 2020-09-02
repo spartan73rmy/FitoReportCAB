@@ -9,9 +9,9 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.CreateUsuario
 {
     public class CreateUsuarioCommandValidator : AbstractValidator<CreateUsuarioCommand>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public CreateUsuarioCommandValidator(IChikisistemaDbContext db)
+        public CreateUsuarioCommandValidator(IFitoReportDbContext db)
         {
             this.db = db;
             RuleFor(el => el.NombreUsuario).Matches("^[a-zA-Z]+(?:[_-]?[a-zA-Z0-9])*$").MaximumLength(20).NotEmpty();

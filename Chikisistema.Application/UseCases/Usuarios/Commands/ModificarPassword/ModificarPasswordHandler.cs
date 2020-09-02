@@ -12,10 +12,10 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.ModificarPassword
 {
     public class ModificarPasswordHandler : IRequestHandler<ModificarPasswordCommand, ModificarPasswordResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public ModificarPasswordHandler(IChikisistemaDbContext db, IUserAccessor currentUser)
+        public ModificarPasswordHandler(IFitoReportDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;

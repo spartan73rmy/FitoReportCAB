@@ -10,9 +10,9 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.ConfirmarEmail
 {
     public class ConfirmarEmailHandler : IRequestHandler<ConfirmarEmailCommand, ConfirmarEmailResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public ConfirmarEmailHandler(IChikisistemaDbContext db)
+        public ConfirmarEmailHandler(IFitoReportDbContext db)
         {
             this.db = db;
         }

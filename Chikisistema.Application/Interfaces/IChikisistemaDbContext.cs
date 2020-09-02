@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chikisistema.Application.Interfaces
 {
-    public interface IChikisistemaDbContext
+    public interface IFitoReportDbContext
     {
         DbSet<Reporte> Reporte { get; set; }
         DbSet<ArchivoUsuario> ArchivoUsuario { get; set; }

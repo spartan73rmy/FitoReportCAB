@@ -8,10 +8,10 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarArchivo
 {
     public class AgregarArchivoAuth : IAuthenticatedRequest<AgregarArchivoCommand, AgregarArchivoResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public AgregarArchivoAuth(IChikisistemaDbContext db, IUserAccessor currentUser)
+        public AgregarArchivoAuth(IFitoReportDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;
@@ -19,6 +19,7 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarArchivo
 
         public async Task Validate(AgregarArchivoCommand request, ValidationResult validationResult)
         {
+            await Task.CompletedTask;
             //int autorActividad = await db
             //   .ActividadCurso
             //   .Where(el => el.Id == request.IdActividad)

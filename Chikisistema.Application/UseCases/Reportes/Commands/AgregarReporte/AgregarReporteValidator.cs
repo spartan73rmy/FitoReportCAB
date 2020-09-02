@@ -5,7 +5,7 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarReporte
 {
     public class AgregarReporteValidator : AbstractValidator<AgregarReporteCommand>
     {
-        public AgregarReporteValidator(IDateTime dateTime)
+        public AgregarReporteValidator()
         {            
             //RuleFor(el => el.IdUnidad).NotEmpty().GreaterThan(0);
             //RuleFor(el => el.IdTipoActividad).NotEmpty().GreaterThan(0);

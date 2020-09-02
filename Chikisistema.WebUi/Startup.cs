@@ -59,7 +59,7 @@ namespace Chikisistema.WebUi
             services
                .AddControllersWithViews()
                .AddNewtonsoftJson()
-               .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IChikisistemaDbContext>());
+               .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IFitoReportDbContext>());
 
             services.AddHealthChecks()
                 .AddDbContextCheck<ChikisistemaDbContext>();

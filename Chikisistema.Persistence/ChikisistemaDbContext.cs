@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Chikisistema.Persistence
 {
-    public partial class ChikisistemaDbContext : DbContext, IChikisistemaDbContext
+    public partial class ChikisistemaDbContext : DbContext, IFitoReportDbContext
     {
         private readonly IDateTime time;
         public ChikisistemaDbContext(DbContextOptions<ChikisistemaDbContext> options, IDateTime time)

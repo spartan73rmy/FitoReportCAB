@@ -9,9 +9,9 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.ModificarDatosUsua
 {
     public class ModificarDatosUsuarioHandler : IRequestHandler<ModificarDatosUsuarioCommand, ModificarDatosUsuarioResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public ModificarDatosUsuarioHandler(IChikisistemaDbContext db)
+        public ModificarDatosUsuarioHandler(IFitoReportDbContext db)
         {
             this.db = db;
         }

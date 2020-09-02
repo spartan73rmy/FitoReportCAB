@@ -11,10 +11,10 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarPlaga
 {
     public class AgregarPlagaAuth : IAuthenticatedRequest<AgregarPlagaCommand, AgregarPlagaResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public AgregarPlagaAuth(IChikisistemaDbContext db, IUserAccessor currentUser)
+        public AgregarPlagaAuth(IFitoReportDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;

@@ -12,36 +12,13 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarArchivo
 {
     public class AgregarArchivoValidator : AbstractValidator<AgregarArchivoCommand>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public AgregarArchivoValidator(IChikisistemaDbContext db)
+        public AgregarArchivoValidator(IFitoReportDbContext db)
         {
             RuleFor(el => el.Archivo).NotEmpty();
             RuleFor(el => el.IdActividad).NotEmpty().GreaterThan(0);
             this.db = db;
-        }
-
-        public override async Task<ValidationResult> ValidateAsync(ValidationContext<AgregarArchivoCommand> context, CancellationToken cancellation = default)
-        {
-            ValidationResult result = new ValidationResult();
-            //var request = context.InstanceToValidate;
-            //var actividad = await db
-            //               .ActividadCurso
-            //               .Where(el => el.Id == request.IdActividad)
-            //               .Select(el => new
-            //               {
-            //                   Id = el.Id,
-            //                   BloquearEnvios = el.BloquearEnvios
-            //               })
-            //               .SingleOrDefaultAsync();
-
-            //if (actividad == null)
-            //    throw new NotFoundException(nameof(ActividadCurso), request.IdActividad);
-
-            //if (actividad.BloquearEnvios)
-            //    result.Errors.Add(new ValidationFailure(nameof(request.Archivo), "No puedes agregar archivos, se han bloqueado los envios de la actividad"));
-
-            return result;
         }
     }
 }

@@ -11,11 +11,11 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.CreateUsuario
     public class CreateUsuarioHandler : IRequestHandler<CreateUsuarioCommand, CreateUsuarioResponse>
     {
         private readonly IMediator mediator;
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IDateTime dateTime;
         private readonly IRandomGenerator randomGenerator;
 
-        public CreateUsuarioHandler(IChikisistemaDbContext db, IMediator mediator, IDateTime dateTime, IRandomGenerator randomGenerator)
+        public CreateUsuarioHandler(IFitoReportDbContext db, IMediator mediator, IDateTime dateTime, IRandomGenerator randomGenerator)
         {
             this.mediator = mediator;
             this.db = db;

@@ -12,11 +12,11 @@ namespace Chikisistema.Application.UseCases.Usuarios.Queries.GetUsuarioLogin
 {
     public class GetUsuarioLoginHandler : IRequestHandler<GetUsuarioLoginQuery, GetUsuarioLoginResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IDateTime dateTime;
         private readonly IRandomGenerator randomGenerator;
 
-        public GetUsuarioLoginHandler(IChikisistemaDbContext db, IDateTime dateTime, IRandomGenerator randomGenerator)
+        public GetUsuarioLoginHandler(IFitoReportDbContext db, IDateTime dateTime, IRandomGenerator randomGenerator)
         {
             this.db = db;
             this.dateTime = dateTime;

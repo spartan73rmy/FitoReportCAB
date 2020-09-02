@@ -53,7 +53,7 @@ namespace Chikisistema.WebUi.FunctionalTests.Common
                         options.UseInternalServiceProvider(serviceProvider);
                     });
                 }
-                services.AddScoped<IChikisistemaDbContext>(provider => provider.GetService<ChikisistemaDbContext>());
+                services.AddScoped<IFitoReportDbContext>(provider => provider.GetService<ChikisistemaDbContext>());
 
                 // Build the service provider.
                 var sp = services.BuildServiceProvider();
@@ -63,7 +63,7 @@ namespace Chikisistema.WebUi.FunctionalTests.Common
                 using (var scope = sp.CreateScope())
                 {
                     var scopedServices = scope.ServiceProvider;
-                    var context = scopedServices.GetRequiredService<IChikisistemaDbContext>();
+                    var context = scopedServices.GetRequiredService<IFitoReportDbContext>();
                     var logger = scopedServices
                         .GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
 

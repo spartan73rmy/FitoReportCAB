@@ -9,9 +9,9 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.ModificarEmail
 {
     public class ModificarEmailValidator : AbstractValidator<ModificarEmailCommand>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public ModificarEmailValidator(IChikisistemaDbContext db)
+        public ModificarEmailValidator(IFitoReportDbContext db)
         {
             this.db = db;
             RuleFor(el => el.NuevoEmail).EmailAddress().MaximumLength(50).NotEmpty();

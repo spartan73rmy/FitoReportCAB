@@ -17,10 +17,10 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.ReenviarEmail
         public class ReenviarEmailHandler : INotificationHandler<ReenviarEmailNotificate>
         {
             private readonly IEmailService emailService;
-            private readonly IChikisistemaDbContext db;
+            private readonly IFitoReportDbContext db;
             private readonly AppSettings settings;
 
-            public ReenviarEmailHandler(IEmailService emailService, IChikisistemaDbContext db, IOptions<AppSettings> options)
+            public ReenviarEmailHandler(IEmailService emailService, IFitoReportDbContext db, IOptions<AppSettings> options)
             {
                 this.emailService = emailService;
                 this.db = db;

@@ -14,9 +14,9 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarPlaga
 {
     public class AgregarPlagaHandler : IRequestHandler<AgregarPlagaCommand, AgregarPlagaResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public AgregarPlagaHandler(IChikisistemaDbContext db)
+        public AgregarPlagaHandler(IFitoReportDbContext db)
         {
             this.db = db;
         }

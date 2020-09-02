@@ -9,9 +9,9 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarReporte
     public class AgregarReporteAuth : IAuthenticatedRequest<AgregarReporteCommand, AgregarReporteResponse>
     {
         private readonly IUserAccessor currentUser;
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public AgregarReporteAuth(IUserAccessor currentUser, IChikisistemaDbContext db)
+        public AgregarReporteAuth(IUserAccessor currentUser, IFitoReportDbContext db)
         {
             this.currentUser = currentUser;
             this.db = db;

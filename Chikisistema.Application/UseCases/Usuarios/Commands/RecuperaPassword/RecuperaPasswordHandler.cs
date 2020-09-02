@@ -11,9 +11,9 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.RecuperaPassword
 {
     public class RecuperaPasswordHandler : IRequestHandler<RecuperaPasswordCommand, RecuperaPasswordResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public RecuperaPasswordHandler(IChikisistemaDbContext db)
+        public RecuperaPasswordHandler(IFitoReportDbContext db)
         {
             this.db = db;
         }

@@ -11,10 +11,10 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.ModificarEmail
 {
     public class ModificarEmailHandler : IRequestHandler<ModificarEmailCommand, ModificarEmailResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public ModificarEmailHandler(IChikisistemaDbContext db, IUserAccessor currentUser)
+        public ModificarEmailHandler(IFitoReportDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;

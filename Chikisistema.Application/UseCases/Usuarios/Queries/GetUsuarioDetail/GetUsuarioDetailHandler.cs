@@ -9,9 +9,9 @@ namespace Chikisistema.Application.UseCases.Usuarios.Queries.GetUsuarioDetail
 {
     public class GetUsuarioDetailHandler : IRequestHandler<GetUsuarioDetailQuery, GetUsuarioDetailResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public GetUsuarioDetailHandler(IChikisistemaDbContext db)
+        public GetUsuarioDetailHandler(IFitoReportDbContext db)
         {
             this.db = db;
         }

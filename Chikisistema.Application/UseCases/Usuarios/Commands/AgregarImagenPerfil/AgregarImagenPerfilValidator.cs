@@ -9,9 +9,9 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.AgregarImagenPerfi
 {
     public class AgregarImagenPerfilValidator : AbstractValidator<AgregarImagenPerfilCommand>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public AgregarImagenPerfilValidator(IChikisistemaDbContext db)
+        public AgregarImagenPerfilValidator(IFitoReportDbContext db)
         {
             RuleFor(el => el.Imagen).NotEmpty();
             this.db = db;

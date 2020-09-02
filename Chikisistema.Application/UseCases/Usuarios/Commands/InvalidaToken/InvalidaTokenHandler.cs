@@ -8,9 +8,9 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.InvalidaToken
 {
     public class InvalidaTokenHandler : IRequestHandler<InvalidaTokenCommand, InvalidaTokenResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public InvalidaTokenHandler(IChikisistemaDbContext db)
+        public InvalidaTokenHandler(IFitoReportDbContext db)
         {
             this.db = db;
         }

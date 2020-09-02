@@ -10,9 +10,9 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.AgregarArchivo
 {
     public class AgregarArchivoHandler : IRequestHandler<AgregarArchivoCommand, AgregarArchivoResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public AgregarArchivoHandler(IChikisistemaDbContext db)
+        public AgregarArchivoHandler(IFitoReportDbContext db)
         {
             this.db = db;
         }

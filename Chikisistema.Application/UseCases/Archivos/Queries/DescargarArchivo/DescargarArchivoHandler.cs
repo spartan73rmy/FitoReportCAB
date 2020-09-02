@@ -9,10 +9,10 @@ namespace Chikisistema.Application.UseCases.Archivos.Queries.DescargarArchivo
 {
     public class DescargarArchivoHandler : IRequestHandler<DescargarArchivoQuery, DescargarArchivoResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IFileService fileService;
 
-        public DescargarArchivoHandler(IChikisistemaDbContext db, IFileService fileService)
+        public DescargarArchivoHandler(IFitoReportDbContext db, IFileService fileService)
         {
             this.db = db;
             this.fileService = fileService;

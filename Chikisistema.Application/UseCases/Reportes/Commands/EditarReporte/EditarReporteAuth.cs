@@ -8,10 +8,10 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.EditarReporte
 {
     public class EditarReporteAuth : IAuthenticatedRequest<EditarReporteCommand, EditarReporteResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public EditarReporteAuth(IChikisistemaDbContext db, IUserAccessor currentUser)
+        public EditarReporteAuth(IFitoReportDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;
@@ -19,6 +19,7 @@ namespace Chikisistema.Application.UseCases.Reportes.Commands.EditarReporte
 
         public async Task Validate(EditarReporteCommand request, ValidationResult validationResult)
         {
+            await Task.CompletedTask;
             //var unidad = await db
             //        .ActividadCurso
             //        .Where(el => el.Id == request.IdActividad)

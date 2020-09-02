@@ -9,11 +9,11 @@ namespace Chikisistema.Application.UseCases.Usuarios.Queries.GetImagenPerfil
 {
     public class GetImagenPerfilHandler : IRequestHandler<GetImagenPerfilQuery, GetImagenPerfilResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IFileService fileService;
         private readonly IAvatarService avatarService;
 
-        public GetImagenPerfilHandler(IChikisistemaDbContext db, IFileService fileService, IAvatarService avatarService)
+        public GetImagenPerfilHandler(IFitoReportDbContext db, IFileService fileService, IAvatarService avatarService)
         {
             this.db = db;
             this.fileService = fileService;

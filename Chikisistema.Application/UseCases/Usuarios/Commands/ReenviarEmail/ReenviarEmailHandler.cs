@@ -10,9 +10,9 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.ReenviarEmail
     public class ReenviarEmailHandler : IRequestHandler<ReenviarEmailCommand, ReenviarEmailResponse>
     {
         private readonly IMediator mediator;
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public ReenviarEmailHandler(IMediator mediator, IChikisistemaDbContext db)
+        public ReenviarEmailHandler(IMediator mediator, IFitoReportDbContext db)
         {
             this.mediator = mediator;
             this.db = db;

@@ -9,11 +9,11 @@ namespace Chikisistema.Application.UseCases.Usuarios.Commands.RecuperaPasswordGe
 {
     public class RecuperaPasswordGeneraTokenHandler : IRequestHandler<RecuperaPasswordGeneraTokenCommand, RecuperaPasswordGeneraTokenResponse>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
         private readonly IRandomGenerator random;
         private readonly IMediator mediator;
 
-        public RecuperaPasswordGeneraTokenHandler(IChikisistemaDbContext db, IRandomGenerator random, IMediator mediator)
+        public RecuperaPasswordGeneraTokenHandler(IFitoReportDbContext db, IRandomGenerator random, IMediator mediator)
         {
             this.db = db;
             this.random = random;

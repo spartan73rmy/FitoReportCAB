@@ -13,9 +13,9 @@ namespace Chikisistema.Application.UseCases.Reportes.Queries.GetPlagas
 {
     public class GetPlagasHandler : IRequestHandler<GetPlagasQuery, IEnumerable<GetPlagasResponse>>
     {
-        private readonly IChikisistemaDbContext db;
+        private readonly IFitoReportDbContext db;
 
-        public GetPlagasHandler(IChikisistemaDbContext db)
+        public GetPlagasHandler(IFitoReportDbContext db)
         {
             this.db = db;
         }
