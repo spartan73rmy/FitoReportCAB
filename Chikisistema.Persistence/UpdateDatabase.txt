@@ -1,3 +1,0 @@
-dotnet tool install --global dotnet-ef
-dotnet ef migrations add Initial --project Chikisistema.Persistence/Persistence.csproj
-dotnet ef database update --project Chikisistema.Persistence/Persistence.csproj

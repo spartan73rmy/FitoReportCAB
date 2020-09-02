@@ -1,0 +1,28 @@
+using FitoReport.Application.Interfaces;
+using FitoReport.Application.Security;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarPlaga
+{
+    public class AgregarPlagaAuth : IAuthenticatedRequest<AgregarPlagaCommand, AgregarPlagaResponse>
+    {
+        private readonly IFitoReportDbContext db;
+        private readonly IUserAccessor currentUser;
+
+        public AgregarPlagaAuth(IFitoReportDbContext db, IUserAccessor currentUser)
+        {
+            this.db = db;
+            this.currentUser = currentUser;
+        }
+        
+        public Task Validate(AgregarPlagaCommand request, ValidationResult validationResult)
+        {
+            return Task.CompletedTask;
+        }
+    }
+}

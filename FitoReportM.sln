@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUi", "Chikisistema.WebUi\WebUi.csproj", "{64CB3FDA-398B-4DF8-A055-77328810F4E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUi", "FitoReport.WebUi\WebUi.csproj", "{64CB3FDA-398B-4DF8-A055-77328810F4E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Chikisistema.Persistence\Persistence.csproj", "{23948DEB-1C0C-4EAD-BD48-E18A1402B2CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "FitoReport.Persistence\Persistence.csproj", "{23948DEB-1C0C-4EAD-BD48-E18A1402B2CD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{2234129C-97D8-41FB-900C-816A4E6CFD26}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,19 +18,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0A3D4009-8518-4AFE-B46E-40383F459371}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Chikisistema.Domain\Domain.csproj", "{875B7A23-06DF-43CD-B6FA-22EC0C1DEC9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "FitoReport.Domain\Domain.csproj", "{875B7A23-06DF-43CD-B6FA-22EC0C1DEC9C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Chikisistema.Application\Application.csproj", "{36EAD654-06D0-4A16-AEAE-D58D9BC9CAB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "FitoReport.Application\Application.csproj", "{36EAD654-06D0-4A16-AEAE-D58D9BC9CAB6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infraestructure", "Chikisistema.Infraestructure\Infraestructure.csproj", "{7BED2AD8-336F-4AA4-B8DA-6D3D961F79BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infraestructure", "FitoReport.Infraestructure\Infraestructure.csproj", "{7BED2AD8-336F-4AA4-B8DA-6D3D961F79BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8DEF6337-B67B-4D74-A343-1E947317C8F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests", "Chikisistema.Application.Tests\Application.Tests.csproj", "{A7987131-A9B9-4943-96F4-AA5E5932C162}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests", "FitoReport.Application.Tests\Application.Tests.csproj", "{A7987131-A9B9-4943-96F4-AA5E5932C162}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUi.FunctionalTests", "Chikisistema.WebUi.FunctionalTests\WebUi.FunctionalTests.csproj", "{6C7FC7C6-3611-4C40-8B01-F54640FE14D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUi.FunctionalTests", "FitoReport.WebUi.FunctionalTests\WebUi.FunctionalTests.csproj", "{6C7FC7C6-3611-4C40-8B01-F54640FE14D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Chikisistema.Common\Common.csproj", "{E499B848-8947-4A36-AB7A-AE2C3599400C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "FitoReport.Common\Common.csproj", "{E499B848-8947-4A36-AB7A-AE2C3599400C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infraestructure.UnitTests", "Infraestructure.UnitTests\Infraestructure.UnitTests.csproj", "{1064ED1B-D563-43A4-A761-5E60FD5BEE46}"
 EndProject

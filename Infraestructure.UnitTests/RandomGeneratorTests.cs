@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Chikisistema.Infraestructure.UnitTests
+namespace FitoReport.Infraestructure.UnitTests
 {
     public class RandomGeneratorTests
     {

@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>Chikisistema.Infraestructure.UnitTests</RootNamespace>
+    <RootNamespace>FitoReport.Infraestructure.UnitTests</RootNamespace>
 
-    <AssemblyName>Chikisistema.Infraestructure.UnitTests</AssemblyName>
+    <AssemblyName>FitoReport.Infraestructure.UnitTests</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Chikisistema.Infraestructure\Infraestructure.csproj" />
+    <ProjectReference Include="..\FitoReport.Infraestructure\Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>
