@@ -22,9 +22,9 @@ namespace Chikisistema.WebUi.FunctionalTests.Common
             return result;
         }
 
-        public static void InitializeDbForTests(ChikisistemaDbContext context)
+        public static void InitializeDbForTests(FitoReportDbContext context)
         {
-            ChikisistemaDbInitializer.Initialize(context);
+            FitoReportDbInitializer.Initialize(context);
         }
     }
 }

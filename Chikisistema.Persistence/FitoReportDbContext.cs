@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace Chikisistema.Persistence
 {
-    public partial class ChikisistemaDbContext : DbContext, IFitoReportDbContext
+    public partial class FitoReportDbContext : DbContext, IFitoReportDbContext
     {
         private readonly IDateTime time;
-        public ChikisistemaDbContext(DbContextOptions<ChikisistemaDbContext> options, IDateTime time)
+        public FitoReportDbContext(DbContextOptions<FitoReportDbContext> options, IDateTime time)
             : base(options)
         {
             this.time = time;
         }
 
-        public ChikisistemaDbContext(DbContextOptions<ChikisistemaDbContext> options)
+        public FitoReportDbContext(DbContextOptions<FitoReportDbContext> options)
             : base(options)
         {
 
@@ -70,7 +70,7 @@ namespace Chikisistema.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ChikisistemaDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(FitoReportDbContext).Assembly);
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {

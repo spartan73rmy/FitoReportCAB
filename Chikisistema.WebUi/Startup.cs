@@ -62,7 +62,7 @@ namespace Chikisistema.WebUi
                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IFitoReportDbContext>());
 
             services.AddHealthChecks()
-                .AddDbContextCheck<ChikisistemaDbContext>();
+                .AddDbContextCheck<FitoReportDbContext>();
 
             services.AddRazorPages();
 

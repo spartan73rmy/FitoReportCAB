@@ -47,10 +47,10 @@ namespace Chikisistema.WebUi
 
                 try
                 {
-                    var chikisitemaContext = services.GetRequiredService<ChikisistemaDbContext>();
+                    var chikisitemaContext = services.GetRequiredService<FitoReportDbContext>();
                     chikisitemaContext.Database.Migrate();
 
-                    ChikisistemaDbInitializer.Initialize(chikisitemaContext);
+                    FitoReportDbInitializer.Initialize(chikisitemaContext);
                 }
                 catch (Exception ex)
                 {

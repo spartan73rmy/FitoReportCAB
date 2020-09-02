@@ -8,13 +8,13 @@ namespace Chikisistema.Application.Tests.Infraestructure
 {
     public class ChikisistemaDbContextFactory
     {
-        public static ChikisistemaDbContext Create()
+        public static FitoReportDbContext Create()
         {
-            var options = new DbContextOptionsBuilder<ChikisistemaDbContext>()
+            var options = new DbContextOptionsBuilder<FitoReportDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
-            var context = new ChikisistemaDbContext(options, new MachineDateTime());
+            var context = new FitoReportDbContext(options, new MachineDateTime());
 
             context.Database.EnsureCreated();
             context.Usuario.AddRange(new[] {
@@ -26,7 +26,7 @@ namespace Chikisistema.Application.Tests.Infraestructure
             return context;
         }
 
-        public static void Destroy(ChikisistemaDbContext context)
+        public static void Destroy(FitoReportDbContext context)
         {
             context.Database.EnsureDeleted();
 

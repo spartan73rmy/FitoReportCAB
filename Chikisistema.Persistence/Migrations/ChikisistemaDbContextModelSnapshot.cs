@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Chikisistema.Persistence.Migrations
 {
-    [DbContext(typeof(ChikisistemaDbContext))]
+    [DbContext(typeof(FitoReportDbContext))]
     partial class ChikisistemaDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

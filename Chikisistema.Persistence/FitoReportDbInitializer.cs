@@ -4,15 +4,15 @@ using System.Linq;
 
 namespace Chikisistema.Persistence
 {
-    public class ChikisistemaDbInitializer
+    public class FitoReportDbInitializer
     {
-        public static void Initialize(ChikisistemaDbContext context)
+        public static void Initialize(FitoReportDbContext context)
         {
-            var initializer = new ChikisistemaDbInitializer();
+            var initializer = new FitoReportDbInitializer();
             initializer.SeedEverything(context);
         }
 
-        public void SeedEverything(ChikisistemaDbContext context)
+        public void SeedEverything(FitoReportDbContext context)
         {
             context.Database.EnsureCreated();
 
@@ -25,7 +25,7 @@ namespace Chikisistema.Persistence
 
         }
 
-        private void SeedArchivoUsuario(ChikisistemaDbContext context)
+        private void SeedArchivoUsuario(FitoReportDbContext context)
         {
             var materialApoyo = new ArchivoUsuario[]
             {
@@ -70,7 +70,7 @@ namespace Chikisistema.Persistence
             }
         }
 
-        private void SeedUsuario(ChikisistemaDbContext db)
+        private void SeedUsuario(FitoReportDbContext db)
         {
             var usuarios = new Usuario[]
             {

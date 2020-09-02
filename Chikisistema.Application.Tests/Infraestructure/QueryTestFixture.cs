@@ -7,7 +7,7 @@ namespace Chikisistema.Application.Tests.Infraestructure
 {
     public class QueryTestFixture : IDisposable
     {
-        public ChikisistemaDbContext Context { get; private set; }
+        public FitoReportDbContext Context { get; private set; }
 
         public QueryTestFixture()
         {

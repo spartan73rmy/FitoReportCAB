@@ -5,7 +5,7 @@ namespace Chikisistema.Application.Tests
 {
     public class TestBase : IDisposable
     {
-        protected readonly Persistence.ChikisistemaDbContext context;
+        protected readonly Persistence.FitoReportDbContext context;
         public TestBase()
         {
             context = ChikisistemaDbContextFactory.Create();

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Chikisistema.Persistence.Migrations
 {
-    [DbContext(typeof(ChikisistemaDbContext))]
+    [DbContext(typeof(FitoReportDbContext))]
     [Migration("20200826011051_Initial")]
     partial class Initial
     {

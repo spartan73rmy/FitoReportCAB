@@ -13,15 +13,15 @@ namespace Chikisistema.Persistence
             // Add DbContext using SQL Server Provider
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                services.AddDbContext<ChikisistemaDbContext>(options =>
+                services.AddDbContext<FitoReportDbContext>(options =>
                     options.UseSqlServer(configuration.GetConnectionString("FitoReportDatabase")));
             }
             else
             {
-                services.AddDbContext<ChikisistemaDbContext>(options =>
+                services.AddDbContext<FitoReportDbContext>(options =>
                     options.UseNpgsql(configuration.GetConnectionString("FitoReportDatabaseLinux")));
             }
-            services.AddScoped<IFitoReportDbContext>(provider => provider.GetService<ChikisistemaDbContext>());
+            services.AddScoped<IFitoReportDbContext>(provider => provider.GetService<FitoReportDbContext>());
             return services;
         }
     }

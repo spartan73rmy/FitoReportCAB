@@ -37,7 +37,7 @@ namespace Chikisistema.WebUi.FunctionalTests.Common
                     var connection = new SqliteConnection("DataSource=:memory:");
                     connection.Open();
 
-                    services.AddDbContext<ChikisistemaDbContext>(options =>
+                    services.AddDbContext<FitoReportDbContext>(options =>
                     {
                         options.UseSqlite(connection);
                     });
@@ -46,14 +46,14 @@ namespace Chikisistema.WebUi.FunctionalTests.Common
                 {
                     // Add a database context using an in-memory 
                     // database for testing.
-                    services.AddDbContext<ChikisistemaDbContext>(options =>
+                    services.AddDbContext<FitoReportDbContext>(options =>
                     {
 
                         options.UseInMemoryDatabase("InMemoryDbForTesting");
                         options.UseInternalServiceProvider(serviceProvider);
                     });
                 }
-                services.AddScoped<IFitoReportDbContext>(provider => provider.GetService<ChikisistemaDbContext>());
+                services.AddScoped<IFitoReportDbContext>(provider => provider.GetService<FitoReportDbContext>());
 
                 // Build the service provider.
                 var sp = services.BuildServiceProvider();
@@ -67,7 +67,7 @@ namespace Chikisistema.WebUi.FunctionalTests.Common
                     var logger = scopedServices
                         .GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
 
-                    var concreteContext = (ChikisistemaDbContext)context;
+                    var concreteContext = (FitoReportDbContext)context;
 
                     // Ensure the database is created.
                     concreteContext.Database.EnsureCreated();

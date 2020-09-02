@@ -11,7 +11,7 @@ namespace Chikisistema.Application.Tests.Usuarios.Queries
     [Collection("QueryCollection")]
     public class GetUsuarioDetailQueryHandlerTests
     {
-        private readonly ChikisistemaDbContext _context;
+        private readonly FitoReportDbContext _context;
 
         public GetUsuarioDetailQueryHandlerTests(QueryTestFixture fixture)
         {
