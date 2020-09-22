@@ -7,20 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitoReport.Application.UseCases.Reportes.Queries.GetPlagas
+namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarProducto
 {
-    public class GetPlagasAuth : IAuthenticatedRequest<GetPlagasQuery, GetPlagasResponse>
+    public class AgregarProductoAuth : IAdminRequest<AgregarProductoCommand, AgregarProductoResponse>
     {
         private readonly IFitoReportDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public GetPlagasAuth(IFitoReportDbContext db, IUserAccessor currentUser)
+        public AgregarProductoAuth(IFitoReportDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;
         }
         
-        public Task Validate(GetPlagasQuery request, ValidationResult validationResult)
+        public Task Validate(AgregarProductoCommand request, ValidationResult validationResult)
         {
             return Task.CompletedTask;
         }

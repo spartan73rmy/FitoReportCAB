@@ -53,7 +53,8 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
                     }).ToList(),
                     Productos = request.Productos.ToList(),
 
-                }).FirstOrDefaultAsync();
+                }).FirstOrDefaultAsync(cancellationToken);
+
             return entity;
         }
     }

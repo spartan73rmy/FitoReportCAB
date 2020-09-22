@@ -22,7 +22,75 @@ namespace FitoReport.Persistence
             }
             SeedUsuario(context);
             SeedArchivoUsuario(context);
+            SeedPlaga(context);
+            SeedEnfermedad(context);
 
+        }
+
+        private void SeedEnfermedad(FitoReportDbContext context)
+        {
+            var enfermedadades = new Enfermedad[]
+            {
+                new Enfermedad
+                {
+                    Nombre="Mancha negra (Cercospora purpura) "
+                },
+                new Enfermedad
+                {
+                    Nombre="Anillamiento del Pedúnculo"
+                },
+                new Enfermedad
+                {
+                    Nombre="Roña (Sphaceloma persea)",
+                },
+                new Enfermedad
+                {
+                    Nombre="Antracnosis (colletotrichum gloesporoides)",
+                },
+                new Enfermedad
+                {
+                    Nombre="Phytophthora cinnamomi",
+                },
+            };
+
+            foreach (var enfermedad in enfermedadades)
+            {
+                context.Enfermedad.Add(enfermedad);
+                context.SaveChanges();
+            }
+        }
+
+        private void SeedPlaga(FitoReportDbContext context)
+        {
+            var plagas = new Plaga[]
+            {
+                new Plaga
+                {
+                    Nombre="Agallador del Aguacatero (Trioza anceps Tuthill)."
+                },
+                new Plaga
+                {
+                    Nombre="Barrenador de Ramas (Copturus aguacatae)"
+                },
+                new Plaga
+                {
+                    Nombre="Barrenador pequeño del hueso (Conotrachelus perseae)",
+                },
+                new Plaga
+                {
+                    Nombre="Araña roja",
+                },
+                new Plaga
+                {
+                    Nombre="Trips",
+                },
+            };
+
+            foreach (var plaga in plagas)
+            {
+                context.Plaga.Add(plaga);
+                context.SaveChanges();
+            }
         }
 
         private void SeedArchivoUsuario(FitoReportDbContext context)

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FitoReport.Application.UseCases.Reportes.Queries.GetPlagas
 {
-    public class GetPlagasQuery : IRequest<IEnumerable<GetPlagasResponse>>
+    public class GetPlagasQuery : IRequest<GetPlagasResponse>
     {
         
     }

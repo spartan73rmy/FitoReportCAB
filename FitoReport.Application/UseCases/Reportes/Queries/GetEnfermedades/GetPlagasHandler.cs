@@ -9,26 +9,26 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FitoReport.Application.UseCases.Reportes.Queries.GetPlagas
+namespace FitoReport.Application.UseCases.Reportes.Queries.GetEnfermedades
 {
-    public class GetPlagasHandler : IRequestHandler<GetPlagasQuery, GetPlagasResponse>
+    public class GetEnfermedadesHandler : IRequestHandler<GetEnfermedadesQuery, GetEnfermedadesResponse>
     {
         private readonly IFitoReportDbContext db;
 
-        public GetPlagasHandler(IFitoReportDbContext db)
+        public GetEnfermedadesHandler(IFitoReportDbContext db)
         {
             this.db = db;
         }
 
-        public async Task<GetPlagasResponse> Handle(GetPlagasQuery request, CancellationToken cancellationToken)
+        public async Task<GetEnfermedadesResponse> Handle(GetEnfermedadesQuery request, CancellationToken cancellationToken)
         {
-            var entity = await db.Plaga.Select(el => new PlagaLookupModel
+            var entity = await db.Enfermedad.Select(el => new EnfermedadLookupModel
             {
                 Id = el.Id,
                 Nombre = el.Nombre,
             }).ToListAsync(cancellationToken);   
             
-            return new GetPlagasResponse { Plagas = entity };
+            return new GetEnfermedadesResponse { Enfermedades = entity };
         }
     }
 }

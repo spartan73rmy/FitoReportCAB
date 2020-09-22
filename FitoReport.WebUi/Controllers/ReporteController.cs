@@ -1,6 +1,8 @@
 ﻿using FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte;
+using FitoReport.Application.UseCases.Reportes.Queries.GetPlagas;
 using FitoReport.Application.UseCases.Reportes.Queries.GetReporte;
 using FitoReport.WebUi.Controllers;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

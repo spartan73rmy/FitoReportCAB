@@ -7,20 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitoReport.Application.UseCases.Reportes.Queries.GetPlagas
+namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarEnfermedad
 {
-    public class GetPlagasAuth : IAuthenticatedRequest<GetPlagasQuery, GetPlagasResponse>
+    public class AgregarEnfermedadAuth : IAdminRequest<AgregarEnfermedadCommand, AgregarEnfermedadResponse>
     {
         private readonly IFitoReportDbContext db;
         private readonly IUserAccessor currentUser;
 
-        public GetPlagasAuth(IFitoReportDbContext db, IUserAccessor currentUser)
+        public AgregarEnfermedadAuth(IFitoReportDbContext db, IUserAccessor currentUser)
         {
             this.db = db;
             this.currentUser = currentUser;
         }
         
-        public Task Validate(GetPlagasQuery request, ValidationResult validationResult)
+        public Task Validate(AgregarEnfermedadCommand request, ValidationResult validationResult)
         {
             return Task.CompletedTask;
         }
