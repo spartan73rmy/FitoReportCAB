@@ -120,8 +120,8 @@ namespace FitoReport.Persistence.Migrations
                     b.Property<int>("Cantidad")
                         .HasColumnType("int");
 
-                    b.Property<int>("Concentracion")
-                        .HasColumnType("int");
+                    b.Property<string>("Concentracion")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");

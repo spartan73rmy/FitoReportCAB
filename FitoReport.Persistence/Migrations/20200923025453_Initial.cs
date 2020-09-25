@@ -121,7 +121,7 @@ namespace FitoReport.Persistence.Migrations
                     Cantidad = table.Column<int>(nullable: false),
                     NombreProducto = table.Column<string>(nullable: false),
                     IngredienteActivo = table.Column<string>(nullable: false),
-                    Concentracion = table.Column<int>(nullable: false),
+                    Concentracion = table.Column<string>(nullable: true),
                     IntervaloSeguridad = table.Column<string>(nullable: false)
                 },
                 constraints: table =>

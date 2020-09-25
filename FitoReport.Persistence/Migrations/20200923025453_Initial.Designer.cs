@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitoReport.Persistence.Migrations
 {
     [DbContext(typeof(FitoReportDbContext))]
-    [Migration("20200912133842_Initial")]
+    [Migration("20200923025453_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -122,8 +122,8 @@ namespace FitoReport.Persistence.Migrations
                     b.Property<int>("Cantidad")
                         .HasColumnType("int");
 
-                    b.Property<int>("Concentracion")
-                        .HasColumnType("int");
+                    b.Property<string>("Concentracion")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
