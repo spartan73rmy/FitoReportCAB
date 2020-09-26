@@ -24,7 +24,7 @@ namespace FitoReport.Persistence
             SeedArchivoUsuario(context);
             SeedPlaga(context);
             SeedEnfermedad(context);
-
+            SeedEtapaFenologica(context);
         }
 
         private void SeedEnfermedad(FitoReportDbContext context)
@@ -56,6 +56,35 @@ namespace FitoReport.Persistence
             foreach (var enfermedad in enfermedadades)
             {
                 context.Enfermedad.Add(enfermedad);
+                context.SaveChanges();
+            }
+        }
+
+        private void SeedEtapaFenologica(FitoReportDbContext context)
+        {
+            var etapaFenologica = new EtapaFenologica[]
+            {
+                new EtapaFenologica
+                {
+                    Nombre="Etapa 1 "
+                },     
+                new EtapaFenologica
+                {
+                    Nombre="Etapa 2 "
+                },     
+                new EtapaFenologica
+                {
+                    Nombre="Etapa 3 "
+                },    
+                new EtapaFenologica
+                {
+                    Nombre="Etapa 4 "
+                },
+            };
+
+            foreach (var etapa in etapaFenologica)
+            {
+                context.EtapaFenologica.Add(etapa);
                 context.SaveChanges();
             }
         }

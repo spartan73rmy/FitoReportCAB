@@ -12,7 +12,7 @@ namespace FitoReport.Persistence.Configurations
             builder.HasIndex(el => el.IdReporte);
             builder.HasIndex(el => el.IdEnfermedad);
 
-            builder.HasKey(c => new { c.IdReporte, c.IdEnfermedad});
+            //builder.HasKey(c => new { c.IdReporte, c.IdEnfermedad});
 
             builder.HasOne(el => el.Reporte)
                 .WithMany(el => el.ReporteEnfermedad)

@@ -15,12 +15,31 @@ namespace FitoReport.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Created = table.Column<DateTime>(nullable: false),
                     Modified = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedDate = table.Column<DateTime>(nullable: true),
                     IdReport = table.Column<int>(nullable: false),
                     Nombre = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Enfermedad", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EtapaFenologica",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Created = table.Column<DateTime>(nullable: false),
+                    Modified = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedDate = table.Column<DateTime>(nullable: true),
+                    Nombre = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EtapaFenologica", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -31,6 +50,8 @@ namespace FitoReport.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Created = table.Column<DateTime>(nullable: false),
                     Modified = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedDate = table.Column<DateTime>(nullable: true),
                     IdReport = table.Column<int>(nullable: false),
                     Nombre = table.Column<string>(nullable: false)
                 },
@@ -48,10 +69,9 @@ namespace FitoReport.Persistence.Migrations
                     Created = table.Column<DateTime>(nullable: false),
                     Modified = table.Column<DateTime>(nullable: true),
                     Lugar = table.Column<string>(nullable: false),
-                    FechaAlta = table.Column<DateTime>(nullable: false),
                     Productor = table.Column<string>(nullable: false),
-                    CoordX = table.Column<double>(nullable: false),
-                    CoordY = table.Column<double>(nullable: false),
+                    Latitude = table.Column<double>(nullable: false),
+                    Longitud = table.Column<double>(nullable: false),
                     Ubicacion = table.Column<string>(nullable: false),
                     Predio = table.Column<string>(nullable: false),
                     Cultivo = table.Column<string>(nullable: false),
@@ -139,15 +159,16 @@ namespace FitoReport.Persistence.Migrations
                 name: "ReporteEnfermedad",
                 columns: table => new
                 {
-                    IdReporte = table.Column<int>(nullable: false),
-                    IdEnfermedad = table.Column<int>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true)
+                    Modified = table.Column<DateTime>(nullable: true),
+                    IdReporte = table.Column<int>(nullable: false),
+                    IdEnfermedad = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReporteEnfermedad", x => new { x.IdReporte, x.IdEnfermedad });
+                    table.PrimaryKey("PK_ReporteEnfermedad", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ReporteEnfermedad_Enfermedad_IdEnfermedad",
                         column: x => x.IdEnfermedad,
@@ -166,15 +187,16 @@ namespace FitoReport.Persistence.Migrations
                 name: "ReportePlaga",
                 columns: table => new
                 {
-                    IdReporte = table.Column<int>(nullable: false),
-                    IdPlaga = table.Column<int>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Created = table.Column<DateTime>(nullable: false),
-                    Modified = table.Column<DateTime>(nullable: true)
+                    Modified = table.Column<DateTime>(nullable: true),
+                    IdReporte = table.Column<int>(nullable: false),
+                    IdPlaga = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReportePlaga", x => new { x.IdReporte, x.IdPlaga });
+                    table.PrimaryKey("PK_ReportePlaga", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ReportePlaga_Plaga_IdPlaga",
                         column: x => x.IdPlaga,
@@ -308,6 +330,9 @@ namespace FitoReport.Persistence.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ArchivoUsuario");
+
+            migrationBuilder.DropTable(
+                name: "EtapaFenologica");
 
             migrationBuilder.DropTable(
                 name: "Producto");

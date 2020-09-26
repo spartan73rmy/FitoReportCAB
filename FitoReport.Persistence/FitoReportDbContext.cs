@@ -33,6 +33,7 @@ namespace FitoReport.Persistence
         public DbSet<Plaga> Plaga { get; set; }
         public DbSet<Enfermedad> Enfermedad { get; set; }
         public DbSet<Producto> Producto { get; set; }
+        public DbSet<EtapaFenologica> EtapaFenologica { get; set; }
         public DbSet<ReporteEnfermedad> ReporteEnfermedad { get; set; }
         public DbSet<ReportePlaga> ReportePlaga { get; set; }
 

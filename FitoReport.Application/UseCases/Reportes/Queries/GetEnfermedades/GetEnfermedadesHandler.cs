@@ -22,11 +22,11 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetEnfermedades
 
         public async Task<GetEnfermedadesResponse> Handle(GetEnfermedadesQuery request, CancellationToken cancellationToken)
         {
-            var entity = await db.Enfermedad.Select(el => new EnfermedadLookupModel
+            var entity = await db.Enfermedad.Where(el=>!el.IsDeleted).Select(el => new EnfermedadLookupModel
             {
                 Id = el.Id,
                 Nombre = el.Nombre,
-            }).ToListAsync(cancellationToken);   
+            }).OrderBy(el=>el.Nombre).ToListAsync(cancellationToken);   
             
             return new GetEnfermedadesResponse { Enfermedades = entity };
         }

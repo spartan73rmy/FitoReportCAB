@@ -10,8 +10,8 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
         public string Lugar { get; set; }
         public DateTime FechaAlta { get; set; }
         public string Productor { get; set; }
-        public double CoordX { get; set; }
-        public double CoordY { get; set; }
+        public double Latitude { get; set; }
+        public double Longitud { get; set; }
         public string Ubicacion { get; set; }
         public string Predio { get; set; }
         public string Cultivo { get; set; }

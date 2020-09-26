@@ -31,10 +31,10 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
                 {
                     Id = request.Id,
                     Lugar = request.Lugar,
-                    FechaAlta = request.FechaAlta,
+                    FechaAlta = request.Created,
                     Productor = request.Productor,
-                    CoordX = request.CoordX,
-                    CoordY = request.CoordY,
+                    Latitude = request.Latitude,
+                    Longitud = request.Longitud,
                     Ubicacion = request.Ubicacion,
                     Predio = request.Predio,
                     Cultivo = request.Cultivo,

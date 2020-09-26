@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitoReport.Persistence.Migrations
 {
     [DbContext(typeof(FitoReportDbContext))]
-    [Migration("20200923025453_Initial")]
+    [Migration("20200926005624_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,8 +66,14 @@ namespace FitoReport.Persistence.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("IdReport")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
@@ -84,6 +90,35 @@ namespace FitoReport.Persistence.Migrations
                     b.ToTable("Enfermedad");
                 });
 
+            modelBuilder.Entity("FitoReport.Domain.Entities.EtapaFenologica", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .IsUnicode(true);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EtapaFenologica");
+                });
+
             modelBuilder.Entity("FitoReport.Domain.Entities.Plaga", b =>
                 {
                     b.Property<int>("Id")
@@ -94,8 +129,14 @@ namespace FitoReport.Persistence.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("IdReport")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
@@ -163,12 +204,6 @@ namespace FitoReport.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("CoordX")
-                        .HasColumnType("float");
-
-                    b.Property<double>("CoordY")
-                        .HasColumnType("float");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -179,11 +214,14 @@ namespace FitoReport.Persistence.Migrations
                     b.Property<string>("EtapaFenologica")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("FechaAlta")
-                        .HasColumnType("datetime2");
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
 
                     b.Property<int>("Litros")
                         .HasColumnType("int");
+
+                    b.Property<double>("Longitud")
+                        .HasColumnType("float");
 
                     b.Property<string>("Lugar")
                         .IsRequired()
@@ -220,22 +258,24 @@ namespace FitoReport.Persistence.Migrations
 
             modelBuilder.Entity("FitoReport.Domain.Entities.ReporteEnfermedad", b =>
                 {
-                    b.Property<int>("IdReporte")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdEnfermedad")
-                        .HasColumnType("int");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("IdEnfermedad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdReporte")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("IdReporte", "IdEnfermedad");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdEnfermedad");
 
@@ -246,22 +286,24 @@ namespace FitoReport.Persistence.Migrations
 
             modelBuilder.Entity("FitoReport.Domain.Entities.ReportePlaga", b =>
                 {
-                    b.Property<int>("IdReporte")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdPlaga")
-                        .HasColumnType("int");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("IdPlaga")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdReporte")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("IdReporte", "IdPlaga");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdPlaga");
 

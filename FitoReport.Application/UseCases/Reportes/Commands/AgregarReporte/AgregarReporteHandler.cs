@@ -32,8 +32,8 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                 {
                     Lugar = item.Lugar,
                     Productor = item.Productor,
-                    CoordX = item.CoordX,
-                    CoordY = item.CoordY,
+                    Latitude = item.Latitude,
+                    Longitud = item.Longitud,
                     Ubicacion = item.Ubicacion,
                     Predio = item.Predio,
                     Cultivo = item.Cultivo,

@@ -22,11 +22,11 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetPlagas
 
         public async Task<GetPlagasResponse> Handle(GetPlagasQuery request, CancellationToken cancellationToken)
         {
-            var entity = await db.Plaga.Select(el => new PlagaLookupModel
+            var entity = await db.Plaga.Where(el=>!el.IsDeleted).Select(el => new PlagaLookupModel
             {
                 Id = el.Id,
                 Nombre = el.Nombre,
-            }).ToListAsync(cancellationToken);   
+            }).OrderBy(el => el.Nombre).ToListAsync(cancellationToken);   
             
             return new GetPlagasResponse { Plagas = entity };
         }

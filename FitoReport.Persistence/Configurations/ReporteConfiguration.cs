@@ -10,16 +10,14 @@ namespace FitoReport.Persistence.Configurations
         {
             builder.HasKey(el => el.Id);
 
-            builder.Property(el => el.CoordX)
+            builder.Property(el => el.Latitude)
                 .IsRequired();
 
-            builder.Property(el => el.CoordY)
+            builder.Property(el => el.Longitud)
                 .IsRequired();
 
             builder.Property(el => el.Cultivo)
                 .IsRequired();
-
-            builder.Property(el => el.FechaAlta);
 
             builder.Property(el => el.Lugar)
                 .IsRequired()

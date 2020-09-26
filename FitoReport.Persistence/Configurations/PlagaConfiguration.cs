@@ -15,7 +15,6 @@ namespace FitoReport.Persistence.Configurations
             builder.Property(el => el.Nombre)
             .IsRequired()
             .IsUnicode(true);
-
         }
     }
 }
