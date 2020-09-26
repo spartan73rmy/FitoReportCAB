@@ -38,7 +38,7 @@ namespace FitoReport.Application.UseCases.Usuarios.Queries.GetUsuarioLogin
             {
                 if (!entity.Confirmado)
                 {
-                    throw new ForbiddenException("Email no confirmado");
+                    throw new ForbiddenException("La cuenta no ha sido aprobada por el administrador");
                 }
 
                 string randomToken = randomGenerator.SecureRandomString(32);
