@@ -1,4 +1,5 @@
 ﻿using FitoReport.Application.UseCases.Usuarios.Commands.AgregarImagenPerfil;
+using FitoReport.Application.UseCases.Usuarios.Commands.AproveUsuario;
 using FitoReport.Application.UseCases.Usuarios.Commands.DeleteUsuario;
 using FitoReport.Application.UseCases.Usuarios.Commands.ModificarDatosUsuario;
 using FitoReport.Application.UseCases.Usuarios.Commands.ModificarEmail;
@@ -29,6 +30,14 @@ namespace FitoReport.WebUi.Controllers
         public async Task<ActionResult<GetUsuarioDetailResponse>> Get(int id)
         {
             return Ok(await Mediator.Send(new GetUsuarioDetailQuery { IdUsuario = id }));
+        }
+
+        [HttpPut("{nombreUsuario}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<AproveUsuarioResponse>> AproveUser(string nombreUsuario)
+        {
+            return Ok(await Mediator.Send(new AproveUsuarioCommand { NombreUsuario = nombreUsuario}));
         }
 
         [HttpDelete("{nombreUsuario}")]

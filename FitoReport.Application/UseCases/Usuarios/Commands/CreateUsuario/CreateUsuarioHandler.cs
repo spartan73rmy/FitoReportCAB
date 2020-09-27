@@ -2,7 +2,9 @@
 using FitoReport.Application.Security;
 using FitoReport.Common;
 using FitoReport.Domain.Entities;
+using FitoReport.Domain.Enums;
 using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -32,7 +34,7 @@ namespace FitoReport.Application.UseCases.Usuarios.Commands.CreateUsuario
                 Email = request.Email,
                 NombreUsuario = request.NombreUsuario,
                 HashedPassword = pass,
-                TipoUsuario = request.TipoUsuario,
+                TipoUsuario = (TiposUsuario)request.TipoUsuario,
                 Confirmado = false,
                 FechaRegistro = dateTime.Now,
                 TokenConfirmacion = randomGenerator.Guid(),

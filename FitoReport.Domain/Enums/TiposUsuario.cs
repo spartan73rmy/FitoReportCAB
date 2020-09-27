@@ -2,7 +2,7 @@
 {
     public enum TiposUsuario
     {
-        Auth=0,
+        User=0,
         Admin = 1        
     }
 }

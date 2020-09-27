@@ -17,7 +17,7 @@ namespace FitoReport.Application.UseCases.Usuarios.Commands.CreateUsuario
             RuleFor(el => el.NombreUsuario).Matches("^[a-zA-Z]+(?:[_-]?[a-zA-Z0-9])*$").MaximumLength(20).NotEmpty();
             RuleFor(el => el.Email).EmailAddress().MaximumLength(50).NotEmpty();
             RuleFor(el => el.Password).NotNull().NotEmpty();
-            RuleFor(el => el.TipoUsuario).IsInEnum().NotEmpty();
+            RuleFor(el => el.TipoUsuario).GreaterThanOrEqualTo(0);
             RuleFor(el => el.Nombre).MaximumLength(20).NotEmpty();
             RuleFor(el => el.ApellidoPaterno).MaximumLength(20).NotEmpty();
             RuleFor(el => el.ApellidoMaterno).MaximumLength(20).NotEmpty();
