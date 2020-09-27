@@ -1,5 +1,6 @@
 ﻿using FitoReport.Domain.Entities;
 using System;
+using System.Collections;
 using System.Linq;
 
 namespace FitoReport.Persistence
@@ -25,6 +26,7 @@ namespace FitoReport.Persistence
             SeedPlaga(context);
             SeedEnfermedad(context);
             SeedEtapaFenologica(context);
+            SeedReporte(context);
         }
 
         private void SeedEnfermedad(FitoReportDbContext context)
@@ -67,15 +69,15 @@ namespace FitoReport.Persistence
                 new EtapaFenologica
                 {
                     Nombre="Etapa 1 "
-                },     
+                },
                 new EtapaFenologica
                 {
                     Nombre="Etapa 2 "
-                },     
+                },
                 new EtapaFenologica
                 {
                     Nombre="Etapa 3 "
-                },    
+                },
                 new EtapaFenologica
                 {
                     Nombre="Etapa 4 "
@@ -189,8 +191,8 @@ namespace FitoReport.Persistence
                 new Usuario
                 {
                     // Id = 2,
-                    Email = "alumno@asd.com",
-                    NombreUsuario = "Alumno",
+                    Email = "elvin@asd.com",
+                    NombreUsuario = "Elvin",
                     TipoUsuario = Domain.Enums.TiposUsuario.Admin,
                     HashedPassword = "sha1:64000:18:GDo9HgM4Ke1BNgkIkvG1wlejZAS0qlpG:BPesev8ueqRpNVojKKcJMwDD",
                     Confirmado = true,
@@ -198,14 +200,14 @@ namespace FitoReport.Persistence
                     Nombre = "Nombre",
                     ApellidoMaterno = "Apellido materno",
                     ApellidoPaterno = "Apellido paterno",
-                    NormalizedEmail = "ALUMNO@ASD.COM",
-                    NormalizedUserName = "ALUMNO"
+                    NormalizedEmail = "ELVIN@ASD.COM",
+                    NormalizedUserName = "ELVIN"
                 },
                 new Usuario
                 {
                     // Id = 3,
-                    Email = "Maestro@asd.com",
-                    NombreUsuario = "Maestro",
+                    Email = "termy@asd.com",
+                    NombreUsuario = "Termy",
                     TipoUsuario = Domain.Enums.TiposUsuario.Admin,
                     HashedPassword = "sha1:64000:18:GDo9HgM4Ke1BNgkIkvG1wlejZAS0qlpG:BPesev8ueqRpNVojKKcJMwDD",
                     Confirmado = true,
@@ -213,14 +215,14 @@ namespace FitoReport.Persistence
                     Nombre = "Nombre",
                     ApellidoMaterno = "Apellido materno",
                     ApellidoPaterno = "Apellido paterno",
-                    NormalizedEmail = "MAESTRO@ASD.COM",
-                    NormalizedUserName = "MAESTRO"
+                    NormalizedEmail = "TERMY@ASD.COM",
+                    NormalizedUserName = "TERMY"
                 },
                 new Usuario
                 {
                     // Id = 4,
-                    Email = "Maestro@asd2.com",
-                    NombreUsuario = "Maestro2",
+                    Email = "Hola@asd2.com",
+                    NombreUsuario = "HOLA",
                     TipoUsuario = Domain.Enums.TiposUsuario.Admin,
                     HashedPassword = "sha1:64000:18:GDo9HgM4Ke1BNgkIkvG1wlejZAS0qlpG:BPesev8ueqRpNVojKKcJMwDD",
                     Confirmado = false,
@@ -228,14 +230,14 @@ namespace FitoReport.Persistence
                     Nombre = "Nombre",
                     ApellidoMaterno = "Apellido materno",
                     ApellidoPaterno = "Apellido paterno",
-                    NormalizedEmail = "MAESTRO@ASD2.COM",
-                    NormalizedUserName = "MAESTRO2"
+                    NormalizedEmail = "HOLA@ASD2.COM",
+                    NormalizedUserName = "HOLA"
                 },
                 new Usuario
                 {
                     // Id = 5,
                     Email = "usuarioasasdadad@aasdassd2.com",
-                    NombreUsuario = "Alumno2",
+                    NombreUsuario = "Alguien23",
                     TipoUsuario = Domain.Enums.TiposUsuario.Admin,
                     HashedPassword = "sha1:64000:18:GDo9HgM4Ke1BNgkIkvG1wlejZAS0qlpG:BPesev8ueqRpNVojKKcJMwDD",
                     Confirmado = false,
@@ -244,13 +246,13 @@ namespace FitoReport.Persistence
                     ApellidoMaterno = "Apellido materno",
                     ApellidoPaterno = "Apellido paterno",
                     NormalizedEmail = "USUARIOASASDADAD@AASDASSD2.COM",
-                    NormalizedUserName = "ALUMNO2"
+                    NormalizedUserName = "ALGUIEN23"
                 },
                 new Usuario
                 {
                     // Id = 6,
-                    Email = "Maestro@asdwe2.com",
-                    NombreUsuario = "Maestro21231",
+                    Email = "SOME@asdwe2.com",
+                    NombreUsuario = "SOME123",
                     TipoUsuario = Domain.Enums.TiposUsuario.Admin,
                     HashedPassword = "sha1:64000:18:GDo9HgM4Ke1BNgkIkvG1wlejZAS0qlpG:BPesev8ueqRpNVojKKcJMwDD",
                     Confirmado = false,
@@ -258,14 +260,14 @@ namespace FitoReport.Persistence
                     Nombre = "Nombre",
                     ApellidoMaterno = "Apellido materno",
                     ApellidoPaterno = "Apellido paterno",
-                    NormalizedEmail = "MAESTRO@ASDWE2.COM",
-                    NormalizedUserName = "MAESTRO21231"
+                    NormalizedEmail = "SOME@ASDWE2.COM",
+                    NormalizedUserName = "SOME123"
                 },
                 new Usuario
                 {
                     // Id = 7,
-                    Email = "alumno3@alumno.com",
-                    NombreUsuario = "AlumnoTres",
+                    Email = "alberto@ASD.com",
+                    NombreUsuario = "Alberto",
                     TipoUsuario = Domain.Enums.TiposUsuario.Admin,
                     HashedPassword = "sha1:64000:18:GDo9HgM4Ke1BNgkIkvG1wlejZAS0qlpG:BPesev8ueqRpNVojKKcJMwDD",
                     Confirmado = true,
@@ -273,8 +275,8 @@ namespace FitoReport.Persistence
                     Nombre = "Jose",
                     ApellidoMaterno = "Morelos",
                     ApellidoPaterno = "Espinosa",
-                    NormalizedEmail = "ALUMNO3@ALUMNO.COM",
-                    NormalizedUserName = "ALUMNOTRES"
+                    NormalizedEmail = "ALBERTO@ASD.COM",
+                    NormalizedUserName = "ALBERTO"
                 },
             };
 
@@ -283,6 +285,173 @@ namespace FitoReport.Persistence
                 db.Usuario.Add(usuario);
                 db.SaveChanges();
             }
-        }      
+        }
+        private void SeedReporte(FitoReportDbContext context)
+        {
+            var reportes = new Reporte[]
+            {
+                new Reporte
+                {
+                    Lugar="Cotija",
+                    Productor="Miguel Hernandez Mendez",
+                    Latitude=123.0,
+                    Longitud=123.1,
+                    Ubicacion="Cotija",
+                    Predio="Joya del cupadero",
+                    Cultivo="Aguacate",
+                    EtapaFenologica="Floracion",
+                    Observaciones="La floracion aparecio adelantada al tiempo normal",
+                    Litros=100,
+                    Productos=new Producto[]
+                    {
+                        new Producto
+                        {
+                            NombreProducto="Producto 1",
+                            IdReport=1,
+                            IntervaloSeguridad="15 Dias",
+                            Cantidad=100,
+                            Concentracion="50%",
+                            IngredienteActivo="Ingrediente Activo 1",
+                        },
+                        new Producto
+                        {
+                            NombreProducto="Producto 2",
+                            IdReport=1,
+                            IntervaloSeguridad="20 Dias",
+                            Cantidad=50,
+                            Concentracion="100%",
+                            IngredienteActivo="Ingrediente Activo 2",
+                        },
+                        new Producto
+                        {
+                            NombreProducto="Producto 3",
+                            IdReport=1,
+                            IntervaloSeguridad="0 Dias",
+                            Cantidad=10,
+                            Concentracion="100%",
+                            IngredienteActivo="Ingrediente Activo 3",
+                        }
+                    },
+                    ReporteEnfermedad=new ReporteEnfermedad[]
+                    {
+                        new ReporteEnfermedad
+                        {
+                            IdEnfermedad=1,
+                            IdReporte=1
+                        },new ReporteEnfermedad
+                        {
+                            IdEnfermedad=2,
+                            IdReporte=1
+                        },new ReporteEnfermedad
+                        {
+                            IdEnfermedad=3,
+                            IdReporte=1
+                        }
+                    },
+                    ReportePlaga=new ReportePlaga[]
+                    {
+                        new ReportePlaga
+                        {
+                            IdPlaga=1,
+                            IdReporte=1
+                        },
+                        new ReportePlaga
+                        {
+                            IdPlaga=2,
+                            IdReporte=1
+                        },
+                        new ReportePlaga
+                        {
+                            IdPlaga=3,
+                            IdReporte=1
+                        },
+                    }
+                },
+                 new Reporte
+                {
+                    Lugar="Periban",
+                    Productor="Juan Manuel Espinoza Mendez",
+                    Latitude=154.0,
+                    Longitud=12.1,
+                    Ubicacion="Periban de ramos",
+                    Predio="Pedregal",
+                    Cultivo="Aguacate",
+                    EtapaFenologica="Floracion",
+                    Observaciones="La floracion aparecio adelantada al tiempo normal",
+                    Litros=500,
+                    Productos=new Producto[]
+                    {
+                        new Producto
+                        {
+                            NombreProducto="Producto 1.0",
+                            IdReport=2,
+                            IntervaloSeguridad="16 Dias",
+                            Cantidad=100,
+                            Concentracion="60%",
+                            IngredienteActivo="Ingrediente Activo 1.0",
+                        },
+                        new Producto
+                        {
+                            NombreProducto="Producto 2.0",
+                            IdReport=2,
+                            IntervaloSeguridad="26 Dias",
+                            Cantidad=50,
+                            Concentracion="90%",
+                            IngredienteActivo="Ingrediente Activo 2.0",
+                        },
+                        new Producto
+                        {
+                            NombreProducto="Producto 3.0",
+                            IdReport=2,
+                            IntervaloSeguridad="0 Dias",
+                            Cantidad=1,
+                            Concentracion="1%",
+                            IngredienteActivo="Ingrediente Activo 3.0",
+                        }
+                    },
+                    ReporteEnfermedad=new ReporteEnfermedad[]
+                    {
+                        new ReporteEnfermedad
+                        {
+                            IdEnfermedad=1,
+                            IdReporte=2
+                        },new ReporteEnfermedad
+                        {
+                            IdEnfermedad=2,
+                            IdReporte=2
+                        },new ReporteEnfermedad
+                        {
+                            IdEnfermedad=3,
+                            IdReporte=2
+                        }
+                    },
+                    ReportePlaga=new ReportePlaga[]
+                    {
+                        new ReportePlaga
+                        {
+                            IdPlaga=1,
+                            IdReporte=2
+                        },
+                        new ReportePlaga
+                        {
+                            IdPlaga=2,
+                            IdReporte=2
+                        },
+                        new ReportePlaga
+                        {
+                            IdPlaga=3,
+                            IdReporte=2
+                        },
+                    }
+                }
+            };
+
+            foreach (Reporte item in reportes)
+            {
+                context.Reporte.Add(item);
+                context.SaveChanges();
+            }
+        }
+
     }
 }
