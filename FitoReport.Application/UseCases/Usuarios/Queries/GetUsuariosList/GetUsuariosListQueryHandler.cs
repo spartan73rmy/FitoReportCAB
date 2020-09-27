@@ -23,8 +23,15 @@ namespace FitoReport.Application.UseCases.Usuarios.Queries.GetUsuariosList
                 .Select(el => new UsuarioLookupModel
                 {
                     Id = el.Id,
-                    Name = el.NombreUsuario
+                    NombreUsuario = el.NombreUsuario,
+                    Email=el.Email,
+                    Nombre=el.Nombre,
+                    ApellidoPaterno=el.ApellidoPaterno,
+                    ApellidoMaterno=el.ApellidoMaterno,
+                    TipoUsuario=el.TipoUsuario,
+                    Confirmado=el.Confirmado,
                 })
+                .OrderBy(el=>el.Confirmado)
                 .ToListAsync(cancellationToken);
 
             return new GetUsuariosListResponse { Usuarios = usuarios };
