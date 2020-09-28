@@ -7,7 +7,7 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
     {
         public AgregarReporteValidator()
         {
-            //RuleFor(el => el.Reportes).NotEmpty();
+            RuleFor(el => el.Reportes.Count).GreaterThan(0);
         }
     }
 }

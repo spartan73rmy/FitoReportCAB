@@ -1,6 +1,4 @@
 ﻿using FitoReport.Domain.Entities;
-using System;
-using System.Collections;
 using System.Linq;
 
 namespace FitoReport.Persistence
@@ -68,19 +66,23 @@ namespace FitoReport.Persistence
             {
                 new EtapaFenologica
                 {
-                    Nombre="Etapa 1 "
+                    Nombre="Floracion"
                 },
                 new EtapaFenologica
                 {
-                    Nombre="Etapa 2 "
+                    Nombre="Amarre"
                 },
                 new EtapaFenologica
                 {
-                    Nombre="Etapa 3 "
+                    Nombre="Desarrollo vegetativo"
                 },
                 new EtapaFenologica
                 {
-                    Nombre="Etapa 4 "
+                    Nombre="Llenado de fruto"
+                },
+                new EtapaFenologica
+                {
+                    Nombre="Yema inchada"
                 },
             };
 
