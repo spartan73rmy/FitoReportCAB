@@ -16,6 +16,7 @@ namespace FitoReport.Application.Interfaces
         DbSet<Plaga> Plaga { get; set; }
         DbSet<Enfermedad> Enfermedad { get; set; }
         DbSet<Producto> Producto { get; set; }
+        DbSet<EtapaFenologica> EtapaFenologica { get; set; }
         DbSet<ReporteEnfermedad> ReporteEnfermedad { get; set; }
         DbSet<ReportePlaga> ReportePlaga { get; set; }
 
