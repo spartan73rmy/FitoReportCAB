@@ -29,9 +29,9 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
                 .Where(m => m.Id == query.IdReporte)
                 .Select(request => new GetReporteResponse
                 {
-                    Id = request.Id,
+                    IdReport = request.Id,
                     Lugar = request.Lugar,
-                    FechaAlta = request.Created,
+                    Created = request.Created,
                     Productor = request.Productor,
                     Latitude = request.Latitude,
                     Longitud = request.Longitud,
@@ -51,8 +51,14 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
                         Id = el.Plaga.Id,
                         Nombre = el.Plaga.Nombre,
                     }).ToList(),
-                    Productos = request.Productos.ToList(),
-
+                    Productos = request.Productos.Select(el=>new ProductoDTO
+                    {
+                        Nombre=el.NombreProducto,
+                        Cantidad=el.Cantidad,
+                        Concentracion=el.Concentracion,
+                        IngredienteActivo=el.IngredienteActivo,
+                        IntervaloSeguridad=el.IntervaloSeguridad
+                    }).ToList(),
                 }).FirstOrDefaultAsync(cancellationToken);
 
             return entity;

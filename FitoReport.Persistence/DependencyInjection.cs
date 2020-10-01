@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.InteropServices;
 
 namespace FitoReport.Persistence
+
 {
     public static class DependencyInjection
     {

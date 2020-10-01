@@ -19,12 +19,12 @@ namespace FitoReportCab.WebUi.Controllers
             return Ok(await Mediator.Send(command));
         }
 
-        [HttpGet("{idReporte}")]
+        [HttpGet("{idReport}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<GetReporteResponse>> Get([FromBody] GetReporteQuery command)
+        public async Task<ActionResult<GetReporteResponse>> Get(int idReport)
         {
-            return Ok(await Mediator.Send(command));
+            return Ok(await Mediator.Send(new GetReporteQuery{ IdReporte=idReport}));
         }
 
         [HttpGet]
