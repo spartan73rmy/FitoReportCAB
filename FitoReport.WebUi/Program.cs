@@ -33,7 +33,7 @@ namespace FitoReport.WebUi
                     opts.PropertyNames.Add(nameof(CreateUsuarioCommand.Password));
                     opts.PropertyNames.Add(nameof(ModificarPasswordCommand.PasswordActual));
                     opts.PropertyNames.Add(nameof(ModificarPasswordCommand.PasswordNuevo));
-                    // opts.PropertyNames.Add(nameof(RefreshCredentialsCommand.RefreshToken));
+                    opts.PropertyNames.Add(nameof(RefreshCredentialsCommand.RefreshToken));
                     opts.PropertyNames.Add(nameof(RefreshCredentialsCommand.Token));
                     opts.Mask = "******";
                 })
@@ -48,7 +48,7 @@ namespace FitoReport.WebUi
                 try
                 {
                     var chikisitemaContext = services.GetRequiredService<FitoReportDbContext>();
-                    chikisitemaContext.Database.Migrate();
+                    chikisitemaContext.Database.Migrate(); 
 
                     FitoReportDbInitializer.Initialize(chikisitemaContext);
                 }

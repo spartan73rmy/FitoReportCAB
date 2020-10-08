@@ -1,7 +1,10 @@
+using FitoReport.Application.Exceptions;
 using FitoReport.Application.Interfaces;
 using FitoReport.Common;
+using FitoReport.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -45,12 +48,12 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
                     {
                         Id = el.Enfermedad.Id,
                         Nombre = el.Enfermedad.Nombre,
-                    }).ToList(),
+                    }).ToList() ?? new List<EnfermedadDTO>(),
                     Plagas = request.ReportePlaga.Where(el => el.IdReporte == query.IdReporte).Select(el => new PlagaDTO
                     {
                         Id = el.Plaga.Id,
                         Nombre = el.Plaga.Nombre,
-                    }).ToList(),
+                    }).ToList() ?? new List<PlagaDTO>(),
                     Productos = request.Productos.Select(el=>new ProductoDTO
                     {
                         Nombre=el.NombreProducto,
@@ -58,7 +61,7 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
                         Concentracion=el.Concentracion,
                         IngredienteActivo=el.IngredienteActivo,
                         IntervaloSeguridad=el.IntervaloSeguridad
-                    }).ToList(),
+                    }).ToList()??new List<ProductoDTO>(),
                 }).FirstOrDefaultAsync(cancellationToken);
 
             return entity;

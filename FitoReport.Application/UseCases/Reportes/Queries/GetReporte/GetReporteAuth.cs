@@ -1,9 +1,5 @@
-using FitoReport.Application.Exceptions;
 using FitoReport.Application.Interfaces;
 using FitoReport.Application.Security;
-using FitoReport.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
