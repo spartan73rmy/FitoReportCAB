@@ -15,15 +15,26 @@ namespace FitoReport.Persistence.Configurations
 
             builder.HasIndex(el => el.IdReport);
 
+            builder.Property(el => el.NombreProducto)
+             .IsRequired()
+             .IsUnicode(true);
+
+            builder.Property(el => el.Unidad)
+             .IsRequired()
+             .IsUnicode(true);
+
+            builder.Property(el => el.Cantidad)
+             .IsRequired();
+
+            builder.Property(el => el.Concentracion)
+            .IsRequired()
+            .IsUnicode(true);
+
             builder.Property(el => el.IngredienteActivo)
             .IsRequired()
             .IsUnicode(true);
 
             builder.Property(el => el.IntervaloSeguridad)
-            .IsRequired()
-            .IsUnicode(true);
-
-            builder.Property(el => el.NombreProducto)
             .IsRequired()
             .IsUnicode(true);
 

@@ -295,7 +295,7 @@ namespace FitoReport.Persistence
                 new Reporte
                 {
                     Lugar="Cotija",
-                    Productor="Miguel Hernandez Mendez",
+                    Productor="Miguel Hernandez Mendez",                    
                     Latitude=123.0,
                     Longitud=123.1,
                     Ubicacion="Cotija",
@@ -312,6 +312,7 @@ namespace FitoReport.Persistence
                             IdReport=1,
                             IntervaloSeguridad="15 Dias",
                             Cantidad=100,
+                            Unidad="Kg",
                             Concentracion="50%",
                             IngredienteActivo="Ingrediente Activo 1",
                         },
@@ -321,6 +322,7 @@ namespace FitoReport.Persistence
                             IdReport=1,
                             IntervaloSeguridad="20 Dias",
                             Cantidad=50,
+                            Unidad="Kg",
                             Concentracion="100%",
                             IngredienteActivo="Ingrediente Activo 2",
                         },
@@ -330,6 +332,7 @@ namespace FitoReport.Persistence
                             IdReport=1,
                             IntervaloSeguridad="0 Dias",
                             Cantidad=10,
+                            Unidad="Kg",
                             Concentracion="100%",
                             IngredienteActivo="Ingrediente Activo 3",
                         }
@@ -389,6 +392,7 @@ namespace FitoReport.Persistence
                             IdReport=2,
                             IntervaloSeguridad="16 Dias",
                             Cantidad=100,
+                            Unidad="Kg",
                             Concentracion="60%",
                             IngredienteActivo="Ingrediente Activo 1.0",
                         },
@@ -398,6 +402,7 @@ namespace FitoReport.Persistence
                             IdReport=2,
                             IntervaloSeguridad="26 Dias",
                             Cantidad=50,
+                            Unidad="Kg",
                             Concentracion="90%",
                             IngredienteActivo="Ingrediente Activo 2.0",
                         },
@@ -407,6 +412,7 @@ namespace FitoReport.Persistence
                             IdReport=2,
                             IntervaloSeguridad="0 Dias",
                             Cantidad=1,
+                            Unidad="L",
                             Concentracion="1%",
                             IngredienteActivo="Ingrediente Activo 3.0",
                         }

@@ -21,7 +21,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Cuenta
             var command = new CreateUsuarioCommand
             {
                 Email = "asd2zc@asd.com",
-                TipoUsuario = FitoReport.Domain.Enums.TiposUsuario.Admin,
+                TipoUsuario = (int)FitoReport.Domain.Enums.TiposUsuario.Admin,
                 NombreUsuario = "admin2987",
                 Password = "123",
                 Nombre = "Nombre",

@@ -158,11 +158,13 @@ namespace FitoReport.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
+                    b.Property<double>("Cantidad")
+                        .HasColumnType("float");
 
                     b.Property<string>("Concentracion")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .IsUnicode(true);
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
@@ -184,6 +186,11 @@ namespace FitoReport.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("NombreProducto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .IsUnicode(true);
+
+                    b.Property<string>("Unidad")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .IsUnicode(true);

@@ -19,7 +19,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Customers
             var command = new CreateUsuarioCommand
             {
                 Email = "asd2@asd.com",
-                TipoUsuario = FitoReport.Domain.Enums.TiposUsuario.Admin,
+                TipoUsuario = (int)FitoReport.Domain.Enums.TiposUsuario.Admin,
                 NombreUsuario = "Admin2",
                 Password = "123",
                 Nombre = "Nombre",
@@ -48,7 +48,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Customers
             var command = new CreateUsuarioCommand
             {
                 Email = "asd2@asd.com",
-                TipoUsuario = FitoReport.Domain.Enums.TiposUsuario.Admin,
+                TipoUsuario = (int)FitoReport.Domain.Enums.TiposUsuario.Admin,
                 NombreUsuario = "Admin",
                 Password = "123",
                 Nombre = "Nombre",
@@ -69,7 +69,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Customers
             var command = new CreateUsuarioCommand
             {
                 Email = "asd@asd.com",
-                TipoUsuario = FitoReport.Domain.Enums.TiposUsuario.Admin,
+                TipoUsuario = (int)FitoReport.Domain.Enums.TiposUsuario.Admin,
                 NombreUsuario = "Admin2",
                 Password = "123",
                 Nombre = "Nombre",
@@ -95,7 +95,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Customers
             var command = new CreateUsuarioCommand
             {
                 Email = "asdasd@zasdadasd.qweasd",
-                TipoUsuario = FitoReport.Domain.Enums.TiposUsuario.Admin,
+                TipoUsuario = (int)FitoReport.Domain.Enums.TiposUsuario.Admin,
                 NombreUsuario = username,
                 Password = "123",
                 Nombre = "Nombre",

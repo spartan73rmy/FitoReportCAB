@@ -36,7 +36,7 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
 
         public class ProductoDTO
         {
-            public int Cantidad { get; set; }
+            public double Cantidad { get; set; }
             public string Nombre { get; set; }
             public string IngredienteActivo { get; set; }
             public string Concentracion { get; set; }

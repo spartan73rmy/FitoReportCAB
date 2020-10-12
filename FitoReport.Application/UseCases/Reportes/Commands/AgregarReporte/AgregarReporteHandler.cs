@@ -49,6 +49,7 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                     {
                         IdReport = entity.Id,
                         Cantidad = p.Cantidad,
+                        Unidad=p.Unidad,
                         Concentracion = p.Concentracion,
                         IngredienteActivo = p.IngredienteActivo,
                         IntervaloSeguridad = p.IntervaloSeguridad,

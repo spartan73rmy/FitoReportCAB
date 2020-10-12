@@ -138,10 +138,11 @@ namespace FitoReport.Persistence.Migrations
                     Created = table.Column<DateTime>(nullable: false),
                     Modified = table.Column<DateTime>(nullable: true),
                     IdReport = table.Column<int>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false),
+                    Unidad = table.Column<string>(nullable: false),
+                    Cantidad = table.Column<double>(nullable: false),
                     NombreProducto = table.Column<string>(nullable: false),
                     IngredienteActivo = table.Column<string>(nullable: false),
-                    Concentracion = table.Column<string>(nullable: true),
+                    Concentracion = table.Column<string>(nullable: false),
                     IntervaloSeguridad = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
