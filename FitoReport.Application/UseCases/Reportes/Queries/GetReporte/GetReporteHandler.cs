@@ -15,14 +15,10 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
     public class GetReporteHandler : IRequestHandler<GetReporteQuery, GetReporteResponse>
     {
         private readonly IFitoReportDbContext db;
-        private readonly IDateTime dateTime;
-        private readonly IUserAccessor currentUser;
 
-        public GetReporteHandler(IFitoReportDbContext db, IDateTime dateTime, IUserAccessor currentUser)
+        public GetReporteHandler(IFitoReportDbContext db)
         {
             this.db = db;
-            this.dateTime = dateTime;
-            this.currentUser = currentUser;
         }
 
         public async Task<GetReporteResponse> Handle(GetReporteQuery query, CancellationToken cancellationToken)

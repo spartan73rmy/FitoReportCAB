@@ -31,14 +31,6 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
             {
                 throw new NotFoundException(nameof(Reporte), request.IdReporte);
             }
-
-            //// Comprobar el tiempo para desbloquear la cuenta
-            //if (entity.LockoutEnd > dateTime.Now)
-            //{
-            //    int minutosRestantes = (entity.LockoutEnd - dateTime.Now).Minutes + 1;
-            //    throw new ForbiddenException($"Sobrepasaste la cantidad de intentos de inicio de sesion, espera {minutosRestantes} minutos");
-            //}
-
             return result;
 
         }

@@ -29,11 +29,10 @@ namespace FitoReport.Application.Infraestructure
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             timer.Start();
-            // Usuario no esta autenticado y existen reglas
-            if (!userAccessor.IsAuthenticated && _rules.Count > 0)
-            {
-                throw new NotAuthorizedException("No autorizado");
-            }
+            // Usuario no es publico y no esta autenticado y existen reglas
+            if(userAccessor.TipoUsuario!=TiposUsuario.Publico)
+                if (!userAccessor.IsAuthenticated && _rules.Count > 0)
+                    throw new NotAuthorizedException("No autorizado");
 
             List<string> failures = new List<string>();
             foreach (var rule in _rules)
@@ -43,7 +42,19 @@ namespace FitoReport.Application.Infraestructure
                     case IAdminRequest<TRequest, TResponse> _:
                         if (userAccessor.TipoUsuario != TiposUsuario.Admin)
                             failures.Add("No tienes permisos");
-                        break;                    
+                        break;
+                    case IUserRequest<TRequest, TResponse> _:
+                        if (userAccessor.TipoUsuario != TiposUsuario.User)
+                            failures.Add("No tienes permisos");
+                        break;
+                    case IProductorRequest<TRequest, TResponse> _:
+                        if (userAccessor.TipoUsuario != TiposUsuario.Productor)
+                            failures.Add("No tienes permisos");
+                        break;
+                    case INotAuth<TRequest, TResponse> _:
+                        if (userAccessor.TipoUsuario != TiposUsuario.Publico)
+                            failures.Add("No tienes permisos");
+                        break;
                 }
 
                 if (failures.Count == 0)

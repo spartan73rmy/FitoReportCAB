@@ -115,7 +115,7 @@ namespace FitoReport.WebUi.Controllers
         {
             var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(authOptions.Secret));
 
-            var jwt = new JwtSecurityToken(issuer: "AppIAS",
+            var jwt = new JwtSecurityToken(issuer: "FitoReport",
                 audience: "Everyone",
                 claims: claims, //the user's claims, for example new Claim[] { new Claim(ClaimTypes.Name, "The username"), //... 
                 notBefore: DateTime.UtcNow,

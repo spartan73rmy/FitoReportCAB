@@ -2,7 +2,9 @@
 {
     public enum TiposUsuario
     {
-        User=0,
-        Admin = 1        
+        Publico = 1, //Puede consultar un reporte
+        Productor = 2, //Puede consultar sus estadisticas, portafolio, reportes.
+        User = 3, //Puede crear, editar, ver y compartir reportes. Puede ver portafolio?
+        Admin = 4 //Aprueba usuarios, Acceso total
     }
 }
