@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
 {
-    public class GetReporteAuth : INotAuth<GetReporteQuery, GetReporteResponse>
+    public class GetReporteAuth : IUserRequest<GetReporteQuery, GetReporteResponse>
     {
         public GetReporteAuth()
         {

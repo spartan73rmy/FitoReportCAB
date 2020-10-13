@@ -29,31 +29,42 @@ namespace FitoReport.Application.Infraestructure
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             timer.Start();
-            // Usuario no es publico y no esta autenticado y existen reglas
-            if(userAccessor.TipoUsuario!=TiposUsuario.Publico)
-                if (!userAccessor.IsAuthenticated && _rules.Count > 0)
-                    throw new NotAuthorizedException("No autorizado");
+            // El Usuario no esta autenticado y existen reglas
+            if (!userAccessor.IsAuthenticated && _rules.Count > 0)
+                throw new NotAuthorizedException("No autorizado");
 
             List<string> failures = new List<string>();
             foreach (var rule in _rules)
             {
                 switch (rule)
                 {
+                    //Solo Aministrador
                     case IAdminRequest<TRequest, TResponse> _:
                         if (userAccessor.TipoUsuario != TiposUsuario.Admin)
                             failures.Add("No tienes permisos");
                         break;
+                    //Administrador y Usuario tienen el permiso
                     case IUserRequest<TRequest, TResponse> _:
-                        if (userAccessor.TipoUsuario != TiposUsuario.User)
+                        if (userAccessor.TipoUsuario != TiposUsuario.User
+                            && userAccessor.TipoUsuario != TiposUsuario.Admin)
                             failures.Add("No tienes permisos");
                         break;
+                    //Administrador, Usuario y Productor tienen permiso
                     case IProductorRequest<TRequest, TResponse> _:
-                        if (userAccessor.TipoUsuario != TiposUsuario.Productor)
+                        if (userAccessor.TipoUsuario != TiposUsuario.Productor
+                            && userAccessor.TipoUsuario != TiposUsuario.User
+                            && userAccessor.TipoUsuario != TiposUsuario.Admin)
                             failures.Add("No tienes permisos");
                         break;
-                    case INotAuth<TRequest, TResponse> _:
-                        if (userAccessor.TipoUsuario != TiposUsuario.Publico)
+                    //Todos excepto Productor tienen permiso
+                    case IVisor<TRequest, TResponse> _:
+                        if (userAccessor.TipoUsuario != TiposUsuario.Visor
+                            && userAccessor.TipoUsuario != TiposUsuario.User
+                            && userAccessor.TipoUsuario != TiposUsuario.Admin)
                             failures.Add("No tienes permisos");
+                        break;
+                    //Cualquiera Authenticado puede acceder
+                    case IAuthenticatedRequest<TRequest, TResponse> _:
                         break;
                 }
 
