@@ -4,7 +4,6 @@ using FitoReport.Common;
 using FitoReport.Domain.Entities;
 using FitoReport.Domain.Enums;
 using MediatR;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 

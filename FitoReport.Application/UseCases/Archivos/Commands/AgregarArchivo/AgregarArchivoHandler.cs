@@ -33,7 +33,7 @@ namespace FitoReport.Application.UseCases.Archivos.Commands.AgregarArchivo
             db.ArchivoUsuario.Add(nuevoArchivo);
 
             await db.SaveChangesAsync(cancellationToken);
-            
+
             return new AgregarArchivoResponse
             {
                 Hash = hash

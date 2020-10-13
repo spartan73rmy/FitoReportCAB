@@ -295,7 +295,7 @@ namespace FitoReport.Persistence
                 new Reporte
                 {
                     Lugar="Cotija",
-                    Productor="Miguel Hernandez Mendez",                    
+                    Productor="Miguel Hernandez Mendez",
                     Latitude=123.0,
                     Longitud=123.1,
                     Ubicacion="Cotija",

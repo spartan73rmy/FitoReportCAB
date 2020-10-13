@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace FitoReport.Domain.Entities
+﻿namespace FitoReport.Domain.Entities
 {
     public partial class ArchivoUsuario : BaseEntity
     {

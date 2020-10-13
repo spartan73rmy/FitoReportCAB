@@ -1,11 +1,4 @@
-﻿using FitoReport.Application.UseCases.Usuarios.Commands.CreateUsuario;
-using FitoReport.Infraestructure;
-using MediatR;
-using Moq;
-using System.Threading;
-using Xunit;
-
-namespace FitoReport.Application.Tests.Usuarios.Commands
+﻿namespace FitoReport.Application.Tests.Usuarios.Commands
 {
     public class CreateUsuarioCommandTest : TestBase
     {

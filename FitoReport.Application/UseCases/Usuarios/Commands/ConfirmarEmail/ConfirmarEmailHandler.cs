@@ -29,7 +29,7 @@ namespace FitoReport.Application.UseCases.Usuarios.Commands.ConfirmarEmail
             {
                 throw new BadRequestException("El usuario se confirmo previamente");
             }
-       
+
 
             user.Confirmado = true;
             user.TokenConfirmacion = null;

@@ -28,7 +28,7 @@ namespace FitoReport.Application.UseCases.Usuarios.Commands.ModificarEmail
             bool oldUser = await db
                 .Usuario
                 .AnyAsync(el => el.NormalizedEmail == normalizedEmail, cancellation);
-            
+
             if (oldUser)
             {
                 result.Errors.Add(new ValidationFailure(nameof(entity.NuevoEmail), "El email ya se encuentra registrado"));

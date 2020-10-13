@@ -1,4 +1,3 @@
-using FitoReport.Common;
 using FluentValidation;
 
 namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte

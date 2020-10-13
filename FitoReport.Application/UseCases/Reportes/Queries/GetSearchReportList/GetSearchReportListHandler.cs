@@ -1,11 +1,7 @@
-using FitoReport.Application.Exceptions;
 using FitoReport.Application.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -30,7 +26,7 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetSearchReportList
                 Lugar = el.Lugar,
                 Ubicacion = el.Ubicacion,
                 Fecha = el.Created
-            }).OrderByDescending(f=>f.Fecha).ToListAsync(cancellationToken);
+            }).OrderByDescending(f => f.Fecha).ToListAsync(cancellationToken);
 
             return new GetSearchReportListResponse { Busqueda = busqueda };
         }

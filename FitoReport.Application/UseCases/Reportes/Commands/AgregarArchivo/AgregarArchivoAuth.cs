@@ -1,7 +1,5 @@
 using FitoReport.Application.Interfaces;
 using FitoReport.Application.Security;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarArchivo

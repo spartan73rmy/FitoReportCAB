@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using FitoReport.Application.UseCases.Reportes.Queries.GetPlagas;
+﻿using FitoReport.Application.UseCases.Plagas.Queries.GetPlagas;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace FitoReport.WebUi.Controllers
 {

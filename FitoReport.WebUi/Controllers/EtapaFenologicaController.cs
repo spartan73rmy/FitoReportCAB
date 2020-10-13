@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using FitoReport.Application.UseCases.EtapasFenologicas.Queries.GetEtapaFenologicaList;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using FitoReport.Application.UseCases.Reportes.Queries.GetEtapaFenologicaList;
+using System.Threading.Tasks;
 
 namespace FitoReport.WebUi.Controllers
 {

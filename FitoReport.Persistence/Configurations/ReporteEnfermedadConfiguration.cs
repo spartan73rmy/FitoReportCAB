@@ -17,7 +17,7 @@ namespace FitoReport.Persistence.Configurations
             builder.HasOne(el => el.Reporte)
                 .WithMany(el => el.ReporteEnfermedad)
                 .HasForeignKey(el => el.IdReporte);
-           
+
             builder.HasOne(el => el.Enfermedad)
                 .WithMany(el => el.ReporteEnfermedad)
                 .HasForeignKey(el => el.IdEnfermedad);

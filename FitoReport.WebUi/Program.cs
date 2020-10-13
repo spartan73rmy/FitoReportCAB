@@ -48,7 +48,7 @@ namespace FitoReport.WebUi
                 try
                 {
                     var chikisitemaContext = services.GetRequiredService<FitoReportDbContext>();
-                    chikisitemaContext.Database.Migrate(); 
+                    chikisitemaContext.Database.Migrate();
 
                     FitoReportDbInitializer.Initialize(chikisitemaContext);
                 }

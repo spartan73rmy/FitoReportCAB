@@ -1,9 +1,6 @@
-using FitoReport.Application.Exceptions;
 using FitoReport.Application.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 

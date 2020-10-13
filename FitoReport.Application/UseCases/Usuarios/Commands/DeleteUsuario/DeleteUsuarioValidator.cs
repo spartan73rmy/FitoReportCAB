@@ -1,13 +1,9 @@
 using FitoReport.Application.Exceptions;
 using FitoReport.Application.Interfaces;
-using FitoReport.Common;
 using FitoReport.Domain.Entities;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

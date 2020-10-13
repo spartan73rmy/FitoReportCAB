@@ -1,6 +1,6 @@
 ﻿namespace FitoReport.Domain.Entities
 {
-    public class Producto:BaseEntity
+    public class Producto : BaseEntity
     {
         public int IdReport { get; set; }
         public string Unidad { get; set; }

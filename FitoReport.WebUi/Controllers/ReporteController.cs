@@ -1,18 +1,9 @@
 ﻿using FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte;
-using FitoReport.Application.UseCases.Reportes.Queries.GetPlagas;
 using FitoReport.Application.UseCases.Reportes.Queries.GetReporte;
 using FitoReport.Application.UseCases.Reportes.Queries.GetSearchReportList;
 using FitoReport.WebUi.Controllers;
-using FitoReport.WebUi.Options;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FitoReportCab.WebUi.Controllers
@@ -32,7 +23,7 @@ namespace FitoReportCab.WebUi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<GetReporteResponse>> Get(int idReport)
         {
-            return Ok(await Mediator.Send(new GetReporteQuery{ IdReporte=idReport}));
+            return Ok(await Mediator.Send(new GetReporteQuery { IdReporte = idReport }));
         }
 
         [HttpGet]

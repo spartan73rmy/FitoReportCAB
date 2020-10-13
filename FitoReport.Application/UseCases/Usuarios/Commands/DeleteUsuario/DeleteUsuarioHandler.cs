@@ -1,11 +1,7 @@
-using FitoReport.Application.Exceptions;
 using FitoReport.Application.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,7 +21,7 @@ namespace FitoReport.Application.UseCases.Usuarios.Commands.DeleteUsuario
             var user = await db
                         .Usuario
                         .SingleOrDefaultAsync(el => el.NombreUsuario == request.NombreUsuario || el.Email == request.NombreUsuario);
-            if (user!=null)
+            if (user != null)
             {
                 var archivos = await db.ArchivoUsuario.Where(el => el.IdUsuario == user.Id).ToListAsync();
                 var tokens = await db.UsuarioToken.Where(el => el.IdUsuario == user.Id).ToListAsync();

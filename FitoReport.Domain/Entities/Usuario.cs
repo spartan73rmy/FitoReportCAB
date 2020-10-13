@@ -8,7 +8,7 @@ namespace FitoReport.Domain.Entities
     {
         public Usuario()
         {
-            ArchivoUsuario = new HashSet<ArchivoUsuario>();         
+            ArchivoUsuario = new HashSet<ArchivoUsuario>();
             UsuarioTokens = new HashSet<UsuarioToken>();
         }
 
@@ -28,7 +28,7 @@ namespace FitoReport.Domain.Entities
         public string ApellidoMaterno { get; set; }
         public string ImagenPerfil { get; set; }
 
-        public virtual ICollection<ArchivoUsuario> ArchivoUsuario { get; set; }     
+        public virtual ICollection<ArchivoUsuario> ArchivoUsuario { get; set; }
         public virtual ICollection<UsuarioToken> UsuarioTokens { get; set; }
 
     }

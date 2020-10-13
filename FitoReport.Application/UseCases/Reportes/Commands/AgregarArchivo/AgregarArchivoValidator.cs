@@ -1,12 +1,5 @@
-using FitoReport.Application.Exceptions;
 using FitoReport.Application.Interfaces;
-using FitoReport.Domain.Entities;
 using FluentValidation;
-using FluentValidation.Results;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarArchivo
 {

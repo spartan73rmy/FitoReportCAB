@@ -1,6 +1,6 @@
 ﻿namespace FitoReport.Domain.Entities
 {
-    public class ReportePlaga:BaseEntity
+    public class ReportePlaga : BaseEntity
     {
         public int IdReporte { get; set; }
         public int IdPlaga { get; set; }

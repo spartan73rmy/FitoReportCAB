@@ -53,7 +53,7 @@ namespace FitoReport.WebUi
             services.AddInfrastructure(Configuration);
             services.AddPersistence(Configuration);
             services.AddApplication(Configuration);
-            
+
             services.AddScoped<IUserAccessor, UserAccessor>();
 
             services

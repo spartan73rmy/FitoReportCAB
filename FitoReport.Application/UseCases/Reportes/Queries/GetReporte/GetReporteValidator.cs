@@ -25,7 +25,7 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
             var entity = await db
                 .Reporte
                 .SingleOrDefaultAsync(el => el.Id == request.IdReporte);
-            
+
             //If Single Report exist, get all
             if (entity == null)
             {

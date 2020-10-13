@@ -1,10 +1,5 @@
 ﻿using FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte;
-using FitoReport.Common;
 using FitoReport.WebUi.FunctionalTests.Common;
-using FitoReport.WebUi.FunctionalTests.Mocks;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -22,7 +17,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Actividades
             var client = await GetMaestroClientAsync();
             var pet = new AgregarReporteCommand
             {
-        
+
             };
 
             var content = Utilities.GetRequestContent(pet);

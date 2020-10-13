@@ -1,6 +1,5 @@
 using FitoReport.Application.Exceptions;
 using FitoReport.Application.Interfaces;
-using FitoReport.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
@@ -20,7 +19,7 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarArchivo
         public async Task<AgregarArchivoResponse> Handle(AgregarArchivoCommand request, CancellationToken cancellationToken)
         {
             bool fileExists = await db.ArchivoUsuario.AnyAsync(el => el.Hash == request.Archivo);
-            
+
             if (!fileExists)
             {
                 throw new NotFoundException(nameof(request.Archivo), request.Archivo);

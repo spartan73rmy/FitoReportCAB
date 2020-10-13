@@ -1,5 +1,4 @@
-﻿using FitoReport.Domain.Enums;
-using MediatR;
+﻿using MediatR;
 
 namespace FitoReport.Application.UseCases.Usuarios.Commands.CreateUsuario
 {

@@ -1,4 +1,3 @@
-using FitoReport.Application.Interfaces;
 using FitoReport.Application.Security;
 using System.Threading.Tasks;
 

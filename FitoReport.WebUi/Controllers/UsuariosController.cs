@@ -37,7 +37,7 @@ namespace FitoReport.WebUi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<AproveUsuarioResponse>> AproveUser(string nombreUsuario)
         {
-            return Ok(await Mediator.Send(new AproveUsuarioCommand { NombreUsuario = nombreUsuario}));
+            return Ok(await Mediator.Send(new AproveUsuarioCommand { NombreUsuario = nombreUsuario }));
         }
 
         [HttpDelete("{nombreUsuario}")]
@@ -45,7 +45,7 @@ namespace FitoReport.WebUi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<DeleteUsuarioResponse>> DeleteUser(string nombreUsuario)
         {
-            return Ok(await Mediator.Send(new DeleteUsuarioCommand {NombreUsuario= nombreUsuario}));
+            return Ok(await Mediator.Send(new DeleteUsuarioCommand { NombreUsuario = nombreUsuario }));
         }
 
         [HttpPut]

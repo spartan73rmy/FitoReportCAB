@@ -1,6 +1,4 @@
-using FitoReport.Domain.Entities;
 using MediatR;
-using System;
 using System.Collections.Generic;
 
 namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
