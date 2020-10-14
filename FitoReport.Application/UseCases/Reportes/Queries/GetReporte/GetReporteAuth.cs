@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
 {
-    public class GetReporteAuth : IUserRequest<GetReporteQuery, GetReporteResponse>
+    public class GetReporteAuth : IProductorRequest<GetReporteQuery, GetReporteResponse>
     {
         public GetReporteAuth()
         {

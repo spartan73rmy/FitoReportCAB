@@ -15,7 +15,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Enfermedad
         [Theory]
         [InlineData("Admin")]
         [InlineData("User")]
-        public async Task ObtieneEnfermedadCorrectamente(string username)
+        public async Task GetEnfermedadCorrectamente(string username)
         {
             string pass = "123";
             var client = await GetAuthenticatedClientAsync(username,pass);
@@ -32,7 +32,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Enfermedad
         [Theory]
         [InlineData("Visor")]
         [InlineData("Productor")]
-        public async Task ObtieneUsuarioNotAutorized(string username)
+        public async Task GetEnfermedadNotAutorized(string username)
         {
             string pass = "123";
             var client = await GetAuthenticatedClientAsync(username, pass);
@@ -42,7 +42,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Enfermedad
         }
 
         [Fact]
-        public async Task ObtieneAnonymousNotAutorized()
+        public async Task GetAnonymousNotAutorized()
         {
             var client = GetClient();
             var response = await client.GetAsync("/api/Enfermedad/GetEnfermedades");

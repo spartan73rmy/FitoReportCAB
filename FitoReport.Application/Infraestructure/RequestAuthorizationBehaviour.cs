@@ -49,16 +49,17 @@ namespace FitoReport.Application.Infraestructure
                             && userAccessor.TipoUsuario != TiposUsuario.Admin)
                             failures.Add("No tienes permisos");
                         break;
-                    //Administrador, Usuario y Productor tienen permiso
-                    case IProductorRequest<TRequest, TResponse> _:
-                        if (userAccessor.TipoUsuario != TiposUsuario.Productor
+                    //Todos excepto Productor tienen permiso
+                    case IVisor<TRequest, TResponse> _:
+                        if (userAccessor.TipoUsuario != TiposUsuario.Visor
                             && userAccessor.TipoUsuario != TiposUsuario.User
                             && userAccessor.TipoUsuario != TiposUsuario.Admin)
                             failures.Add("No tienes permisos");
                         break;
-                    //Todos excepto Productor tienen permiso
-                    case IVisor<TRequest, TResponse> _:
-                        if (userAccessor.TipoUsuario != TiposUsuario.Visor
+                    //Administrador, Usuario, Productor y Visor tienen permiso
+                    case IProductorRequest<TRequest, TResponse> _:
+                        if (userAccessor.TipoUsuario != TiposUsuario.Productor
+                            && userAccessor.TipoUsuario != TiposUsuario.Visor
                             && userAccessor.TipoUsuario != TiposUsuario.User
                             && userAccessor.TipoUsuario != TiposUsuario.Admin)
                             failures.Add("No tienes permisos");

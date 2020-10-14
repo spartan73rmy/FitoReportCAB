@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace FitoReportCab.WebUi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class ReporteController : BaseController
     {

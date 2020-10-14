@@ -11,6 +11,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Plaga
         public GetPlagas(CustomWebApplicationFactory<Startup> factory) : base(factory)
         {
         }
+
         [Theory]
         [InlineData("Admin")]
         [InlineData("User")]
