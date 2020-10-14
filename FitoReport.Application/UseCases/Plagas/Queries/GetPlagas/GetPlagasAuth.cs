@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace FitoReport.Application.UseCases.Plagas.Queries.GetPlagas
 {
-    public class GetPlagasAuth : IAuthenticatedRequest<GetPlagasQuery, GetPlagasResponse>
+    public class GetPlagasAuth : IUserRequest<GetPlagasQuery, GetPlagasResponse>
     {
         public GetPlagasAuth()
         {
