@@ -15,12 +15,13 @@ namespace FitoReport.WebUi.Controllers
         {
             return Ok(await Mediator.Send(new GetPlagasQuery()));
         }
-        [HttpDelete("{idPlaga}")]
+
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<DeletePlagaResponse>> Delete(int idPlaga)
+        public async Task<ActionResult<DeletePlagaResponse>> Delete(int id)
         {
-            return Ok(await Mediator.Send(new DeletePlagaCommand { IdPlaga = idPlaga}));
+            return Ok(await Mediator.Send(new DeletePlagaCommand { IdPlaga = id}));
         }
     }
 }
