@@ -41,7 +41,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Usuarios
         [Fact]
         public async Task BadRequestPorNombreVacio()
         {
-            var client = await GetAlumnoClientAsync();
+            var client = await GetVisorClientAsync();
             var pet = new ModificarDatosUsuarioCommand
             {
                 IdUsuario = 1,

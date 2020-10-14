@@ -21,10 +21,10 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Cuenta
         }
 
         [Fact]
-        public async Task ConfirmarMaestroNoAutorizado()
+        public async Task ConfirmarUsuarioNoAutorizado()
         {
             var client = GetClient();
-            var response = await client.GetAsync($"/api/Cuenta/Confirmar?Token=1234");
+            var response = await client.GetAsync($"/api/Cuenta/Confirmar?Token=12345");
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }

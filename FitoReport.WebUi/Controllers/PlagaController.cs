@@ -1,11 +1,11 @@
-﻿using FitoReport.Application.UseCases.Plagas.Queries.GetPlagas;
+﻿using FitoReport.Application.UseCases.Plagas.Commands.DeletePlaga;
+using FitoReport.Application.UseCases.Plagas.Queries.GetPlagas;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace FitoReport.WebUi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class PlagaController : BaseController
     {
@@ -14,6 +14,13 @@ namespace FitoReport.WebUi.Controllers
         public async Task<ActionResult<GetPlagasResponse>> GetPlagas()
         {
             return Ok(await Mediator.Send(new GetPlagasQuery()));
+        }
+        [HttpDelete("{idPlaga}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<DeletePlagaResponse>> Delete(int idPlaga)
+        {
+            return Ok(await Mediator.Send(new DeletePlagaCommand { IdPlaga = idPlaga}));
         }
     }
 }

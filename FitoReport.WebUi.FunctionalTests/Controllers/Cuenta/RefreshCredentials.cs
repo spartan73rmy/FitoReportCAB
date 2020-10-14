@@ -19,7 +19,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Cuenta
             var client = GetClient();
             var loginCommand = new GetUsuarioLoginQuery
             {
-                NombreUsuario = "Alumno",
+                NombreUsuario = "User",
                 Password = "123"
             };
 

@@ -12,9 +12,9 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Usuarios
         }
 
         [Theory]
-        [InlineData("Alumno", "alumnocambio@asd.com")]
-        [InlineData("Maestro", "maestrocambio@asd.com")]
-        [InlineData("Admin", "admincambio@asd.com")]
+        [InlineData("Visor", "alumnocambio@asd.com")]
+        [InlineData("User", "maestrocambio@asd.com")]
+        [InlineData("Admin", "adminewemail@asd.com")]
         public async Task ReturnsSuccessStatusCode(string username, string email)
         {
             string pass = "123";

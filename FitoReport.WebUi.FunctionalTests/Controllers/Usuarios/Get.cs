@@ -15,7 +15,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.Usuarios
         [Fact]
         public async Task ObtieneUsuarioCorrectamente()
         {
-            var client = await GetAlumnoClientAsync();
+            var client = await GetVisorClientAsync();
             var response = await client.GetAsync("/api/Usuarios/Get/1");
 
             response.EnsureSuccessStatusCode();

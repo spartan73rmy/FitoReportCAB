@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace FitoReport.WebUi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class EnfermedadController : BaseController
     {

@@ -26,13 +26,17 @@ namespace FitoReport.WebUi.FunctionalTests.Common
         {
             return await factory.GetAuthenticatedClientAsync("Admin", "123", configuration);
         }
-        public async Task<HttpClient> GetMaestroClientAsync(Action<IServiceCollection> configuration = null)
+        public async Task<HttpClient> GetUserClientAsync(Action<IServiceCollection> configuration = null)
         {
-            return await factory.GetAuthenticatedClientAsync("Maestro", "123", configuration);
+            return await factory.GetAuthenticatedClientAsync("User", "123", configuration);
         }
-        public async Task<HttpClient> GetAlumnoClientAsync(Action<IServiceCollection> configuration = null)
+        public async Task<HttpClient> GetProductorClientAsync(Action<IServiceCollection> configuration = null)
         {
-            return await factory.GetAuthenticatedClientAsync("Alumno", "123", configuration);
+            return await factory.GetAuthenticatedClientAsync("Productor", "123", configuration);
+        }
+        public async Task<HttpClient> GetVisorClientAsync(Action<IServiceCollection> configuration = null)
+        {
+            return await factory.GetAuthenticatedClientAsync("Visor", "123", configuration);
         }
     }
 }
