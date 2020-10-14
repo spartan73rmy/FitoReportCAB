@@ -1,6 +1,8 @@
 using FitoReport.Application.Interfaces;
 using FitoReport.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,19 +19,29 @@ namespace FitoReport.Application.UseCases.Plagas.Commands.AgregarPlaga
 
         public async Task<AgregarPlagaResponse> Handle(AgregarPlagaCommand request, CancellationToken cancellationToken)
         {
-            Plaga entity = new Plaga
-            {
-                Nombre = request.Nombre
-            };
+            //Search if exist a Plaga with equals or similar name
+            string nombre = request.Nombre.ToLower().Trim();
+            Plaga oldPlaga = await
+                db.Plaga.Where(el =>
+                el.Nombre.ToLower().Trim().Equals(nombre))
+                .FirstOrDefaultAsync();
 
-            db.Plaga.Add(entity);
+            if (oldPlaga == null)
+            {
+                Plaga newPlaga = new Plaga
+                {
+                    Nombre = request.Nombre
+                };
+                db.Plaga.Add(newPlaga);
+            }
+            else
+            {
+                oldPlaga.IsDeleted = false;
+                oldPlaga.DeletedDate = null;
+            }
             await db.SaveChangesAsync(cancellationToken);
 
-            return new AgregarPlagaResponse
-            {
-                Id = entity.Id,
-                Nombre = entity.Nombre
-            };
+            return new AgregarPlagaResponse();
         }
     }
 }
