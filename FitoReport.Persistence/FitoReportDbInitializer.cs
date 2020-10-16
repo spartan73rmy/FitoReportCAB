@@ -33,7 +33,7 @@ namespace FitoReport.Persistence
             {
                 new Enfermedad
                 {
-                    Nombre="Mancha negra (Cercospora purpura) "
+                    Nombre="Mancha negra (Cercospora purpura)"
                 },
                 new Enfermedad
                 {
@@ -99,7 +99,7 @@ namespace FitoReport.Persistence
             {
                 new Plaga
                 {
-                    Nombre="Agallador del Aguacatero (Trioza anceps Tuthill)."
+                    Nombre="Agallador del Aguacatero (Trioza anceps Tuthill)"
                 },
                 new Plaga
                 {

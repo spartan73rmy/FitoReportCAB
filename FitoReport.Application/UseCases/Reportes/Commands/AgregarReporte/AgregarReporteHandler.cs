@@ -14,12 +14,10 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
     public class AgregarReporteHandler : IRequestHandler<AgregarReporteCommand, AgregarReporteResponse>
     {
         private readonly IFitoReportDbContext db;
-        private readonly IDateTime time;
 
-        public AgregarReporteHandler(IFitoReportDbContext db, IDateTime time)
+        public AgregarReporteHandler(IFitoReportDbContext db)
         {
             this.db = db;
-            this.time = time;
         }
 
         public async Task<AgregarReporteResponse> Handle(AgregarReporteCommand request, CancellationToken cancellationToken)
@@ -60,10 +58,11 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                 foreach (PlagaDTO plaga in item.Plagas)
                 {
                     //Search if exist a Plaga with equals or similar name
-                    string nombre = plaga.Nombre.ToLower().Trim();
+                    string nombre = NormalizeString(plaga.Nombre);
+
                     Plaga oldPlaga = await
                         db.Plaga.Where(el =>
-                        el.Nombre.ToLower().Trim().Equals(nombre))
+                        el.Nombre.Replace(" ", "").ToLower().Equals(nombre))
                         .FirstOrDefaultAsync();
 
                     if (oldPlaga == null)
@@ -73,18 +72,26 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                             Nombre = plaga.Nombre
                         };
                         db.Plaga.Add(newPlaga);
+                        await db.SaveChangesAsync(cancellationToken);
+
                         entity.ReportePlaga.Add(new ReportePlaga { Plaga = newPlaga });
                     }
                     else
-                    { entity.ReportePlaga.Add(new ReportePlaga { Plaga = oldPlaga }); }
+                    {
+                        oldPlaga.IsDeleted = false;
+                        oldPlaga.DeletedDate = null;
+                        db.Plaga.Update(oldPlaga);
+                        entity.ReportePlaga.Add(new ReportePlaga { Plaga = oldPlaga });
+                    }
                 }
                 foreach (EnfermedadDTO enfermedad in item.Enfermedades)
                 {
                     //Search if exist a Enfermedad with equals or similar name
-                    string nombre = enfermedad.Nombre.ToLower().Trim();
+                    string nombre = NormalizeString(enfermedad.Nombre);
+
                     Enfermedad oldEnfermedad = await
                         db.Enfermedad.Where(el =>
-                        el.Nombre.ToLower().Trim().Equals(nombre))
+                        el.Nombre.Replace(" ", "").ToLower().Equals(nombre))
                         .FirstOrDefaultAsync();
 
                     if (oldEnfermedad == null)
@@ -94,10 +101,17 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                             Nombre = enfermedad.Nombre
                         };
                         db.Enfermedad.Add(newEnfermedad);
+                        await db.SaveChangesAsync(cancellationToken);
+
                         entity.ReporteEnfermedad.Add(new ReporteEnfermedad { Enfermedad = newEnfermedad });
                     }
                     else
-                    { entity.ReporteEnfermedad.Add(new ReporteEnfermedad { Enfermedad = oldEnfermedad }); }
+                    {
+                        oldEnfermedad.IsDeleted = false;
+                        oldEnfermedad.DeletedDate = null;
+                        db.Enfermedad.Update(oldEnfermedad);
+                        entity.ReporteEnfermedad.Add(new ReporteEnfermedad { Enfermedad = oldEnfermedad });
+                    }
                 }
             }
 
@@ -107,6 +121,20 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
             {
                 Id = 0,
             };
+        }
+
+        private string NormalizeString(string toNormalize)
+        {
+            return NormalizeString(new[] { " ", ".", "," }, toNormalize);
+        }
+        private string NormalizeString(string[] charsToDelete, string toNormalize)
+        {
+            foreach (string item in charsToDelete)
+            {
+                toNormalize = toNormalize.Replace(
+                   item, newValue: string.Empty);
+            }
+            return toNormalize.ToLower();
         }
     }
 }

@@ -20,10 +20,10 @@ namespace FitoReport.Application.UseCases.Plagas.Commands.AgregarPlaga
         public async Task<AgregarPlagaResponse> Handle(AgregarPlagaCommand request, CancellationToken cancellationToken)
         {
             //Search if exist a Plaga with equals or similar name
-            string nombre = request.Nombre.ToLower().Trim();
+            string nombre = NormalizeString(request.Nombre);
             Plaga oldPlaga = await
                 db.Plaga.Where(el =>
-                el.Nombre.ToLower().Trim().Equals(nombre))
+                el.Nombre.Replace(" ", "").ToLower().Equals(nombre))
                 .FirstOrDefaultAsync();
 
             if (oldPlaga == null)
@@ -42,6 +42,19 @@ namespace FitoReport.Application.UseCases.Plagas.Commands.AgregarPlaga
             await db.SaveChangesAsync(cancellationToken);
 
             return new AgregarPlagaResponse();
+        }
+        private string NormalizeString(string toNormalize)
+        {
+            return NormalizeString(new[] { " ", ".", "," }, toNormalize);
+        }
+        private string NormalizeString(string[] charsToDelete, string toNormalize)
+        {
+            foreach (string item in charsToDelete)
+            {
+                toNormalize = toNormalize.Replace(
+                   item, newValue: string.Empty);
+            }
+            return toNormalize.ToLower();
         }
     }
 }

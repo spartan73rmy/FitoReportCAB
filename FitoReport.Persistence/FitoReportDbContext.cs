@@ -24,7 +24,7 @@ namespace FitoReport.Persistence
         {
 
         }
-        public bool IsSoftDeleteFilterEnabled => true;
+        public bool IsSoftDeleteFilterEnabled => false;
         public virtual DbSet<ArchivoUsuario> ArchivoUsuario { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public DbSet<UsuarioToken> UsuarioToken { get; set; }

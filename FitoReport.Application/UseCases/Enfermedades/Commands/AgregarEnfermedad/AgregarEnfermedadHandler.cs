@@ -20,10 +20,10 @@ namespace FitoReport.Application.UseCases.Enfermedades.Commands.AgregarEnfermeda
         public async Task<AgregarEnfermedadResponse> Handle(AgregarEnfermedadCommand request, CancellationToken cancellationToken)
         {
             //Search if exist a Enfermedad with equals or similar name
-            string nombre = request.Nombre.ToLower().Trim();
+            string nombre = NormalizeString(request.Nombre);
             Enfermedad oldEnfermedad = await
                 db.Enfermedad.Where(el =>
-                el.Nombre.ToLower().Trim().Equals(nombre))
+                el.Nombre.Replace(" ", "").ToLower().Equals(nombre))
                 .FirstOrDefaultAsync();
 
             if (oldEnfermedad == null)
@@ -42,6 +42,19 @@ namespace FitoReport.Application.UseCases.Enfermedades.Commands.AgregarEnfermeda
             await db.SaveChangesAsync(cancellationToken);
 
             return new AgregarEnfermedadResponse();
+        }
+        private string NormalizeString(string toNormalize)
+        {
+            return NormalizeString(new[] { " ", ".", "," }, toNormalize);
+        }
+        private string NormalizeString(string[] charsToDelete, string toNormalize)
+        {
+            foreach (string item in charsToDelete)
+            {
+                toNormalize = toNormalize.Replace(
+                   item, newValue: string.Empty);
+            }
+            return toNormalize.ToLower();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace FitoReport.Application.UseCases.Enfermedades.Commands.DeleteEnfermedad
             var result = new ValidationResult();
 
             var entity = await db
-                .Plaga
+                .Enfermedad
                 .SingleOrDefaultAsync(el => el.Id == request.IdEnferemedad);
 
             if (entity == null)
