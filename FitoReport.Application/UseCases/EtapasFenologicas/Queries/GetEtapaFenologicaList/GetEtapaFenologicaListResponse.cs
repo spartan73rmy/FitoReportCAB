@@ -4,11 +4,12 @@ namespace FitoReport.Application.UseCases.EtapasFenologicas.Queries.GetEtapaFeno
 {
     public class GetEtapaFenologicaListResponse
     {
-        public List<EtapaLookUpModel> Etapas { get; internal set; }
-        public class EtapaLookUpModel
-        {
-            public int Id { get; set; }
-            public string Nombre { get; set; }
-        }
+        public List<EtapaLookUpModel> Etapas { get; set; }
+
+    }
+    public class EtapaLookUpModel
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
     }
 }
