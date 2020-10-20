@@ -8,6 +8,5 @@ namespace FitoReport.Application.UseCases.Enfermedades.Queries.GetEnfermedades
         {
 
         }
-        //TODO add validation
     }
 }
