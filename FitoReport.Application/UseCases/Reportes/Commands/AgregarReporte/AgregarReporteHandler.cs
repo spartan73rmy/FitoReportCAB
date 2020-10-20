@@ -113,6 +113,30 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                         entity.ReporteEnfermedad.Add(new ReporteEnfermedad { Enfermedad = oldEnfermedad });
                     }
                 }
+
+                //Search if exist a EtapaFenologica with equals or similar name
+                string etapaNormalizedName = NormalizeString(item.EtapaFenologica);
+
+                var oldEtapa = await
+                    db.EtapaFenologica.Where(el =>
+                    el.Nombre.Replace(" ", "").ToLower().Equals(etapaNormalizedName))
+                    .FirstOrDefaultAsync();
+
+                if (oldEtapa == null)
+                {
+                    var newEtapa = new EtapaFenologica
+                    {
+                        Nombre = item.EtapaFenologica
+                    };
+                    db.EtapaFenologica.Add(newEtapa);
+                }
+                else
+                {
+                    oldEtapa.IsDeleted = false;
+                    oldEtapa.DeletedDate = null;
+                    db.EtapaFenologica.Update(oldEtapa);
+                }
+
             }
 
             await db.SaveChangesAsync(cancellationToken);
