@@ -29,9 +29,9 @@ jobs:
       uses: i3h/deploy-with-scp@v1.0.2
       with:
         # Source file/directory
-        src: /publish
+        src: /publish/
         # Destination file/directory
-        dest: /home/alberto/publish
+        dest: /home/alberto/publish/
         # Username of destination server
         username: ${{ secrets.SERVER_USER }}
         # IP address of destination server
