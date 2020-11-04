@@ -38,3 +38,5 @@ jobs:
         server-ip: ${{ secrets.SERVER_IP }}
         # Private ssh key of destination server
         ssh-key: ${{ secrets.SERVER_SSH_KEY }}
+        
+      
