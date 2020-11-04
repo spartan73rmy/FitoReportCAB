@@ -23,3 +23,19 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+    - name: Deploy.NetCoreApp
+      run: dotnet publish -c Release -r linux-x64 --output ./publish FitoReportM.sln
+    - name: Deploy with SCP
+      uses: i3h/deploy-with-scp@v1.0.2
+      with:
+        # Source file/directory
+        src: /publish
+        # Destination file/directory
+        dest: /home/alberto/publish
+        # Username of destination server
+        username: ${{ secrets.SERVER_USER }}
+        # IP address of destination server
+        server-ip: ${{ secrets.SERVER_IP }}
+        # Private ssh key of destination server
+        ssh-key: ${{ secrets.SERVER_SSH_KEY }}
+
