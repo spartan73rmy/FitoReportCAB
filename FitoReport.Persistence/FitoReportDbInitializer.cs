@@ -301,7 +301,6 @@ namespace FitoReport.Persistence
                     Ubicacion="Cotija",
                     Predio="Joya del cupadero",
                     Cultivo="Aguacate",
-                    EtapaFenologica="Floracion",
                     Observaciones="La floracion aparecio adelantada al tiempo normal",
                     Litros=100,
                     Productos=new Producto[]
@@ -353,6 +352,24 @@ namespace FitoReport.Persistence
                             IdReporte=1
                         }
                     },
+                    ReporteEtapaFenologica=new ReporteEtapaFenologica[]
+                    {
+                        new ReporteEtapaFenologica
+                        {
+                            IdEtapaFenologica=1,
+                            IdReporte=1
+                        },
+                        new ReporteEtapaFenologica
+                        {
+                            IdEtapaFenologica=2,
+                            IdReporte=1
+                        },
+                        new ReporteEtapaFenologica
+                        {
+                            IdEtapaFenologica=3,
+                            IdReporte=1
+                        }
+                    },
                     ReportePlaga=new ReportePlaga[]
                     {
                         new ReportePlaga
@@ -381,7 +398,6 @@ namespace FitoReport.Persistence
                     Ubicacion="Periban de ramos",
                     Predio="Pedregal",
                     Cultivo="Aguacate",
-                    EtapaFenologica="Floracion",
                     Observaciones="La floracion aparecio adelantada al tiempo normal",
                     Litros=500,
                     Productos=new Producto[]
@@ -415,6 +431,14 @@ namespace FitoReport.Persistence
                             Unidad="L",
                             Concentracion="1%",
                             IngredienteActivo="Ingrediente Activo 3.0",
+                        }
+                    },
+                    ReporteEtapaFenologica=new ReporteEtapaFenologica[]
+                    {
+                        new ReporteEtapaFenologica
+                        {
+                            IdEtapaFenologica=1,
+                            IdReporte=2
                         }
                     },
                     ReporteEnfermedad=new ReporteEnfermedad[]

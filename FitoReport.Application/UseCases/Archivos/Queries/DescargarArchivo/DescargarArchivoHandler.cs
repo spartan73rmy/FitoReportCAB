@@ -25,9 +25,7 @@ namespace FitoReport.Application.UseCases.Archivos.Queries.DescargarArchivo
                 .SingleOrDefaultAsync(el => el.Token == request.TokenDescarga && el.HashArchivo == request.Hash);
 
             if (token == null)
-            {
                 throw new NotAuthorizedException("No autorizado");
-            }
 
             db.TokenDescargaArchivo.Remove(token);
             await db.SaveChangesAsync(cancellationToken);
@@ -35,9 +33,7 @@ namespace FitoReport.Application.UseCases.Archivos.Queries.DescargarArchivo
             bool fileExists = await db.ArchivoUsuario.AnyAsync(el => el.Hash == request.Hash);
 
             if (!fileExists)
-            {
                 throw new NotFoundException("Archivo", request.Hash);
-            }
 
             var file = await db
                 .ArchivoUsuario

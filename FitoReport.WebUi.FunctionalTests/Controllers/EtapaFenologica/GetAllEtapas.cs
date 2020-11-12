@@ -28,7 +28,7 @@ namespace FitoReport.WebUi.FunctionalTests.Controllers.EtapaFenologica
             var result = await Utilities.GetResponseContent<GetEtapaFenologicaListResponse>(response);
 
             Assert.IsType<GetEtapaFenologicaListResponse>(result);
-            Assert.True(result.Etapas.Count > 0);
+            Assert.True(result.EtapaFenologica.Count > 0);
         }
 
         [Theory]

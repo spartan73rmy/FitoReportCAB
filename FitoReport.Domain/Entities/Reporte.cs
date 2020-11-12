@@ -8,6 +8,7 @@ namespace FitoReport.Domain.Entities
         {
             Productos = new HashSet<Producto>();
             ReporteEnfermedad = new HashSet<ReporteEnfermedad>();
+            ReporteEtapaFenologica = new HashSet<ReporteEtapaFenologica>();
             ReportePlaga = new HashSet<ReportePlaga>();
         }
 
@@ -18,10 +19,10 @@ namespace FitoReport.Domain.Entities
         public string Ubicacion { get; set; }
         public string Predio { get; set; }
         public string Cultivo { get; set; }
-        public string EtapaFenologica { get; set; }
         public string Observaciones { get; set; }
         public int Litros { get; set; }
         public virtual ICollection<ReporteEnfermedad> ReporteEnfermedad { get; set; }
+        public virtual ICollection<ReporteEtapaFenologica> ReporteEtapaFenologica { get; set; }
         public virtual ICollection<ReportePlaga> ReportePlaga { get; set; }
         public virtual ICollection<Producto> Productos { get; set; }
     }

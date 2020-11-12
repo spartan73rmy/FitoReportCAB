@@ -1,4 +1,6 @@
+using FitoReport.Common;
 using MediatR;
+using System;
 using System.Collections.Generic;
 
 namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
@@ -16,9 +18,10 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
             public string Ubicacion { get; set; }
             public string Predio { get; set; }
             public string Cultivo { get; set; }
-            public string EtapaFenologica { get; set; }
             public string Observaciones { get; set; }
             public int Litros { get; set; }
+            public DateTime Created { get; set; }
+            public virtual ICollection<EtapaFenogolicaDTO> EtapaFenologica { get; set; }
             public virtual ICollection<EnfermedadDTO> Enfermedades { get; set; }
             public virtual ICollection<PlagaDTO> Plagas { get; set; }
             public virtual ICollection<ProductoDTO> Productos { get; set; }
@@ -38,6 +41,11 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                 public string Nombre { get; set; }
             }
             public class EnfermedadDTO
+            {
+                public int Id { get; set; }
+                public string Nombre { get; set; }
+            }
+            public class EtapaFenogolicaDTO
             {
                 public int Id { get; set; }
                 public string Nombre { get; set; }

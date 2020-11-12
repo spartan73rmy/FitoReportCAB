@@ -25,7 +25,7 @@ namespace FitoReport.Application.UseCases.EtapasFenologicas.Queries.GetEtapaFeno
                 Nombre = el.Nombre,
             }).OrderBy(el => el.Nombre).ToListAsync(cancellationToken);
 
-            return new GetEtapaFenologicaListResponse { Etapas = entity };
+            return new GetEtapaFenologicaListResponse { EtapaFenologica = entity };
         }
     }
 }

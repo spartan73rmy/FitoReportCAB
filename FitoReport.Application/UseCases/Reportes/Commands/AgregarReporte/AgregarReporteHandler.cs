@@ -1,5 +1,4 @@
 using FitoReport.Application.Interfaces;
-using FitoReport.Common;
 using FitoReport.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -34,7 +33,6 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                     Ubicacion = item.Ubicacion,
                     Predio = item.Predio,
                     Cultivo = item.Cultivo,
-                    EtapaFenologica = item.EtapaFenologica,
                     Observaciones = item.Observaciones,
                     Litros = item.Litros,
                 };
@@ -84,6 +82,37 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                         entity.ReportePlaga.Add(new ReportePlaga { Plaga = oldPlaga });
                     }
                 }
+
+                foreach (EtapaFenogolicaDTO etapa in item.EtapaFenologica)
+                {
+                    //Search if exist a Etapa with equals or similar name
+                    string nombre = NormalizeString(etapa.Nombre);
+
+                    EtapaFenologica oldEtapaF = await
+                        db.EtapaFenologica.Where(el =>
+                        el.Nombre.Replace(" ", "").ToLower().Equals(nombre))
+                        .FirstOrDefaultAsync();
+
+                    if (oldEtapaF == null)
+                    {
+                        var newEtapa = new EtapaFenologica
+                        {
+                            Nombre = etapa.Nombre
+                        };
+                        db.EtapaFenologica.Add(newEtapa);
+                        await db.SaveChangesAsync(cancellationToken);
+
+                        entity.ReporteEtapaFenologica.Add(new ReporteEtapaFenologica { EtapaFenologica = newEtapa });
+                    }
+                    else
+                    {
+                        oldEtapaF.IsDeleted = false;
+                        oldEtapaF.DeletedDate = null;
+                        db.EtapaFenologica.Update(oldEtapaF);
+                        entity.ReporteEtapaFenologica.Add(new ReporteEtapaFenologica { EtapaFenologica = oldEtapaF });
+                    }
+                }
+
                 foreach (EnfermedadDTO enfermedad in item.Enfermedades)
                 {
                     //Search if exist a Enfermedad with equals or similar name
@@ -113,30 +142,6 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                         entity.ReporteEnfermedad.Add(new ReporteEnfermedad { Enfermedad = oldEnfermedad });
                     }
                 }
-
-                //Search if exist a EtapaFenologica with equals or similar name
-                string etapaNormalizedName = NormalizeString(item.EtapaFenologica);
-
-                var oldEtapa = await
-                    db.EtapaFenologica.Where(el =>
-                    el.Nombre.Replace(" ", "").ToLower().Equals(etapaNormalizedName))
-                    .FirstOrDefaultAsync();
-
-                if (oldEtapa == null)
-                {
-                    var newEtapa = new EtapaFenologica
-                    {
-                        Nombre = item.EtapaFenologica
-                    };
-                    db.EtapaFenologica.Add(newEtapa);
-                }
-                else
-                {
-                    oldEtapa.IsDeleted = false;
-                    oldEtapa.DeletedDate = null;
-                    db.EtapaFenologica.Update(oldEtapa);
-                }
-
             }
 
             await db.SaveChangesAsync(cancellationToken);

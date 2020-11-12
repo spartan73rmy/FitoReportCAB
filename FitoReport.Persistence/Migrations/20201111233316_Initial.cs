@@ -35,6 +35,7 @@ namespace FitoReport.Persistence.Migrations
                     Modified = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedDate = table.Column<DateTime>(nullable: true),
+                    IdReport = table.Column<int>(nullable: false),
                     Nombre = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -75,7 +76,6 @@ namespace FitoReport.Persistence.Migrations
                     Ubicacion = table.Column<string>(nullable: false),
                     Predio = table.Column<string>(nullable: false),
                     Cultivo = table.Column<string>(nullable: false),
-                    EtapaFenologica = table.Column<string>(nullable: true),
                     Observaciones = table.Column<string>(nullable: false),
                     Litros = table.Column<int>(nullable: false)
                 },
@@ -185,6 +185,34 @@ namespace FitoReport.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ReporteEtapaFenologica",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Created = table.Column<DateTime>(nullable: false),
+                    Modified = table.Column<DateTime>(nullable: true),
+                    IdReporte = table.Column<int>(nullable: false),
+                    IdEtapaFenologica = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReporteEtapaFenologica", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ReporteEtapaFenologica_EtapaFenologica_IdEtapaFenologica",
+                        column: x => x.IdEtapaFenologica,
+                        principalTable: "EtapaFenologica",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ReporteEtapaFenologica_Reporte_IdReporte",
+                        column: x => x.IdReporte,
+                        principalTable: "Reporte",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ReportePlaga",
                 columns: table => new
                 {
@@ -269,6 +297,11 @@ namespace FitoReport.Persistence.Migrations
                 column: "IdReport");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EtapaFenologica_IdReport",
+                table: "EtapaFenologica",
+                column: "IdReport");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Plaga_IdReport",
                 table: "Plaga",
                 column: "IdReport");
@@ -286,6 +319,16 @@ namespace FitoReport.Persistence.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ReporteEnfermedad_IdReporte",
                 table: "ReporteEnfermedad",
+                column: "IdReporte");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReporteEtapaFenologica_IdEtapaFenologica",
+                table: "ReporteEtapaFenologica",
+                column: "IdEtapaFenologica");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReporteEtapaFenologica_IdReporte",
+                table: "ReporteEtapaFenologica",
                 column: "IdReporte");
 
             migrationBuilder.CreateIndex(
@@ -333,13 +376,13 @@ namespace FitoReport.Persistence.Migrations
                 name: "ArchivoUsuario");
 
             migrationBuilder.DropTable(
-                name: "EtapaFenologica");
-
-            migrationBuilder.DropTable(
                 name: "Producto");
 
             migrationBuilder.DropTable(
                 name: "ReporteEnfermedad");
+
+            migrationBuilder.DropTable(
+                name: "ReporteEtapaFenologica");
 
             migrationBuilder.DropTable(
                 name: "ReportePlaga");
@@ -352,6 +395,9 @@ namespace FitoReport.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Enfermedad");
+
+            migrationBuilder.DropTable(
+                name: "EtapaFenologica");
 
             migrationBuilder.DropTable(
                 name: "Plaga");

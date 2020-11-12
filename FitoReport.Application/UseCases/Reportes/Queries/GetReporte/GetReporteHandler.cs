@@ -34,9 +34,13 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
                     Ubicacion = request.Ubicacion,
                     Predio = request.Predio,
                     Cultivo = request.Cultivo,
-                    EtapaFenologica = request.EtapaFenologica,
                     Observaciones = request.Observaciones,
                     Litros = request.Litros,
+                    EtapaFenologica = request.ReporteEtapaFenologica.Where(el => el.IdReporte == query.IdReporte).Select(el => new EtapaFenogolicaDTO()
+                    {
+                        Id = el.EtapaFenologica.Id,
+                        Nombre = el.EtapaFenologica.Nombre,
+                    }).ToList() ?? new List<EtapaFenogolicaDTO>(),
                     Enfermedades = request.ReporteEnfermedad.Where(el => el.IdReporte == query.IdReporte).Select(el => new EnfermedadDTO()
                     {
                         Id = el.Enfermedad.Id,

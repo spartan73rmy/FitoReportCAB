@@ -101,6 +101,9 @@ namespace FitoReport.Persistence.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IdReport")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -113,6 +116,8 @@ namespace FitoReport.Persistence.Migrations
                         .IsUnicode(true);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdReport");
 
                     b.ToTable("EtapaFenologica");
                 });
@@ -216,9 +221,6 @@ namespace FitoReport.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EtapaFenologica")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("Latitude")
                         .HasColumnType("float");
 
@@ -287,6 +289,34 @@ namespace FitoReport.Persistence.Migrations
                     b.HasIndex("IdReporte");
 
                     b.ToTable("ReporteEnfermedad");
+                });
+
+            modelBuilder.Entity("FitoReport.Domain.Entities.ReporteEtapaFenologica", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdEtapaFenologica")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdReporte")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdEtapaFenologica");
+
+                    b.HasIndex("IdReporte");
+
+                    b.ToTable("ReporteEtapaFenologica");
                 });
 
             modelBuilder.Entity("FitoReport.Domain.Entities.ReportePlaga", b =>
@@ -501,6 +531,21 @@ namespace FitoReport.Persistence.Migrations
 
                     b.HasOne("FitoReport.Domain.Entities.Reporte", "Reporte")
                         .WithMany("ReporteEnfermedad")
+                        .HasForeignKey("IdReporte")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("FitoReport.Domain.Entities.ReporteEtapaFenologica", b =>
+                {
+                    b.HasOne("FitoReport.Domain.Entities.EtapaFenologica", "EtapaFenologica")
+                        .WithMany("ReporteEtapaFenologica")
+                        .HasForeignKey("IdEtapaFenologica")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FitoReport.Domain.Entities.Reporte", "Reporte")
+                        .WithMany("ReporteEtapaFenologica")
                         .HasForeignKey("IdReporte")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

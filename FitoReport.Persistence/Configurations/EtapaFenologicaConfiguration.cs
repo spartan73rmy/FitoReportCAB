@@ -8,11 +8,15 @@ namespace FitoReport.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<EtapaFenologica> builder)
         {
-            builder.HasKey(b => b.Id);
+            {
+                builder.HasKey(el => el.Id);
 
-            builder.Property(el => el.Nombre)
-           .IsRequired()
-           .IsUnicode(true);
+                builder.HasIndex(el => el.IdReport);
+
+                builder.Property(el => el.Nombre)
+                .IsRequired()
+                .IsUnicode(true);
+            }
         }
     }
 }

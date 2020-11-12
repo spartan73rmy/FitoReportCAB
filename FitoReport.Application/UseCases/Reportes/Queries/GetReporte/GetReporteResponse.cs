@@ -14,12 +14,12 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
         public string Ubicacion { get; set; }
         public string Predio { get; set; }
         public string Cultivo { get; set; }
-        public string EtapaFenologica { get; set; }
         public string Observaciones { get; set; }
         public int Litros { get; set; }
         public virtual IList<EnfermedadDTO> Enfermedades { get; set; }
         public virtual IList<PlagaDTO> Plagas { get; set; }
         public virtual IList<ProductoDTO> Productos { get; set; }
+        public virtual ICollection<EtapaFenogolicaDTO> EtapaFenologica { get; set; }
 
         public class EnfermedadDTO
         {
@@ -40,6 +40,11 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
             public string IngredienteActivo { get; set; }
             public string Concentracion { get; set; }
             public string IntervaloSeguridad { get; set; }
+        }
+        public class EtapaFenogolicaDTO
+        {
+            public int Id { get; set; }
+            public string Nombre { get; set; }
         }
     }
 }
