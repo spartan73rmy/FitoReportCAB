@@ -4,13 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FitoReport.Persistence.Configurations
 {
-    public class ArchivoUsuarioConfiguration : IEntityTypeConfiguration<ArchivoUsuario>
+    public class ArchivoConfiguration : IEntityTypeConfiguration<Archivo>
     {
-        public void Configure(EntityTypeBuilder<ArchivoUsuario> builder)
+        public void Configure(EntityTypeBuilder<Archivo> builder)
         {
             builder.HasKey(el => el.Id);
 
             builder.HasIndex(el => el.IdUsuario);
+
+            builder.HasIndex(el => el.IdReporte);
 
             builder.Property(el => el.Hash).IsRequired();
             builder.Property(el => el.ContentType).IsRequired();
@@ -21,6 +23,12 @@ namespace FitoReport.Persistence.Configurations
                 .HasForeignKey(el => el.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ArchivoUsuario_Usuario");
+
+            builder.HasOne(el => el.IdReporteNavigation)
+                .WithMany(el => el.Archivos)
+                .HasForeignKey(el => el.IdReporte)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ArchivoUsuario_Reporte");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
         public virtual IList<PlagaDTO> Plagas { get; set; }
         public virtual IList<ProductoDTO> Productos { get; set; }
         public virtual ICollection<EtapaFenogolicaDTO> EtapaFenologica { get; set; }
-
+        public List<string> ImagesHash { get; set; }
         public class EnfermedadDTO
         {
             public int Id { get; set; }

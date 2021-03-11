@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitoReport.Persistence.Migrations
 {
     [DbContext(typeof(FitoReportDbContext))]
-    [Migration("20201111233316_Initial")]
+    [Migration("20210122144322_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace FitoReport.Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FitoReport.Domain.Entities.ArchivoUsuario", b =>
+            modelBuilder.Entity("FitoReport.Domain.Entities.Archivo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,6 +39,9 @@ namespace FitoReport.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("IdReporte")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdUsuario")
                         .HasColumnType("int");
 
@@ -50,6 +53,8 @@ namespace FitoReport.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdReporte");
 
                     b.HasIndex("IdUsuario");
 
@@ -504,8 +509,14 @@ namespace FitoReport.Persistence.Migrations
                     b.ToTable("UsuarioToken");
                 });
 
-            modelBuilder.Entity("FitoReport.Domain.Entities.ArchivoUsuario", b =>
+            modelBuilder.Entity("FitoReport.Domain.Entities.Archivo", b =>
                 {
+                    b.HasOne("FitoReport.Domain.Entities.Reporte", "IdReporteNavigation")
+                        .WithMany("Archivos")
+                        .HasForeignKey("IdReporte")
+                        .HasConstraintName("FK_ArchivoUsuario_Reporte")
+                        .IsRequired();
+
                     b.HasOne("FitoReport.Domain.Entities.Usuario", "IdUsuarioNavigation")
                         .WithMany("ArchivoUsuario")
                         .HasForeignKey("IdUsuario")

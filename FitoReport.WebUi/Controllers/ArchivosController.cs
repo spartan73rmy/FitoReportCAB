@@ -13,16 +13,18 @@ namespace FitoReport.WebUi.Controllers
         [HttpPost]
         [RequestSizeLimit(long.MaxValue)]
         [Consumes("multipart/form-data")]
-        public async Task<ActionResult<AgregarArchivoResponse>> AgregarArchivo(IFormFile command)
+        public async Task<ActionResult<AgregarArchivoResponse>> AgregarArchivo(IFormFile file, [FromFormAttribute] int idReporte)
         {
-            using (var file = command.OpenReadStream())
+            using (var fileStream = file.OpenReadStream())
             {
-                return Ok(await Mediator.Send(new AgregarArchivoCommand
+                var result = await Mediator.Send(new AgregarArchivoCommand
                 {
-                    Archivo = file,
-                    ContentType = command.ContentType,
-                    Nombre = command.FileName
-                }));
+                    Archivo = fileStream,
+                    ContentType = file.ContentType,
+                    Nombre = file.FileName,
+                    IdReporte = idReporte
+                });
+                return Ok(result);
             }
         }
 
@@ -35,9 +37,11 @@ namespace FitoReport.WebUi.Controllers
         [HttpGet]
         [Route("{hash}")]
         [AllowAnonymous]
-        public async Task<FileResult> DescargarArchivo(string hash, string token)
+        public async Task<FileResult> DescargarArchivo([FromHeader] string hashArchivo, [FromHeader]string tokenDescarga)
         {
-            var file = await Mediator.Send(new DescargarArchivoQuery { Hash = hash, TokenDescarga = token });
+            var hashe = hashArchivo + tokenDescarga;
+
+            var file = await Mediator.Send(new DescargarArchivoQuery { Hash = hashArchivo, TokenDescarga = tokenDescarga });
             return File(file.Archivo, file.ContentType, file.Nombre);
         }
     }

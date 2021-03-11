@@ -8,5 +8,6 @@ namespace FitoReport.Application.UseCases.Archivos.Commands.AgregarArchivo
         public Stream Archivo { get; set; }
         public string Nombre { get; set; }
         public string ContentType { get; set; }
+        public int IdReporte { get; set; }
     }
 }

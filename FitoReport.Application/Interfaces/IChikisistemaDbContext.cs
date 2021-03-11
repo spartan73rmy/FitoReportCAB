@@ -9,7 +9,7 @@ namespace FitoReport.Application.Interfaces
     public interface IFitoReportDbContext
     {
         DbSet<Reporte> Reporte { get; set; }
-        DbSet<ArchivoUsuario> ArchivoUsuario { get; set; }
+        DbSet<Archivo> ArchivoUsuario { get; set; }
         DbSet<Usuario> Usuario { get; set; }
         DbSet<UsuarioToken> UsuarioToken { get; set; }
         DbSet<TokenDescargaArchivo> TokenDescargaArchivo { get; set; }

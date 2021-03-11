@@ -59,6 +59,7 @@ namespace FitoReport.Application.UseCases.Reportes.Queries.GetReporte
                         IngredienteActivo = el.IngredienteActivo,
                         IntervaloSeguridad = el.IntervaloSeguridad
                     }).ToList() ?? new List<ProductoDTO>(),
+                    ImagesHash=request.Archivos.Select(el=>el.Hash).ToList()
                 }).FirstOrDefaultAsync(cancellationToken);
 
             return entity;

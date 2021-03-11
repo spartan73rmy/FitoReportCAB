@@ -248,6 +248,7 @@ namespace FitoReport.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Created = table.Column<DateTime>(nullable: false),
                     Modified = table.Column<DateTime>(nullable: true),
+                    IdReporte = table.Column<int>(nullable: false),
                     IdUsuario = table.Column<int>(nullable: false),
                     Hash = table.Column<string>(nullable: false),
                     ContentType = table.Column<string>(nullable: false),
@@ -256,6 +257,12 @@ namespace FitoReport.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ArchivoUsuario", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ArchivoUsuario_Reporte",
+                        column: x => x.IdReporte,
+                        principalTable: "Reporte",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ArchivoUsuario_Usuario",
                         column: x => x.IdUsuario,
@@ -285,6 +292,11 @@ namespace FitoReport.Persistence.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ArchivoUsuario_IdReporte",
+                table: "ArchivoUsuario",
+                column: "IdReporte");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArchivoUsuario_IdUsuario",

@@ -2,6 +2,7 @@ using FitoReport.Application.Interfaces;
 using FitoReport.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,9 +22,9 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
 
         public async Task<AgregarReporteResponse> Handle(AgregarReporteCommand request, CancellationToken cancellationToken)
         {
-
-            foreach (ReporteDTO item in request.Reportes)
+            for (int count = 0; count < request.Reportes.Count; count++)
             {
+                ReporteDTO item = request.Reportes[count];
                 Reporte entity = new Reporte
                 {
                     Lugar = item.Lugar,
@@ -38,6 +39,8 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                 };
 
                 db.Reporte.Add(entity);
+                await db.SaveChangesAsync(cancellationToken);
+
                 foreach (ProductoDTO p in item.Productos)
                 {
                     entity.Productos.Add(new Producto
@@ -142,13 +145,13 @@ namespace FitoReport.Application.UseCases.Reportes.Commands.AgregarReporte
                         entity.ReporteEnfermedad.Add(new ReporteEnfermedad { Enfermedad = oldEnfermedad });
                     }
                 }
+                await db.SaveChangesAsync(cancellationToken);
+                request.Reportes[count].Id = entity.Id;
             }
-
-            await db.SaveChangesAsync(cancellationToken);
 
             return new AgregarReporteResponse
             {
-                Id = 0,
+                Id = request.Reportes.Select(el => el.Id).ToList()
             };
         }
 

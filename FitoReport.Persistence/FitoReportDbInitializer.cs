@@ -20,11 +20,11 @@ namespace FitoReport.Persistence
                 return; // Db has been seeded
             }
             SeedUsuario(context);
-            SeedArchivoUsuario(context);
             SeedPlaga(context);
             SeedEnfermedad(context);
             SeedEtapaFenologica(context);
             SeedReporte(context);
+            SeedArchivoUsuario(context);
         }
 
         private void SeedEnfermedad(FitoReportDbContext context)
@@ -128,43 +128,43 @@ namespace FitoReport.Persistence
 
         private void SeedArchivoUsuario(FitoReportDbContext context)
         {
-            var materialApoyo = new ArchivoUsuario[]
+            var archivos = new Archivo[]
             {
-                new ArchivoUsuario
-                {
-                    // Id = 1,
-                    ContentType = "application/pdf",
-                    Hash = "123",
-                    IdUsuario = 1,
-                    Nombre = "NombreArchivo.pdf"
-                },
-                new ArchivoUsuario
-                {
-                    // Id = 2,
-                    ContentType = "image/png",
-                    Hash = "133",
-                    IdUsuario = 2,
-                    Nombre = "NombreArchivo.png"
-                },
-                new ArchivoUsuario
-                {
-                    // Id = 3,
-                    ContentType = "application/zip",
-                    Hash = "323",
-                    IdUsuario = 3,
-                    Nombre = "NombreArchivo.zip"
-                },
-                new ArchivoUsuario
-                {
-                    // Id = 4,
-                    ContentType = "application/zip",
-                    Hash = "789",
-                    IdUsuario = 3,
-                    Nombre = "NombreArchivo.zip"
-                },
+                //new Archivo
+                //{
+                //    // Id = 1,
+                //    ContentType = "application/pdf",
+                //    Hash = "123",
+                //    IdUsuario = 1,
+                //    Nombre = "NombreArchivo.pdf"
+                //},
+                //new Archivo
+                //{
+                //    // Id = 2,
+                //    ContentType = "image/png",
+                //    Hash = "133",
+                //    IdUsuario = 2,
+                //    Nombre = "NombreArchivo.png"
+                //},
+                //new Archivo
+                //{
+                //    // Id = 3,
+                //    ContentType = "application/zip",
+                //    Hash = "323",
+                //    IdUsuario = 3,
+                //    Nombre = "NombreArchivo.zip"
+                //},
+                //new Archivo
+                //{
+                //    // Id = 4,
+                //    ContentType = "application/zip",
+                //    Hash = "789",
+                //    IdUsuario = 3,
+                //    Nombre = "NombreArchivo.zip"
+                //},
             };
 
-            foreach (var archivo in materialApoyo)
+            foreach (var archivo in archivos)
             {
                 context.ArchivoUsuario.Add(archivo);
                 context.SaveChanges();

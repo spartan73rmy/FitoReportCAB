@@ -25,5 +25,7 @@ namespace FitoReport.Domain.Entities
         public virtual ICollection<ReporteEtapaFenologica> ReporteEtapaFenologica { get; set; }
         public virtual ICollection<ReportePlaga> ReportePlaga { get; set; }
         public virtual ICollection<Producto> Productos { get; set; }
+        public virtual ICollection<Archivo> Archivos { get; set; }
+
     }
 }

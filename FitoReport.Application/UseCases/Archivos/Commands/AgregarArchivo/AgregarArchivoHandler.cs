@@ -22,12 +22,13 @@ namespace FitoReport.Application.UseCases.Archivos.Commands.AgregarArchivo
         public async Task<AgregarArchivoResponse> Handle(AgregarArchivoCommand request, CancellationToken cancellationToken)
         {
             string hash = await fileService.SaveFile(request.Archivo);
-            var nuevoArchivo = new ArchivoUsuario
+            var nuevoArchivo = new Archivo
             {
                 ContentType = request.ContentType,
                 Hash = hash,
+                Nombre = request.Nombre,
                 IdUsuario = currentUser.UserId,
-                Nombre = request.Nombre
+                IdReporte = request.IdReporte
             };
 
             db.ArchivoUsuario.Add(nuevoArchivo);
