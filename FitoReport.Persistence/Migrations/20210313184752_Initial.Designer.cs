@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitoReport.Persistence.Migrations
 {
     [DbContext(typeof(FitoReportDbContext))]
-    [Migration("20210122144322_Initial")]
+    [Migration("20210313184752_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
